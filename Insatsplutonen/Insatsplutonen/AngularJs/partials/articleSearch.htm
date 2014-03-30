@@ -1,0 +1,60 @@
+﻿<div class="col-md-12">
+    <div class="row">
+
+        <div class="col-md-1">
+            <label>Resultat:</label>
+            {{ items.TotalItems }}
+        </div>
+
+        <div class="col-md-1">
+            <label>Sidor:</label><br />
+            {{ items.TotalPages }}
+        </div>
+
+        <div class="col-md-1">
+            <label>Fallande:</label>
+            <input type="checkbox" id="descChbx" ng-model="ascending" ng-change="ascendingChange()" />
+        </div>
+
+        <div class="col-md-2">
+            <label>Sortera:</label>
+            <select name="sort_by" ng-model="sortby" ng-change="sortbyChange()" class="form-control">
+                <option selected="selected" value="default">Default</option>
+                <option value="title">Titel</option>
+                <option value="date">Datum</option>
+            </select>
+        </div>
+
+        <div class="col-md-2 form-group">
+            <label>Aktuell sida:</label>
+            <select class="form-control" id="ddlPage" name="ddlPage" ng-change="pageChange()" ng-model="page" ng-options="page for page in items.Pagingarray">
+            </select>
+        </div>
+
+        <div class="col-md-2 form-group">
+            <label>Per sida</label>
+            <select name="ddltake" id="ddltake" class="form-control" ng-model="take" ng-change="takeChange()">
+                <option>10</option>
+                <option>20</option>
+                <option>50</option>
+                <option>100</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <label>Sökning</label>
+            <input type="text" id="searchTxt" class="form-control" ng-model="searchtext" placeholder="Ange sökord" ng-change="searchChange()" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="btn-group">
+            <button type="button" id="btnFirst" ng-click="pageChange(page = firstSizePage)" ng-disabled="page <= 1" class="btn btn-default glyphicon glyphicon-backward"></button>
+            <button type="button" id="btnPrev" ng-click="pageChange(page = page-1)" ng-disabled="page <= 1" class="btn btn-default glyphicon glyphicon-chevron-left"></button>
+            <button type="button" id="btnNext" ng-click="pageChange(page = page+1)" ng-disabled="page >= lastSizePage || items.Articles.length == null" class="btn btn-default glyphicon glyphicon-chevron-right"></button>
+            <button type="button" id="btnLast" ng-click="onBtnChangePage(page = lastSizePage)" ng-disabled="page >= lastSizePage || items.Articles.length == null" class="btn btn-default glyphicon glyphicon-forward"></button>
+        </div>
+    </div>
+
+    <div ng-include="'../../AngularJs/partials/articleList.htm'"></div>
+</div>

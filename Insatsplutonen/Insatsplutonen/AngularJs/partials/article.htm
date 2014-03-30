@@ -1,0 +1,12 @@
+﻿
+<h3>{{ item.Header }} <a  style="cursor:pointer;" ng-href="" ng-click="editArticleClick(item.NewsId)">Edit</a></h3>
+<img width="20%" src="../../images/blog/{{item.Picture}}" alt="{{item.Picture}}" />
+<div>{{ item.News }}</div>
+<p></p>
+<p>Skribent - {{ item.Author }}</p>
+<p>Datum - {{ item.NewsDate }}</p>
+
+
+<div ng-repeat="picture in item.Pictures">
+    <img src="../../images/blog/{{picture.Name}}" alt="{{picture.Description}}" />
+</div>

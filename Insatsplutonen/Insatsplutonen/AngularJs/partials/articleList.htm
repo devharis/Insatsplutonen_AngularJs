@@ -1,0 +1,35 @@
+﻿<table class="row">
+    <tr>
+        <th>
+            <b>Header</b>
+        </th>
+        <th>
+            <b>News</b>
+        </th>
+        <th>
+            <b>Author</b>
+        </th>
+        <th>
+            <b>Picture</b>
+        </th>
+        <th>
+            <b>NewsDate</b>
+        </th>
+        <th></th>
+    </tr>
+
+    <tr ng-repeat="item in items.Articles">
+        <td style="cursor:pointer;">
+             <a ng-href="" ng-click="articleClick(item.NewsId)">{{item.Header}}</a>
+        </td>
+        <td>{{item.News}}
+        </td>
+        <td>{{item.Author}}
+        </td>
+        <td>{{item.Picture}}
+        </td>
+        <td>{{item.NewsDate}}
+        </td>
+    </tr>
+
+</table>
