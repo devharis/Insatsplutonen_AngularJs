@@ -196,11 +196,16 @@
     <Content Include="AngularJs\controllers\ArticleController.js" />
     <Content Include="AngularJs\controllers\ArticlesController.js" />
     <Content Include="AngularJs\controllers\ArticleEditController.js" />
+    <Content Include="AngularJs\directives\directives.js" />
+    <Content Include="AngularJs\directives\ngFileDrop.js" />
+    <Content Include="AngularJs\directives\ngFileOver.js" />
+    <Content Include="AngularJs\directives\ngFileSelect.js" />
     <Content Include="AngularJs\partials\404.htm" />
     <Content Include="AngularJs\partials\article.htm" />
     <Content Include="AngularJs\partials\articleList.htm" />
     <Content Include="AngularJs\partials\articleSearch.htm" />
     <Content Include="AngularJs\partials\editArticle.htm" />
+    <Content Include="AngularJs\service\%24fileUploader.js" />
     <Content Include="AngularJs\service\ArticleService.js" />
     <Content Include="App_Data\aspnet-Insatsplutonen-20130917201710.mdf" />
     <Content Include="App_Data\aspnet-Insatsplutonen-20130917201710_log.ldf">
@@ -1193,6 +1198,7 @@
     <Content Include="images\blog\t_grg.jpg" />
     <Content Include="images\blog\t_ksp58.jpg" />
     <Content Include="images\blog\vip.jpg" />
+    <Content Include="Scripts\angular-file-upload.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.js" />

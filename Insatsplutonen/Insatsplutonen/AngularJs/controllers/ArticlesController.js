@@ -1,4 +1,4 @@
-﻿var articleContrl = angular.module('app.controller', ['textAngular'])
+﻿var articleContrl = angular.module('app.controller', ['textAngular', 'angularFileUpload'])
     .controller('ArticlesController', [
         '$scope', '$routeParams', '$location', 'articleService',
         function ($scope, $routeParams, $location, articleService) {
