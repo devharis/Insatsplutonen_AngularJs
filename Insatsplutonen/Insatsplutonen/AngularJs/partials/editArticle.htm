@@ -42,39 +42,35 @@
 
 
 <div class="col-md-3">
-    
-    
-    <h3>Select files</h3>
 
+
+    <h3>Hantera bilder</h3>
+
+    Alt. 1
     <div ng-show="uploader.isHTML5">
-        <!-- 3. ng-file-over | ng-file-over="className" -->
-        <div class="well my-drop-zone" ng-file-over>
-            Base drop zone
-        </div>
-
         <!-- Example: ng-file-drop | ng-file-drop="options" -->
         <div class="well my-drop-zone" ng-file-drop="{ url: '/foo' }" ng-file-over="another-file-over-class">
-            Another drop zone with its own settings
+            Dra bildfilen hit för att lägga till i kö
         </div>
     </div>
-
+    Alt. 2
     <!-- 2. ng-file-select | ng-file-select="options" -->
     <input ng-file-select type="file" multiple />
 
 </div>
 
 <div class="col-md-9" style="margin-bottom: 40px">
-    <h3>The queue</h3>
-    <p>Queue length: {{ uploader.queue.length }}</p>
+    <h3>Filkö</h3>
+    <p>Filer i kö: {{ uploader.queue.length }}</p>
 
     <table class="table">
         <thead>
             <tr>
-                <th width="50%">Name</th>
-                <th ng-show="uploader.isHTML5">Size</th>
-                <th ng-show="uploader.isHTML5">Progress</th>
+                <th width="50%">Namn</th>
+                <th ng-show="uploader.isHTML5">Storlek</th>
+                <th ng-show="uploader.isHTML5">Framsteg</th>
                 <th>Status</th>
-                <th>Actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -82,12 +78,7 @@
                 <td>
                     <strong>{{ item.file.name }}</strong>
                     <!-- Image preview -->
-                    <!--auto height-->
-                    <!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
-                    <!--auto width-->
                     <div ng-show="uploader.isHTML5" ng-thumb="{ file: item.file, height: 100 }"></div>
-                    <!--fixed width and height -->
-                    <!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
                 </td>
                 <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
                 <td ng-show="uploader.isHTML5">
@@ -102,13 +93,13 @@
                 </td>
                 <td nowrap>
                     <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
-                        <span class="glyphicon glyphicon-upload"></span> Ladda upp
+                        <span class="glyphicon glyphicon-upload"></span>Ladda upp
                     </button>
                     <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
-                        <span class="glyphicon glyphicon-ban-circle"></span> Avbryt
+                        <span class="glyphicon glyphicon-ban-circle"></span>Avbryt
                     </button>
                     <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
-                        <span class="glyphicon glyphicon-trash"></span> Ta bort
+                        <span class="glyphicon glyphicon-trash"></span>Ta bort
                     </button>
                 </td>
             </tr>
@@ -117,19 +108,19 @@
 
     <div>
         <p>
-            Queue progress:
-                            <div class="progress" style="">
-                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
-                            </div>
+            Framsteg:
+            <div class="progress" style="">
+                <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+            </div>
         </p>
         <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
-            <span class="glyphicon glyphicon-upload"></span> Ladda upp alla
+            <span class="glyphicon glyphicon-upload"></span>Ladda upp alla
         </button>
         <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
-            <span class="glyphicon glyphicon-ban-circle"></span> Avbryt alla
+            <span class="glyphicon glyphicon-ban-circle"></span>Avbryt alla
         </button>
         <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
-            <span class="glyphicon glyphicon-trash"></span> Ta bort alla
+            <span class="glyphicon glyphicon-trash"></span>Ta bort alla
         </button>
     </div>
 
@@ -137,12 +128,26 @@
 
 
 
+<div class="col-md-12 col-md-10">
+    <input type="text" ng-model="item.Header" value="{{item.Header}}" class="form-control" />
+    <div>{{item.Picture}}</div>
+    <div text-angular ng-model="item.News"></div>
 
-<input type="text" ng-model="item.Header" value="{{item.Header}}" class="form-control" />
-<div>{{item.Picture}}</div>
-<div text-angular ng-model="item.News"></div>
+    <input type="text" ng-model="item.Author" value="{{item.Author}}" class="form-control" />
+    <input type="text" ng-model="item.NewsDate" value="{{item.NewsDate}}" class="form-control" />
+</div>
+<div class="col-md-2">
+    <table class="table">
+        <tbody>
+            <tr ng-repeat="pic in item.Pictures">
+                <td>
+                    <strong>{{ pic.Name }}</strong>
+                    <!-- Image preview -->
+                    <img width="100%" src="../../images/blog/{{pic.Name}}" alt="{{pic.Name}}"/>
 
-<input type="text" ng-model="item.Author" value="{{item.Author}}" class="form-control" />
-<input type="text" ng-model="item.NewsDate" value="{{item.NewsDate}}" class="form-control" />
-
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 

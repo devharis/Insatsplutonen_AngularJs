@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Insatsplutonen.Model.Helpers;
 
 namespace Insatsplutonen
 {
@@ -19,6 +20,9 @@ namespace Insatsplutonen
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
+            ImageHandler.PhysicalApplicationPath = Server.MapPath("~/App_Data/images/");
+            ImageHandler.PhysicalApplicationPath2 = Server.MapPath("~/images/blog/");
         }
     }
 }

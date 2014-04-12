@@ -1,10 +1,16 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Insatsplutonen.Data.Service;
+using Insatsplutonen.Model.Helpers;
 using Insatsplutonen.Model.Interface;
 using Insatsplutonen.ViewModel;
+using Microsoft.Ajax.Utilities;
 
 namespace Insatsplutonen.Controllers
 {
@@ -65,5 +71,21 @@ namespace Insatsplutonen.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public JsonResult Index(HttpPostedFileBase file)
+        {
+            string image;
+            if (file.ContentLength > 0)
+            {
+                var imageHandler = new ImageHandler();
+                image = imageHandler.SaveImage(file, file.FileName);
+            }
+            else
+                image = null;
+
+            var result = !image.IsNullOrWhiteSpace();
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }

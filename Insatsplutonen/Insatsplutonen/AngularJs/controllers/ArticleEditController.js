@@ -1,16 +1,13 @@
 ﻿articleContrl.controller('ArticleEditController', [
         '$scope', '$routeParams', '$location', '$fileUploader', 'articleService',
-        function ($scope, $routeParams, $location,  $fileUploader, articleService) {
+        function ($scope, $routeParams, $location, $fileUploader, articleService) {
             getArticle();
 
             function getArticle() {
-
                 articleService.GetArticle($routeParams.id)
                     .then(function (response) {
                         var date = new Date(parseInt(response.NewsDate.substr(6)));
                         response.NewsDate = date.toDateString("YYYY-MM-DD");
-
-                        console.log(response);
                         $scope.item = response;
                     },
                     function (errorMessage) {
@@ -21,14 +18,14 @@
             // Creates a uploader
             var uploader = $scope.uploader = $fileUploader.create({
                 scope: $scope,
-                url: 'upload.php'
+                url: '/Blog/Index'
             });
-
 
             // ADDING FILTERS
 
             // Images only
             uploader.filters.push(function (item /*{File|HTMLInputElement}*/) {
+                console.log(item);
                 var type = uploader.isHTML5 ? item.type : '/' + item.value.slice(item.value.lastIndexOf('.') + 1);
                 type = '|' + type.toLowerCase().slice(type.lastIndexOf('/') + 1) + '|';
                 return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
