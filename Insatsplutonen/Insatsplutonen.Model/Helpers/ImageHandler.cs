@@ -56,7 +56,7 @@ namespace Insatsplutonen.Model.Helpers
         static Size GetThumbnailSize(Image original)
         {
             // Maximum size of any dimension.
-            const int maxPixels = 300;
+            const int maxPixels = 600;
 
             // Width and height.
             int originalWidth = original.Width;
@@ -80,18 +80,8 @@ namespace Insatsplutonen.Model.Helpers
         //SPARA BILD
         public string SaveImage(HttpPostedFileBase file, string fileName)
         {
-            var imageList = Directory.GetFiles(PhysicalApplicationPath2, "*", SearchOption.TopDirectoryOnly).ToList();
-
-            foreach (var img in imageList)
-            {
-                fileName = img.Split('\\').Last();
-                Image image = Image.FromFile(img);
-                //Image image = Image.FromStream(file.FromStream);
-
-                var thumbnailSize = GetThumbnailSize(image);
-
-                var thumbnail = image.GetThumbnailImage(thumbnailSize.Width, thumbnailSize.Height, null, IntPtr.Zero);
-
+                var image = Image.FromStream(file.InputStream);
+                
                 //Kontrollerar så att bilden är av korrekt typ
                 if (!IsValidImage(image))
                 {
@@ -110,16 +100,22 @@ namespace Insatsplutonen.Model.Helpers
                 try
                 {
                     //Spara ner bild och tumnagel i respektive mapp
-                    thumbnail.Save(String.Format("{0}/thumbs/{1}", PhysicalApplicationPath, fileName));
+                    if (file.ContentLength > 100)
+                    {
+                        var thumbnailSize = GetThumbnailSize(image);
+                        var thumbnail = image.GetThumbnailImage(thumbnailSize.Width, thumbnailSize.Height, null, IntPtr.Zero);
+                        thumbnail.Save(String.Format("{0}/thumbs/{1}", PhysicalApplicationPath, fileName));
+                    }
+                    else
+                        image.Save(String.Format("{0}/thumbs/{1}", PhysicalApplicationPath, fileName));
                     image.Save(String.Format("{0}/{1}", PhysicalApplicationPath, fileName));
                 }
                 catch
                 {
                     throw new ArgumentException("Fel inträffa, var god försök igen");
                 }
-                
-            }
-            return null;
+
+            return fileName;
         }
     }
 }

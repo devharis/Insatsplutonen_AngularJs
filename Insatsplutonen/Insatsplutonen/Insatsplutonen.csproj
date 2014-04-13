@@ -204,10 +204,6 @@
     <Content Include="AngularJs\partials\editArticle.htm" />
     <Content Include="AngularJs\service\%24fileUploader.js" />
     <Content Include="AngularJs\service\ArticleService.js" />
-    <Content Include="App_Data\aspnet-Insatsplutonen-20130917201710.mdf" />
-    <Content Include="App_Data\aspnet-Insatsplutonen-20130917201710_log.ldf">
-      <DependentUpon>aspnet-Insatsplutonen-20130917201710.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />

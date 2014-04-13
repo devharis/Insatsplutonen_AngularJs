@@ -22,7 +22,6 @@ namespace Insatsplutonen
             AuthConfig.RegisterAuth();
 
             ImageHandler.PhysicalApplicationPath = Server.MapPath("~/App_Data/images/");
-            ImageHandler.PhysicalApplicationPath2 = Server.MapPath("~/images/blog/");
         }
     }
 }
