@@ -1,0 +1,12 @@
+﻿
+<h3>{{ item.Title }} <a  style="cursor:pointer;" ng-href="" ng-click="editPostClick(item.Id)">Edit</a></h3>
+<img width="20%" src="../../images/blog/{{item.Media}}" alt="{{item.Media}}" />
+<div ng-bind-html="item.Content"></div>
+<p></p>
+<p>Skribent - {{ item.Author }}</p>
+<p>Datum - {{ item.Date }}</p>
+
+
+<div ng-repeat="media in item.MediaList">
+    <img src="../../images/blog/{{media.Name}}" alt="{{media.Description}}" />
+</div>

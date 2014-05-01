@@ -1,14 +1,24 @@
-﻿articleContrl.controller('ArticleEditController', [
-        '$scope', '$routeParams', '$location', '$fileUploader', 'articleService',
-        function ($scope, $routeParams, $location, $fileUploader, articleService) {
-            getArticle();
+﻿articleContrl.controller('PostEditController', [
+        '$scope', '$routeParams', '$location', '$fileUploader', 'postService',
+        function ($scope, $routeParams, $location, $fileUploader, postService) {
+            getPost();
 
-            function getArticle() {
-                articleService.GetArticle($routeParams.id)
+            function getPost() {
+                postService.GetPost($routeParams.id)
                     .then(function (response) {
-                        var date = new Date(parseInt(response.NewsDate.substr(6)));
-                        response.NewsDate = date.toDateString("YYYY-MM-DD");
+                        var date = new Date(parseInt(response.Date.substr(6)));
+                        response.Date = date.toDateString("YYYY-MM-DD");
                         $scope.item = response;
+                    },
+                    function (errorMessage) {
+                        $scope.error = errorMessage;
+                    });
+            };
+
+            $scope.onClickUpdatePost = function (item) {
+                postService.updatePost(item)
+                    .then(function (response) {
+                        console.log(response);
                     },
                     function (errorMessage) {
                         $scope.error = errorMessage;

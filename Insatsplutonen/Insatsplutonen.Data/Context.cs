@@ -16,8 +16,8 @@ namespace Insatsplutonen.Data
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
       modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-      modelBuilder.Entity<Article>().ToTable("news");
-      modelBuilder.Entity<Image>().ToTable("picture");
+      modelBuilder.Entity<Post>().ToTable("post");
+      modelBuilder.Entity<Media>().ToTable("media");
 
     }
   }

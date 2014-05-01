@@ -1,34 +1,33 @@
 ﻿<table class="row">
     <tr>
         <th>
-            <b>Header</b>
+            <b>Title</b>
         </th>
         <th>
-            <b>News</b>
+            <b>Content</b>
         </th>
         <th>
             <b>Author</b>
         </th>
         <th>
-            <b>Picture</b>
+            <b>Media</b>
         </th>
         <th>
-            <b>NewsDate</b>
+            <b>Date</b>
         </th>
         <th></th>
     </tr>
 
-    <tr ng-repeat="item in items.Articles">
+    <tr ng-repeat="item in items.Posts">
         <td style="cursor:pointer;">
-             <a ng-href="" ng-click="articleClick(item.NewsId)">{{item.Header}}</a>
+             <a ng-href="" ng-click="postClick(item.Id)">{{item.Title}}</a>
         </td>
-        <td>{{item.News}}
-        </td>
+        <td ng-bind-html="isTrusted(item.Content)"></td>
         <td>{{item.Author}}
         </td>
         <td>{{item.Picture}}
         </td>
-        <td>{{item.NewsDate}}
+        <td>{{item.Date}}
         </td>
     </tr>
 

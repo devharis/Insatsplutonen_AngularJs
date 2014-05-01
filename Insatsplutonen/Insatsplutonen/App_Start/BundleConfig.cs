@@ -12,7 +12,9 @@ namespace Insatsplutonen
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/angular.js",
                         "~/Scripts/angular-route.js",
+                        "~/Scripts/angular-sanitize.js",
                         "~/Scripts/textAngular-sanitize.js",
+                        "~/Scripts/textAngularSetup.js",
                         "~/Scripts/textAngular.js",
                         "~/Scripts/angular-file-upload.js"));
 

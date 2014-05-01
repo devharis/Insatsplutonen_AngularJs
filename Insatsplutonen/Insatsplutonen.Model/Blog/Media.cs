@@ -2,12 +2,13 @@
 
 namespace Insatsplutonen.Model.Blog
 {
-  public class Image
+  public class Media
   {
     [Key]
-    public int PictureId { get; set; }
-    public int NewsId { get; set; }
+    public int Id { get; set; }
+    public int PostId { get; set; }
     public string Name { get; set; }
+    public string Url { get; set; }
     public string Description { get; set; }
   }
 }

@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using Insatsplutonen.Data.Interface;
 using Insatsplutonen.Data.Service;
+using Insatsplutonen.Model.Blog;
 using Insatsplutonen.Model.Helpers;
-using Insatsplutonen.Model.Interface;
 using Insatsplutonen.ViewModel;
 using Microsoft.Ajax.Utilities;
+using Newtonsoft.Json;
 
 namespace Insatsplutonen.Controllers
 {
@@ -29,45 +32,45 @@ namespace Insatsplutonen.Controllers
             this._service = service;
         }
 
-        public ActionResult Articles()
+        public ActionResult Posts()
         {
-            var articleList = _service.GetAllNews().ToList();
-            return View(articleList);
+            var postList = _service.GetPosts().ToList();
+            return View(postList);
         }
 
-        public JsonResult GetPaginatedArticles(int take, int page, string search, bool ascending, string sortby)
+        public JsonResult GetPaginatedPosts(int take, int page, string search, bool ascending, string sortby)
         {
             page = page - 1;
 
             var result = new PaginationResult();
-            var articleList = _service.GetAllNews().Where(
-                    c => c.Header.ToLower().Contains(search.ToLower())
-                    || c.News.ToLower().Contains(search.ToLower())
+            var postList = _service.GetPosts().Where(
+                    c => c.Title.ToLower().Contains(search.ToLower())
+                    || c.Content.ToLower().Contains(search.ToLower())
                     || c.Author.ToLower().Contains(search.ToLower())
-                    || c.NewsDate.ToString(CultureInfo.InvariantCulture).ToLower().Contains(search.ToLower()
+                    || c.Date.ToString(CultureInfo.InvariantCulture).ToLower().Contains(search.ToLower()
                 )).ToList();
 
             if (!ascending)
-                articleList = articleList.OrderByDescending(o => o.NewsId).ToList();
+                postList = postList.OrderByDescending(o => o.Id).ToList();
 
             if (sortby == "title" || sortby == "date")
             {
                 if (sortby == "title")
-                    articleList = articleList.OrderBy(o => o.Header).ToList();
+                    postList = postList.OrderBy(o => o.Title).ToList();
                 if (sortby == "date")
-                    articleList = articleList.OrderBy(o => o.NewsDate).ToList();
+                    postList = postList.OrderBy(o => o.Date).ToList();
             }
-             
-            result.TotalItems = articleList.Count;
-            result.Articles = articleList.Skip(page*take).Take(take).ToList();
+
+            result.TotalItems = postList.Count;
+            result.Posts = postList.Skip(page * take).Take(take).ToList();
             result.TotalPages = (result.TotalItems%take == 0) ? result.TotalItems/take : result.TotalItems/take + 1;
 
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetArticle(int articleId)
+        public JsonResult GetPost(int id)
         {
-            var result = _service.GetNews(articleId);
+            var result = _service.GetPost(id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
@@ -86,6 +89,29 @@ namespace Insatsplutonen.Controllers
             var result = !image.IsNullOrWhiteSpace();
 
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public JsonResult UpdatePost(string postJson)
+        {
+            var userMessage = "";
+            var post = JsonConvert.DeserializeObject<Post>(postJson);
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _service.UpdatePost(post);
+                    userMessage = "Nyheten är uppdaterad.";
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Fel inträffade: " + ex.Message);
+            }
+
+            return Json(userMessage, JsonRequestBehavior.AllowGet);
         }
     }
 }

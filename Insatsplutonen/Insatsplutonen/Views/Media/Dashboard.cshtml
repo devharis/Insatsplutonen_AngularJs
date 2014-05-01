@@ -1,0 +1,31 @@
+﻿@using Microsoft.Web.Helpers
+@model Insatsplutonen.ViewModel.MediaViewModel
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+@if (Model != null)
+{
+    foreach (var item in Model.ImageList)
+    {
+        <table>
+            <tr>
+                <th>@item.Id</th>
+                <th style="width: 20%;"><img src="~/images/blog/@item.Name" /></th>
+                <th>@item.Description</th>
+            </tr>
+        </table>
+    }
+    foreach (var item in Model.VideoList)
+    {
+        <table>
+            <tr>
+                <th>@item.Id</th>
+                <th><iframe id="ytplayer" type="text/html" width="640" height="390" src="@item.Url" frameborder="0"/></th>
+                <th>@item.Description</th>
+            </tr>
+        </table>
+    }
+}

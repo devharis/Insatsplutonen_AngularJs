@@ -129,21 +129,21 @@
 
 
 <div class="col-md-12 col-md-10">
-    <input type="text" ng-model="item.Header" value="{{item.Header}}" class="form-control" />
-    <div>{{item.Picture}}</div>
-    <div text-angular ng-model="item.News"></div>
+    <input type="text" ng-model="item.Title" value="{{item.Title}}" class="form-control" />
+    <div>{{item.Media}}</div>
+    <div text-angular ng-model="item.Content"></div>
 
     <input type="text" ng-model="item.Author" value="{{item.Author}}" class="form-control" />
-    <input type="text" ng-model="item.NewsDate" value="{{item.NewsDate}}" class="form-control" />
+    <input type="text" ng-model="item.Date" value="{{item.Date}}" class="form-control" />
 </div>
 <div class="col-md-2">
     <table class="table">
         <tbody>
-            <tr ng-repeat="pic in item.Pictures">
+            <tr ng-repeat="img in item.MediaList">
                 <td>
-                    <strong>{{ pic.Name }}</strong>
+                    <strong>{{img.Name}}</strong>
                     <!-- Image preview -->
-                    <img width="100%" src="../../images/blog/{{pic.Name}}" alt="{{pic.Name}}"/>
+                    <img width="100%" src="../../images/blog/{{img.Name}}" alt="{{img.Description}}"/>
 
                 </td>
             </tr>
@@ -151,3 +151,4 @@
     </table>
 </div>
 
+<button type="button" ng-click="onClickUpdatePost(item)">Spara ändringar</button>

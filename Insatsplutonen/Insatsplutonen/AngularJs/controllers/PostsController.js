@@ -1,7 +1,7 @@
 ﻿var articleContrl = angular.module('app.controller', ['textAngular', 'angularFileUpload'])
-    .controller('ArticlesController', [
-        '$scope', '$routeParams', '$location', 'articleService',
-        function ($scope, $routeParams, $location, articleService) {
+    .controller('PostsController', [
+        '$scope', '$routeParams', '$location', '$sce', 'postService',
+        function ($scope, $routeParams, $location, $sce, postService) {
 
             $scope.take = $routeParams.take || 10;
             $scope.page = $routeParams.page || 1;
@@ -9,17 +9,17 @@
             $scope.ascending = $routeParams.ascending || false;
             $scope.sortby = $routeParams.sortby || "default";
 
-            getArticles(true);
+            getPosts(true);
 
-            function getArticles(reloadPage) {
+            function getPosts(reloadPage) {
 
-                articleService.GetPaginatedArticles($scope.take, $scope.page, $scope.searchtext, $scope.ascending, $scope.sortby)
+                postService.GetPaginatedPosts($scope.take, $scope.page, $scope.searchtext, $scope.ascending, $scope.sortby)
                     .then(function (response) {                
                         $scope.items = response;
 
-                        angular.forEach(response.Articles, function (item) {
-                            var date = new Date(parseInt(item.NewsDate.substr(6)));
-                            item.NewsDate = date.toDateString("YYYY-MM-DD");
+                        angular.forEach(response.Posts, function (item) {
+                            var date = new Date(parseInt(item.Date.substr(6)));
+                            item.Date = date.toDateString("YYYY-MM-DD");
                         });
 
                         $scope.pagingarray = response.Pagingarray;
@@ -38,35 +38,39 @@
                 $location.search({ take: $scope.take, page: $scope.page, search: $scope.searchtext, ascending: $scope.ascending, sortby: $scope.sortby });
             }
 
+            $scope.isTrusted = function (html) {
+                return $sce.trustAsHtml(html);
+            }
+
             $scope.takeChange = function() {
                 $scope.page = 1;
                 updateLocation();
-                getArticles(true);
+                getPosts(true);
             };
             $scope.pageChange = function () {
                 updateLocation();
-                getArticles(false);
+                getPosts(false);
             };
             $scope.searchChange = function () {
                 $scope.page = 1;
                 updateLocation();
-                getArticles(true);
+                getPosts(true);
             };
             $scope.ascendingChange = function () {
                 $scope.page = 1;
                 $scope.sortby = "default";
                 updateLocation();
-                getArticles(true);
+                getPosts(true);
             }
             $scope.sortbyChange = function () {
                 $scope.page = 1;
                 $scope.ascending = false;
                 updateLocation();
-                getArticles(true);
+                getPosts(true);
             }
-            $scope.articleClick = function (articleId) {
-                articleId = (parseInt(articleId));
-                $location.url('/article/' + articleId);
+            $scope.postClick = function (id) {
+                id = (parseInt(id));
+                $location.url('/' + id);
             };
 
         }]);

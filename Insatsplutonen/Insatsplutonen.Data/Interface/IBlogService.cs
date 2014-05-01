@@ -1,14 +1,12 @@
 ﻿using System.Collections.Generic;
 using Insatsplutonen.Model.Blog;
 
-namespace Insatsplutonen.Model.Interface
+namespace Insatsplutonen.Data.Interface
 {
   public interface IBlogService
   {
-    List<Article> GetAllNews();
-    Article GetNews(int id);
-    List<Image> GetRandomImages();
-    List<Article> GetRandomNews();
-    List<Article> GetLatestNews();
+    List<Post> GetPosts();
+    Post GetPost(int id);
+    void UpdatePost(Post article);
   }
 }

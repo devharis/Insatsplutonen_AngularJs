@@ -4,7 +4,6 @@ using System.Linq;
 using Insatsplutonen.Data.Interface;
 using Insatsplutonen.Data.Repository;
 using Insatsplutonen.Model.Blog;
-using Insatsplutonen.Model.Interface;
 
 namespace Insatsplutonen.Data.Service
 {
@@ -23,30 +22,22 @@ namespace Insatsplutonen.Data.Service
             this._repository = repository;
         }
 
-        public Article GetNews(int id)
+        public List<Post> GetPosts()
         {
-            var news = this._repository.Find<Article>(o => o.NewsId == id);
-            news.Pictures = this._repository.Query<Image>().Where(o => o.NewsId == news.NewsId).ToList();
-            return news;
+            return this._repository.Query<Post>().ToList();
         }
 
-        public List<Image> GetRandomImages()
+        public Post GetPost(int id)
         {
-            return this._repository.Query<Image>().OrderBy(r => Guid.NewGuid()).Take(9).ToList();
+            var post = this._repository.Find<Post>(o => o.Id == id);
+            post.MediaList = this._repository.Query<Media>().Where(o => o.PostId == post.Id).ToList();
+            return post;
         }
 
-        public List<Article> GetRandomNews()
+        public void UpdatePost(Post article)
         {
-            return this._repository.Query<Article>().OrderBy(r => Guid.NewGuid()).Take(4).ToList();
-        }
-
-        public List<Article> GetAllNews()
-        {
-            return this._repository.Query<Article>().ToList();
-        }
-        public List<Article> GetLatestNews()
-        {
-            return this._repository.Query<Article>().OrderByDescending(o => o.NewsDate).Take(4).ToList();
+            this._repository.Update(article);
+            this._repository.Save();
         }
     }
 }

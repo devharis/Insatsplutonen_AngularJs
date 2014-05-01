@@ -1,11 +1,11 @@
 ﻿var articleService = angular.module('app.service', [])
-    .service('articleService', ['$http', '$q', function ($http, $q) {
+    .service('postService', ['$http', '$q', function ($http, $q) {
 
-        this.GetPaginatedArticles = function (take, page, search, ascending, sortby) {
+        this.GetPaginatedPosts = function (take, page, search, ascending, sortby) {
             var deferred = $q.defer();
             $http({
-                type: 'GET',
-                url: '/Blog/GetPaginatedArticles',
+                method: 'GET',
+                url: '/Blog/GetPaginatedPosts',
                 params: {
                     take: take,
                     page: page,
@@ -22,15 +22,33 @@
 
             return deferred.promise;
         },
-        this.GetArticle = function (articleId) {
+        this.GetPost = function (id) {
             var deferred = $q.defer();
             $http({
-                type: 'GET',
-                url: '/Blog/GetArticle',
+                method: 'GET',
+                url: '/Blog/GetPost',
                 params: {
-                    articleId: articleId
+                    id: id
                 },
                 headers: { 'Content-Type': 'application/json' }
+            }).success(function (data) {
+                deferred.resolve(data);
+            }).error(function () {
+                deferred.reject("An error occured while fetching data");
+            });
+
+            return deferred.promise;
+        };
+
+        this.updatePost = function (post) {
+            var deferred = $q.defer();
+            $http({
+                method: "POST",
+                url: '/Blog/UpdatePost',
+                params: {
+                    postJson: JSON.stringify(post)
+                },
+                dataType: "json"
             }).success(function (data) {
                 deferred.resolve(data);
             }).error(function () {

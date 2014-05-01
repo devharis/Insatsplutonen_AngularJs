@@ -1,19 +1,19 @@
-﻿angular.module('app', ['ngRoute', 'app.controller', 'app.service', 'app.directive'])
+﻿angular.module('app', ['ngRoute', 'ngSanitize', 'app.controller', 'app.service', 'app.directive'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: '../../AngularJs/partials/articleSearch.htm',
-                controller: 'ArticlesController',
+                templateUrl: '../../AngularJs/partials/postSearch.htm',
+                controller: 'PostsController',
                 reloadOnSearch: false
             })
-            .when('/article/:id', {
-                templateUrl: '../../AngularJs/partials/article.htm',
-                controller: 'ArticleController',
+            .when('/:id', {
+                templateUrl: '../../AngularJs/partials/post.htm',
+                controller: 'PostController',
                 reloadOnSearch: true
             })
-            .when('/article/edit/:id', {
-                templateUrl: '../../AngularJs/partials/editArticle.htm',
-                controller: 'ArticleEditController',
+            .when('/edit/:id', {
+                templateUrl: '../../AngularJs/partials/editPost.htm',
+                controller: 'PostEditController',
                 reloadOnSearch: true
             })
             .otherwise({ templateUrl: '../../AngularJs/partials/404.htm' });
