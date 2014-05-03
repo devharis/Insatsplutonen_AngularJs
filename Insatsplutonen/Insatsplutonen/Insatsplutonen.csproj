@@ -197,17 +197,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularJs\app.js" />
-    <Content Include="AngularJs\controllers\PostController.js" />
-    <Content Include="AngularJs\controllers\PostsController.js" />
-    <Content Include="AngularJs\controllers\PostEditController.js" />
+    <Content Include="AngularJs\controllers\post\PostController.js" />
+    <Content Include="AngularJs\controllers\post\PostsController.js" />
+    <Content Include="AngularJs\controllers\post\PostEditController.js" />
     <Content Include="AngularJs\directives\directives.js" />
     <Content Include="AngularJs\partials\404.htm" />
-    <Content Include="AngularJs\partials\post.htm" />
-    <Content Include="AngularJs\partials\postList.htm" />
-    <Content Include="AngularJs\partials\postSearch.htm" />
-    <Content Include="AngularJs\partials\editPost.htm" />
-    <Content Include="AngularJs\service\%24fileUploader.js" />
-    <Content Include="AngularJs\service\postService.js" />
+    <Content Include="AngularJs\partials\common\uploadFiles.htm" />
+    <Content Include="AngularJs\partials\post\post.htm" />
+    <Content Include="AngularJs\partials\post\postList.htm" />
+    <Content Include="AngularJs\partials\post\postSearch.htm" />
+    <Content Include="AngularJs\partials\post\editPost.htm" />
+    <Content Include="AngularJs\service\post\%24fileUploader.js" />
+    <Content Include="AngularJs\service\post\postService.js" />
+    <Content Include="AngularJs\source\uploadFiles.css" />
     <Content Include="Content\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
@@ -295,9 +297,9 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\textAngular-sanitize.js" />
-    <Content Include="Scripts\textAngular.js" />
-    <Content Include="Scripts\textAngularSetup.js" />
+    <Content Include="AngularJs\source\textAngular\textAngular-sanitize.js" />
+    <Content Include="AngularJs\source\textAngular\textAngular.js" />
+    <Content Include="AngularJs\source\textAngular\textAngularSetup.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -324,6 +326,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Blog\Posts.cshtml" />
     <Content Include="Views\Media\Dashboard.cshtml" />
+    <Content Include="Views\Media\Media.cshtml" />
+    <Content Include="Views\Media\Library.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\images\thumbs\" />

@@ -1,49 +1,5 @@
-﻿<style>
-    .ta-editor {
-        min-height: 300px;
-        height: auto;
-        overflow: auto;
-        font-family: inherit;
-        font-size: 100%;
-        margin: 20px 0;
-    }
-
-    .my-drop-zone {
-        padding: 15px;
-        border: 2px #f1f1f1 dashed;
-        border-radius: 5px;
-        line-height: 34px;
-        box-sizing: border-box;
-        display: block;
-    }
-
-    .ng-file-over {
-        border: dotted 2px red;
-    }
-    /* Default class applied to drop zones on over */
-    .another-file-over-class {
-        border: dotted 2px green;
-    }
-
-    html, body {
-        height: 100%;
-    }
-
-    canvas {
-        background-color: #f3f3f3;
-        -webkit-box-shadow: 3px 3px 3px 0 #e3e3e3;
-        -moz-box-shadow: 3px 3px 3px 0 #e3e3e3;
-        box-shadow: 3px 3px 3px 0 #e3e3e3;
-        border: 1px solid #c3c3c3;
-        height: 100px;
-        margin: 6px 0 0 6px;
-    }
-</style>
-
-
+﻿<link href="../../source/uploadFiles.css" rel="stylesheet" />
 <div class="col-md-3">
-
-
     <h3>Hantera bilder</h3>
 
     Alt. 1
@@ -125,30 +81,3 @@
     </div>
 
 </div>
-
-
-
-<div class="col-md-12 col-md-10">
-    <input type="text" ng-model="item.Title" value="{{item.Title}}" class="form-control" />
-    <div>{{item.Media}}</div>
-    <div text-angular ng-model="item.Content"></div>
-
-    <input type="text" ng-model="item.Author" value="{{item.Author}}" class="form-control" />
-    <input type="text" ng-model="item.Created" value="{{item.Created}}" class="form-control" />
-</div>
-<div class="col-md-2">
-    <table class="table">
-        <tbody>
-            <tr ng-repeat="img in item.MediaList">
-                <td>
-                    <strong>{{img.Title}}</strong>
-                    <!-- Image preview -->
-                    <img width="100%" src="../../images/blog/{{img.Title}}" alt="{{img.Description}}"/>
-
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<button type="button" ng-click="onClickUpdatePost(item)">Spara ändringar</button>

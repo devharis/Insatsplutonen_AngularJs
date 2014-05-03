@@ -1,0 +1,33 @@
+﻿<style>
+    .ta-editor {
+    min-height: 300px;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+    margin: 20px 0;
+}
+</style>
+<div class="col-md-12 col-md-10">
+    <input type="text" ng-model="item.Title" value="{{item.Title}}" class="form-control" />
+    <div>{{item.Media}}</div>
+    <div text-angular ng-model="item.Content" style="height: 100%"></div>
+    <input type="text" ng-model="item.Author" value="{{item.Author}}" class="form-control" />
+    <input type="text" ng-model="item.Created" value="{{item.Created}}" class="form-control" />
+</div>
+<div class="col-md-2">
+    <table class="table">
+        <tbody>
+            <tr ng-repeat="img in item.MediaList">
+                <td>
+                    <strong>{{img.Title}}</strong>
+                    <!-- Image preview -->
+                    <img width="100%" src="../../images/blog/{{img.File}}" alt="{{img.Description}}"/>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<button type="button" ng-click="onClickUpdatePost(item)">Spara ändringar</button>

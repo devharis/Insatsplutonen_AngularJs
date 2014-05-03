@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Insatsplutonen.Data.Interface;
 using Insatsplutonen.Data.Repository;
-using Insatsplutonen.Model.Blog;
+using Insatsplutonen.Model.Media;
 
 namespace Insatsplutonen.Data.Service
 {
@@ -22,10 +21,10 @@ namespace Insatsplutonen.Data.Service
             this._repository = repository;
         }
 
-
-        public List<PostMedia> GetMedia()
+        public List<Media> GetMedia()
         {
-            return this._repository.Query<PostMedia>().ToList();
+            return this._repository.Query<Media>().ToList();
         }
+
     }
 }

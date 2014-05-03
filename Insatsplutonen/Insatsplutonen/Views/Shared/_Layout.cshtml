@@ -26,7 +26,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="active">@Html.ActionLink("Blog", "Posts", "Blog")</li>
-                        <li>@Html.ActionLink("Media", "Dashboard", "Media")</li>
+                        <li>@Html.ActionLink("Media", "Library", "Media")</li>
                     </ul>
                 </div>
             </div>
@@ -49,11 +49,5 @@
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
-    <script src="~/AngularJs/app.js"></script>
-    <script src="~/AngularJs/controllers/PostsController.js"></script>
-    <script src="~/AngularJs/controllers/PostController.js"></script>
-    <script src="~/AngularJs/controllers/PostEditController.js"></script>
-    <script src="~/AngularJs/service/postService.js"></script>
-    <script src="~/AngularJs/directives/directives.js"></script>
 </body>
 </html>

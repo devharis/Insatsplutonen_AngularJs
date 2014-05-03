@@ -30,9 +30,9 @@ namespace Insatsplutonen.Controllers
 
         public ActionResult Posts()
         {
-            var postList = _service.GetPosts().ToList();
-            return View(postList);
+            return View("Posts");
         }
+
 
         public JsonResult GetPaginatedPosts(int take, int page, string search, bool ascending, string sortby)
         {

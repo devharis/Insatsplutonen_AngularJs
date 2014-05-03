@@ -8,7 +8,7 @@ namespace Insatsplutonen.ViewModel
     {
         private int _mTotalpages;
 
-        public List<Post> Posts { get; set; }
+        public object Posts { get; set; }
         public int TotalItems { get; set; }
         public int TotalPages { get { return _mTotalpages; } set { _mTotalpages = value; SettingPagingsArray(); } }
         public List<int> Pagingarray { get; set; }
