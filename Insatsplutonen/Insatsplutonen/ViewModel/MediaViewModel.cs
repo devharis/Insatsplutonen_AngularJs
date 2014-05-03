@@ -7,17 +7,17 @@ namespace Insatsplutonen.ViewModel
     {
         public MediaViewModel()
         {
-            ImageList = new List<Media>();
-            VideoList = new List<Media>();
+            ImageList = new List<PostMedia>();
+            VideoList = new List<PostMedia>();
         }
 
-        public MediaViewModel(List<Media> images, List<Media> videos)
+        public MediaViewModel(List<PostMedia> images, List<PostMedia> videos)
         {
             ImageList = images;
             VideoList = videos;
         }
 
-        public List<Media> ImageList { get; set; }
-        public List<Media> VideoList { get; set; }
+        public List<PostMedia> ImageList { get; set; }
+        public List<PostMedia> VideoList { get; set; }
     }
 }

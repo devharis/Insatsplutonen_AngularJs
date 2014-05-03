@@ -5,6 +5,6 @@ namespace Insatsplutonen.Data.Interface
 {
     public interface IMediaService
     {
-        List<Media> GetMedia();
+        List<PostMedia> GetMedia();
     }
 }

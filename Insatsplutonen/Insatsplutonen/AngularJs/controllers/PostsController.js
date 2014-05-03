@@ -18,8 +18,8 @@
                         $scope.items = response;
 
                         angular.forEach(response.Posts, function (item) {
-                            var date = new Date(parseInt(item.Date.substr(6)));
-                            item.Date = date.toDateString("YYYY-MM-DD");
+                            var date = new Date(parseInt(item.Created.substr(6)));
+                            item.Created = date.toDateString("YYYY-MM-DD");
                         });
 
                         $scope.pagingarray = response.Pagingarray;

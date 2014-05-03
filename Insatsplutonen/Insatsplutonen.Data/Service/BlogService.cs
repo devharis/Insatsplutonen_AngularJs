@@ -30,7 +30,7 @@ namespace Insatsplutonen.Data.Service
         public Post GetPost(int id)
         {
             var post = this._repository.Find<Post>(o => o.Id == id);
-            post.MediaList = this._repository.Query<Media>().Where(o => o.PostId == post.Id).ToList();
+            post.MediaList = this._repository.Query<PostMedia>().Where(o => o.PostId == post.Id).ToList();
             return post;
         }
 

@@ -23,9 +23,9 @@ namespace Insatsplutonen.Data.Service
         }
 
 
-        public List<Media> GetMedia()
+        public List<PostMedia> GetMedia()
         {
-            return this._repository.Query<Media>().ToList();
+            return this._repository.Query<PostMedia>().ToList();
         }
     }
 }

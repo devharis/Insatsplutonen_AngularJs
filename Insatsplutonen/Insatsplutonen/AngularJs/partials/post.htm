@@ -4,9 +4,9 @@
 <div ng-bind-html="item.Content"></div>
 <p></p>
 <p>Skribent - {{ item.Author }}</p>
-<p>Datum - {{ item.Date }}</p>
+<p>Datum - {{ item.Created }}</p>
 
 
-<div ng-repeat="media in item.MediaList">
-    <img src="../../images/blog/{{media.Name}}" alt="{{media.Description}}" />
+<div ng-repeat="postmedia in item.MediaList">
+    <img src="../../images/blog/{{postmedia.Title}}" alt="{{postmedia.Description}}" />
 </div>

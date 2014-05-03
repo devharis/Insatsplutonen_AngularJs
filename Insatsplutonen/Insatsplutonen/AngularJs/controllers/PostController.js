@@ -7,8 +7,8 @@
 
                 postService.GetPost($routeParams.id)
                     .then(function (response) {
-                        var date = new Date(parseInt(response.Date.substr(6)));
-                        response.Date = date.toDateString("YYYY-MM-DD");
+                        var date = new Date(parseInt(response.Created.substr(6)));
+                        response.Created = date.toDateString("YYYY-MM-DD");
                         $scope.item = response;
                     },
                     function (errorMessage) {

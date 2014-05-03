@@ -54,10 +54,12 @@
   <ItemGroup>
     <Compile Include="Account\AccountModels.cs" />
     <Compile Include="Blog\Post.cs" />
-    <Compile Include="Blog\Media.cs" />
+    <Compile Include="Blog\PostMedia.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Helpers\ImageHandler.cs" />
     <Compile Include="Helpers\StringHelper.cs" />
+    <Compile Include="Media\Media.cs" />
+    <Compile Include="Media\MediaCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

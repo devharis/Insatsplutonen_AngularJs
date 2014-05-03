@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
 using Insatsplutonen.Data.Interface;
 using Insatsplutonen.Data.Service;
 using Insatsplutonen.Model.Blog;
@@ -47,7 +43,7 @@ namespace Insatsplutonen.Controllers
                     c => c.Title.ToLower().Contains(search.ToLower())
                     || c.Content.ToLower().Contains(search.ToLower())
                     || c.Author.ToLower().Contains(search.ToLower())
-                    || c.Date.ToString(CultureInfo.InvariantCulture).ToLower().Contains(search.ToLower()
+                    || c.Created.ToString(CultureInfo.InvariantCulture).ToLower().Contains(search.ToLower()
                 )).ToList();
 
             if (!ascending)
@@ -58,7 +54,7 @@ namespace Insatsplutonen.Controllers
                 if (sortby == "title")
                     postList = postList.OrderBy(o => o.Title).ToList();
                 if (sortby == "date")
-                    postList = postList.OrderBy(o => o.Date).ToList();
+                    postList = postList.OrderBy(o => o.Created).ToList();
             }
 
             result.TotalItems = postList.Count;

@@ -134,16 +134,16 @@
     <div text-angular ng-model="item.Content"></div>
 
     <input type="text" ng-model="item.Author" value="{{item.Author}}" class="form-control" />
-    <input type="text" ng-model="item.Date" value="{{item.Date}}" class="form-control" />
+    <input type="text" ng-model="item.Created" value="{{item.Created}}" class="form-control" />
 </div>
 <div class="col-md-2">
     <table class="table">
         <tbody>
             <tr ng-repeat="img in item.MediaList">
                 <td>
-                    <strong>{{img.Name}}</strong>
+                    <strong>{{img.Title}}</strong>
                     <!-- Image preview -->
-                    <img width="100%" src="../../images/blog/{{img.Name}}" alt="{{img.Description}}"/>
+                    <img width="100%" src="../../images/blog/{{img.Title}}" alt="{{img.Description}}"/>
 
                 </td>
             </tr>
