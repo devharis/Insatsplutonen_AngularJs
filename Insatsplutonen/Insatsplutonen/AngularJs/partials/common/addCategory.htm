@@ -1,0 +1,47 @@
+﻿<div class="modal-header">
+
+    <h3>Add new categories</h3>
+
+    <div>
+        <p class="search-box">
+            <input type="search" id="Search1" name="s" ng-model="searchtext" placeholder="Search category">
+        </p>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="modal-body">
+    
+    <div>
+        <input type="text" name="title" ng-model="category.title" placeholder="Title">
+        <input type="text" name="description" ng-model="category.description" placeholder="Description">
+        <input type="button" name="add" ng-click="addCategory(category)" value="Add">
+    </div>
+    <br/>
+
+    <table class="widefat table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th class="no-break">Description</th>
+                <th class="no-break">Date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="category in categories | filter:searchtext " class="found-posts alternate">
+                <td>
+                    <label for="found-10">{{ category.Title }}</label>
+                </td>
+                <td class="no-break">{{ category.Description }}</td>
+                <td class="no-break">{{ category.Created }}</td>
+                <th><input type="button" name="remove" ng-click="removeCategory(category.Id)" value="Delete"></th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="cancel(selectedCategory)">Avbryt</button>
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+</div>

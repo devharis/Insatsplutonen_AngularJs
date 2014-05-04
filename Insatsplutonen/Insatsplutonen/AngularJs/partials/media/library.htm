@@ -6,11 +6,8 @@
     <div class="tablenav top">
 
         <div class="alignleft actions bulkactions">
-            <select name="action">
-                <option value="-1" selected="selected">Bulk Actions</option>
-                <option value="delete">Delete Permanently</option>
-            </select>
-            <input type="submit" name="" id="doaction" class="button action" value="Apply">
+            <input type="button" ng-click="onClickAddCategory()"  class="button" value="New category">          
+            <input type="button" name=""  class="button" value="Add media">
         </div>
 
         <div class="alignleft actions">
@@ -85,7 +82,7 @@
                     <input type="checkbox" name="selected" ng-click="addToSelectMedia(media.Id)" id="cb-select-6" value="6">
                 </th>
                 <td class="column-icon media-icon"><a href="#" title="Edit {{media.File}}">
-                    <img width="60" height="60" src="../../images/blog/{{media.File}}" class="attachment-80x60" alt="{{media.File}}">
+                    <img width="60" height="60" src="../../images/blog/thumbs/{{media.File}}" class="attachment-80x60" alt="{{media.File}}">
                 </a>
                 </td>
                 <td class="title column-title">
@@ -98,11 +95,12 @@
                     <p>
                         {{media.mediaType}}		
                     </p>
-                    <div class="row-actions"><span class="edit"><a href="#">Edit</a> | </span><span class="delete"><a class="submitdelete" onclick="return showNotice.warn();" href="#">Delete Permanently</a> | </span><span class="view"><a href="#" title="View {{media.File}}" rel="permalink">View</a></span></div>
+                    <div class="row-actions"><span class="edit"><a href="#">Edit</a> | </span><span class="delete"><a class="submitdelete" onclick="return showNotice.warn();" href="#">Delete Permanently</a> | </span><span class="view"><a href="" ng-click="onClickView(media)" title="View {{media.File}}" rel="permalink">View</a></span></div>
                 </td>
                 <td class="author column-author"><a href="">{{media.Author}}</a></td>
                 <td class="parent column-parent">({{media.MediaCategory.Title}})<br>
                     <a ng-show="media.MediaCategory.Id == 1" href="" ng-click="onClickAttach(media.Id)">Attach</a>
+                      <a ng-show="media.MediaCategory.Id != 1" href="" ng-click="onClickAttach(media.Id)">Change</a>
                 </td>
                 <td></td>
                 <td class="date column-date">{{ media.Created }}</td>

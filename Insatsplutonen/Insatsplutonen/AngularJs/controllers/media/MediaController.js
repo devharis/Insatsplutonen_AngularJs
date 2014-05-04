@@ -1,14 +1,16 @@
 ﻿var mediaContrl = angular.module('app.controller', ['textAngular', 'angularFileUpload', 'ui.bootstrap'])
     .controller('MediaController', ['$scope', '$routeParams', '$location', '$modal', 'mediaService',
         function ($scope, $routeParams, $location, $modal, mediaService) {
-
-            $scope.take = $routeParams.take || 10;
-            $scope.page = $routeParams.page || 1;
-            $scope.searchtext = $routeParams.search || "";
-            $scope.ascending = $routeParams.ascending || false;
-            $scope.sortby = $routeParams.sortby || "default";
-            $scope.selectedMedia = [];
-            getMedia(true);
+            init();
+            function init() {
+                $scope.take = $routeParams.take || 10;
+                $scope.page = $routeParams.page || 1;
+                $scope.searchtext = $routeParams.search || "";
+                $scope.ascending = $routeParams.ascending || false;
+                $scope.sortby = $routeParams.sortby || "default";
+                $scope.selectedMedia = [];
+                getMedia(true);
+            }
 
             function getMedia(reloadPage) {
                 mediaService.GetPaginatedMedia($scope.take, $scope.page, $scope.searchtext, $scope.ascending, $scope.sortby)
@@ -82,7 +84,7 @@
                     $scope.selectedMedia.push({ "Id": mediaId });
 
                 var modalInstance = $modal.open({
-                    templateUrl: '../../AngularJs/partials/attach/attach.htm',
+                    templateUrl: '../../AngularJs/partials/media/attach.htm',
                     controller: 'attachController',
                     resolve: {
                         selectedMedia: function () {
@@ -94,10 +96,42 @@
                     }
                 });
                 modalInstance.result.then(function () {
-                    getMedia(true);
+                    getMedia(false);
                     $scope.selectedMedia = [];
                 }, function () {
+                });
+            };
+
+            $scope.onClickView = function (media) {
+                var modalInstance = $modal.open({
+                    templateUrl: '../../AngularJs/partials/media/view.htm',
+                    controller: 'editMediaController',
+                    resolve: {
+                        selectedMedia: function () {
+                            return media;
+                        }
+                    }
+                });
+                modalInstance.result.then(function () {
+                    updateLocation();
+                    getMedia(false);
+                }, function () {
                     //close
+                });
+            };
+
+            $scope.onClickAddCategory = function () {
+                var modalInstance = $modal.open({
+                    templateUrl: '../../AngularJs/partials/common/addCategory.htm',
+                    controller: 'addCategoryController',
+                    resolve: {
+                        categories: function (mediaService) {
+                            return mediaService.GetCategories();
+                        }
+                    }
+                });
+                modalInstance.result.then(function () {
+                }, function () {
                 });
             };
 
