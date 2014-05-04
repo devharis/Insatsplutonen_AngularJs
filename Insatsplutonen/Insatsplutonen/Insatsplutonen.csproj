@@ -197,18 +197,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularJs\app.js" />
+    <Content Include="AngularJs\appLibrary.js" />
+    <Content Include="AngularJs\controllers\media\AttachController.js" />
+    <Content Include="AngularJs\controllers\media\MediaController.js" />
     <Content Include="AngularJs\controllers\post\PostController.js" />
     <Content Include="AngularJs\controllers\post\PostsController.js" />
     <Content Include="AngularJs\controllers\post\PostEditController.js" />
     <Content Include="AngularJs\directives\directives.js" />
     <Content Include="AngularJs\partials\404.htm" />
+    <Content Include="AngularJs\partials\attach\attach.htm" />
     <Content Include="AngularJs\partials\common\uploadFiles.htm" />
+    <Content Include="AngularJs\partials\media\library.htm" />
     <Content Include="AngularJs\partials\post\post.htm" />
     <Content Include="AngularJs\partials\post\postList.htm" />
     <Content Include="AngularJs\partials\post\postSearch.htm" />
     <Content Include="AngularJs\partials\post\editPost.htm" />
+    <Content Include="AngularJs\service\media\mediaService.js" />
     <Content Include="AngularJs\service\post\%24fileUploader.js" />
     <Content Include="AngularJs\service\post\postService.js" />
+    <Content Include="AngularJs\source\media\library.css" />
+    <Content Include="AngularJs\source\ui-bootstrap\ui-bootstrap-custom-0.10.0.min.js" />
+    <Content Include="AngularJs\source\ui-bootstrap\ui-bootstrap-custom-tpls-0.10.0.min.js" />
     <Content Include="AngularJs\source\uploadFiles.css" />
     <Content Include="Content\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\css\bootstrap.min.css" />
@@ -325,7 +334,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Blog\Posts.cshtml" />
-    <Content Include="Views\Media\Dashboard.cshtml" />
     <Content Include="Views\Media\Media.cshtml" />
     <Content Include="Views\Media\Library.cshtml" />
   </ItemGroup>

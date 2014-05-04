@@ -51,19 +51,19 @@
         <div class="btn-group">
             <button type="button" id="btnFirst" ng-click="pageChange(page = firstSizePage)" ng-disabled="page <= 1" class="btn btn-default glyphicon glyphicon-backward"></button>
             <button type="button" id="btnPrev" ng-click="pageChange(page = page-1)" ng-disabled="page <= 1" class="btn btn-default glyphicon glyphicon-chevron-left"></button>
-            <button type="button" id="btnNext" ng-click="pageChange(page = page+1)" ng-disabled="page >= lastSizePage || items.Articles.length == null" class="btn btn-default glyphicon glyphicon-chevron-right"></button>
-            <button type="button" id="btnLast" ng-click="onBtnChangePage(page = lastSizePage)" ng-disabled="page >= lastSizePage || items.Articles.length == null" class="btn btn-default glyphicon glyphicon-forward"></button>
+            <button type="button" id="btnNext" ng-click="pageChange(page = page+1)" ng-disabled="page >= lastSizePage || items.Data.length == null" class="btn btn-default glyphicon glyphicon-chevron-right"></button>
+            <button type="button" id="btnLast" ng-click="pageChange(page = lastSizePage)" ng-disabled="page >= lastSizePage || items.Data.length == null" class="btn btn-default glyphicon glyphicon-forward"></button>
         </div>
     </div>
 
-    <div ng-include="'../../AngularJs/partials/postList.htm'"></div>
+    <div ng-include="'../../../AngularJs/partials/post/postList.htm'"></div>
 
     <div class="row">
         <div class="btn-group">
             <button type="button" id="Button1" ng-click="pageChange(page = firstSizePage)" ng-disabled="page <= 1" class="btn btn-default glyphicon glyphicon-backward"></button>
             <button type="button" id="Button2" ng-click="pageChange(page = page-1)" ng-disabled="page <= 1" class="btn btn-default glyphicon glyphicon-chevron-left"></button>
-            <button type="button" id="Button3" ng-click="pageChange(page = page+1)" ng-disabled="page >= lastSizePage || items.Articles.length == null" class="btn btn-default glyphicon glyphicon-chevron-right"></button>
-            <button type="button" id="Button4" ng-click="onBtnChangePage(page = lastSizePage)" ng-disabled="page >= lastSizePage || items.Articles.length == null" class="btn btn-default glyphicon glyphicon-forward"></button>
+            <button type="button" id="Button3" ng-click="pageChange(page = page+1)" ng-disabled="page >= lastSizePage || items.Data.length == null" class="btn btn-default glyphicon glyphicon-chevron-right"></button>
+            <button type="button" id="Button4" ng-click="pageChange(page = lastSizePage)" ng-disabled="page >= lastSizePage || items.Data.length == null" class="btn btn-default glyphicon glyphicon-forward"></button>
         </div>
     </div>
 </div>

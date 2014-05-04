@@ -1,0 +1,43 @@
+﻿<div class="modal-header">
+
+    <h3>Choose category for selected media</h3>
+
+    <div>
+        <p class="search-box">
+            <input type="search" id="Search1" name="s" ng-model="searchtext" placeholder="Search category">
+        </p>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="modal-body">
+
+    <table class="widefat table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="found-radio">
+                    <br>
+                </th>
+                <th>Title</th>
+                <th class="no-break">Description</th>
+                <th class="no-break">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="category in categories | filter:searchtext " class="found-posts alternate">
+                <td class="found-radio">
+                    <input type="radio" id="found-10" name="found_post_id" ng-model="selectedCategory.value" value="{{ category.Id }}"></td>
+                <td>
+                    <label for="found-10">{{ category.Title }}</label>
+                </td>
+                <td class="no-break">{{ category.Description }}</td>
+                <td class="no-break">{{ category.Created }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="cancel(selectedCategory)">Avbryt</button>
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+</div>

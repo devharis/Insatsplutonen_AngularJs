@@ -16,8 +16,7 @@
                 postService.GetPaginatedPosts($scope.take, $scope.page, $scope.searchtext, $scope.ascending, $scope.sortby)
                     .then(function (response) {                
                         $scope.items = response;
-
-                        angular.forEach(response.Posts, function (item) {
+                        angular.forEach(response.Data, function (item) {
                             var date = new Date(parseInt(item.Created.substr(6)));
                             item.Created = date.toDateString("YYYY-MM-DD");
                         });

@@ -9,12 +9,11 @@ namespace Insatsplutonen.Data.Repository
 {
   public class BlogRepository : IBlogRepository
   {
-    private DbContext _context;
+    private readonly DbContext _context;
 
         public BlogRepository()
         {
-            this._context = new Data.BlogContext();
-            this._context.Configuration.LazyLoadingEnabled = true;
+            this._context = new BlogContext();
         }
 
         public IQueryable<T> Query<T>() where T : class

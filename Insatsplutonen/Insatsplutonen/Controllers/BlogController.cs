@@ -58,7 +58,7 @@ namespace Insatsplutonen.Controllers
             }
 
             result.TotalItems = postList.Count;
-            result.Posts = postList.Skip(page * take).Take(take).ToList();
+            result.Data = postList.Skip(page * take).Take(take).ToList();
             result.TotalPages = (result.TotalItems%take == 0) ? result.TotalItems/take : result.TotalItems/take + 1;
 
             return Json(result, JsonRequestBehavior.AllowGet);

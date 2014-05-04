@@ -1,8 +1,11 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Insatsplutonen.Data.Interface;
 using Insatsplutonen.Data.Service;
+using Insatsplutonen.Model.Media;
 using Insatsplutonen.ViewModel;
+using Newtonsoft.Json;
 
 namespace Insatsplutonen.Controllers
 {
@@ -23,38 +26,38 @@ namespace Insatsplutonen.Controllers
 
         public ActionResult Library()
         {
-            return View("Dashboard");
+            return View("Library");
         }
-
 
         public JsonResult GetPaginatedMedia(int take, int page, string search, bool ascending, string sortby)
         {
             page = page - 1;
-
+            var totalItems = 0;
             var result = new PaginationResult();
-            var postList = _service.GetMedia().Where(
-                    c => c.Title.ToLower().Contains(search.ToLower())
-                    || c.File.ToLower().Contains(search.ToLower())
-                    || c.Author.ToLower().Contains(search.ToLower())
-                    || c.Created.ToString().ToLower().Contains(search.ToLower()
-                )).ToList();
+            var mediaList = _service.GetPaginatedMedia(take, page, search, ascending, sortby, out totalItems);
 
-            if (!ascending)
-                postList = postList.OrderByDescending(o => o.Id).ToList();
-
-            if (sortby == "title" || sortby == "date")
-            {
-                if (sortby == "title")
-                    postList = postList.OrderBy(o => o.Title).ToList();
-                if (sortby == "date")
-                    postList = postList.OrderBy(o => o.Created).ToList();
-            }
-
-            result.TotalItems = postList.Count;
-            result.Posts = postList.Skip(page * take).Take(take).ToList();
-            result.TotalPages = (result.TotalItems % take == 0) ? result.TotalItems / take : result.TotalItems / take + 1;
+            result.TotalItems = totalItems;
+            result.Data = mediaList;
+            result.TotalPages = (totalItems % take == 0) ? totalItems / take : totalItems / take + 1;
 
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetCategories()
+        {
+            var categoryList = _service.GetCategories();
+            return Json(categoryList, JsonRequestBehavior.AllowGet);
+        }
+
+        public void UpdateMediaCategory(string mediaList, int categoryId)
+        {
+            var media = JsonConvert.DeserializeObject<List<Media>>(mediaList);
+            foreach (var updatedMedia in media.Select(item => _service.GetMedia().SingleOrDefault(m => m.Id == item.Id)).Where(updatedMedia => updatedMedia != null))
+            {
+                updatedMedia.MediaCategoryId = categoryId;
+                _service.UpdateMedia(updatedMedia);
+            }
+            _service.SaveChanges();
         }
 
     }

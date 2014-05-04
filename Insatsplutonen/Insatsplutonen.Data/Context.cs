@@ -10,7 +10,8 @@ namespace Insatsplutonen.Data
         public BlogContext()
             : base("name=DefaultConnection")
         {
-            this.Configuration.ProxyCreationEnabled = false;
+            this.Configuration.LazyLoadingEnabled = true;
+            this.Configuration.ProxyCreationEnabled = true;
             this.Database.CreateIfNotExists();
         }
 
@@ -22,6 +23,10 @@ namespace Insatsplutonen.Data
             modelBuilder.Entity<PostMedia>().ToTable("PostMedia");
             modelBuilder.Entity<Media>().ToTable("Media");
             modelBuilder.Entity<MediaCategory>().ToTable("MediaCategory");
+
+            modelBuilder.Entity<Media>().HasRequired(t => t.MediaCategory);
+            modelBuilder.Entity<Post>().HasMany(t => t.MediaList);
+
         }
 
     }

@@ -24,12 +24,13 @@ namespace Insatsplutonen.Model.Media
         [MaxLength(50, ErrorMessage = "Author can't exceeded 50 characters in length.")]
         public string Author { get; set; }
 
-        //[Required(ErrorMessage = "Created date must be given.")]
+        [Required(ErrorMessage = "Created date must be given.")]
         public DateTime? Created { get; set; }
 
         public DateTime? Changed { get; set; }
 
-        public int CategoryId { get; set; }
+        public int MediaCategoryId { get; set; } 
+        public virtual MediaCategory MediaCategory { get; set; }
 
     }
 }

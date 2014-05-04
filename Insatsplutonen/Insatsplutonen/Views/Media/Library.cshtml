@@ -9,14 +9,19 @@
 </div>
 
 @section scripts{
+    
+    @* Modal *@
+    <script src="~/AngularJs/source/ui-bootstrap/ui-bootstrap-custom-0.10.0.min.js"></script>
+    <script src="~/AngularJs/source/ui-bootstrap/ui-bootstrap-custom-tpls-0.10.0.min.js"></script>
+
+    @* textAngular *@
     <script src="~/AngularJs/source/textAngular/textAngular-sanitize.js"></script>
     <script src="~/AngularJs/source/textAngular/textAngularSetup.js"></script>
     <script src="~/AngularJs/source/textAngular/textAngular.js"></script>
 
-    <script src="~/AngularJs/app.js"></script>
-    <script src="~/AngularJs/controllers/post/PostsController.js"></script>
-    <script src="~/AngularJs/controllers/post/PostController.js"></script>
-    <script src="~/AngularJs/controllers/post/PostEditController.js"></script>
-    <script src="~/AngularJs/service/post/postService.js"></script>
+    <script src="~/AngularJs/appLibrary.js"></script>
+    <script src="~/AngularJs/controllers/media/MediaController.js"></script>
+    <script src="~/AngularJs/controllers/media/AttachController.js"></script>
+    <script src="~/AngularJs/service/media/mediaService.js"></script>
     <script src="~/AngularJs/directives/directives.js"></script>
 }
