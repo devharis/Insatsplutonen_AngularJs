@@ -1,13 +1,4 @@
-﻿.ta-editor {
-    min-height: 300px;
-    height: auto;
-    overflow: auto;
-    font-family: inherit;
-    font-size: 100%;
-    margin: 20px 0;
-}
-
-.my-drop-zone {
+﻿.my-drop-zone {
     padding: 15px;
     border: 2px #f1f1f1 dashed;
     border-radius: 5px;
@@ -17,10 +8,6 @@
 }
 
 .ng-file-over {
-    border: dotted 2px red;
-}
-/* Default class applied to drop zones on over */
-.another-file-over-class {
     border: dotted 2px green;
 }
 
@@ -36,4 +23,7 @@ canvas {
     border: 1px solid #c3c3c3;
     height: 100px;
     margin: 6px 0 0 6px;
+}
+.modal-content {
+    width: 110%;
 }

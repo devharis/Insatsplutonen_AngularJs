@@ -1,0 +1,30 @@
+﻿<article id="post-31" class="post-31 attachment type-attachment status-inherit hentry">
+    <header class="entry-header">
+        <input type="text" class="entry-title" ng-model="media.File" />
+        <input type="text" class="entry-title" ng-model="media.Author" />
+        <textarea cols="20" rows="10" class="entry-title" ng-model="media.Description" />
+        
+  
+        <button type="button" ng-click="onClickUpdateMedia(media)">Update</button>
+        <div class="entry-meta">
+
+            <span class="entry-date"><time class="entry-date" datetime="2014-05-04T13:48:17+00:00">{{ media.Created }}</time></span>
+            <span class="full-size-link"><a href="../../images/blog/{{ media.File }}">Full size</a></span>
+        </div>
+        <!-- .entry-meta -->
+    </header>
+    <!-- .entry-header -->
+
+    <div class="entry-content">
+        <div class="entry-attachment">
+            <div class="attachment">
+                <img src="../../images/blog/{{ media.File }}" class="attachment-810x810" alt="{{ media.File }}">
+            </div>
+            <!-- .attachment -->
+
+        </div>
+        <!-- .entry-attachment -->
+
+    </div>
+    <!-- .entry-content -->
+</article>

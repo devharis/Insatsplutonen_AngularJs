@@ -23,6 +23,24 @@
         return deferred.promise;
     };
 
+    this.GetMedia = function (id) {
+        var deferred = $q.defer();
+        $http({
+            method: 'GET',
+            url: '/Media/GetMedia',
+            params: {
+                id: id
+            },
+            headers: { 'Content-Type': 'application/json' }
+        }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function () {
+            deferred.reject("An error occured while fetching data");
+        });
+
+        return deferred.promise;
+    };
+
     this.GetCategories = function () {
         var deferred = $q.defer();
         $http({
@@ -41,7 +59,7 @@
     this.UpdateMediaCategory = function (mediaList, categoryId) {
         var deferred = $q.defer();
         $http({
-            method: 'GET',
+            method: 'PUT',
             url: '/Media/UpdateMediaCategory',
             params: {
                 mediaList: JSON.stringify(mediaList),
@@ -56,5 +74,96 @@
 
         return deferred.promise;
     };
+
+    this.AddCategory = function (category) {
+        var deferred = $q.defer();
+        $http({
+            method: 'POST',
+            url: '/Media/AddCategory',
+            params: {
+                category: JSON.stringify(category)
+            },
+            headers: { 'Content-Type': 'application/json' }
+        }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function () {
+            deferred.reject("An error occured while fetching data");
+        });
+
+        return deferred.promise;
+    };
+
+    this.DeleteCategory = function (id) {
+        var deferred = $q.defer();
+        $http({
+            method: 'DELETE',
+            url: '/Media/DeleteCategory',
+            params: {
+                id: id
+            },
+            headers: { 'Content-Type': 'application/json' }
+        }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function () {
+            deferred.reject("An error occured while fetching data");
+        });
+
+        return deferred.promise;
+    };
+
+    this.UpdateMediaList = function (mediaList) {
+        var deferred = $q.defer();
+        $http({
+            method: 'PUT',
+            url: '/Media/UpdateMediaList',
+            params: {
+                mediaList: JSON.stringify(mediaList)
+            },
+            headers: { 'Content-Type': 'application/json' }
+        }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function () {
+            deferred.reject("An error occured while fetching data");
+        });
+
+        return deferred.promise;
+    };
+
+    this.DeleteMedia = function (id) {
+        var deferred = $q.defer();
+        $http({
+            method: 'DELETE',
+            url: '/Media/DeleteMedia',
+            params: {
+                id: id
+            },
+            headers: { 'Content-Type': 'application/json' }
+        }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function () {
+            deferred.reject("An error occured while fetching data");
+        });
+
+        return deferred.promise;
+    };
+
+    this.UpdateMedia = function (media) {
+        var deferred = $q.defer();
+        $http({
+            method: 'PUT',
+            url: '/Media/UpdateMedia',
+            params: {
+                media: JSON.stringify(media)
+            },
+            headers: { 'Content-Type': 'application/json' }
+        }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function () {
+            deferred.reject("An error occured while fetching data");
+        });
+
+        return deferred.promise;
+    };
+    
     
 }]);

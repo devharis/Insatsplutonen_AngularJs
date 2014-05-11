@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Insatsplutonen.Model.Blog;
 using Insatsplutonen.Model.Media;
 
 namespace Insatsplutonen.Data.Interface
@@ -10,5 +11,9 @@ namespace Insatsplutonen.Data.Interface
         List<MediaCategory> GetCategories();
         void SaveChanges();
         void UpdateMedia(Media media);
+        void AddCategory(MediaCategory media);
+        void AddMedia(Media media);
+        void DeleteCategory(int id);
+        void DeleteMedia(Media media);
     }
 }

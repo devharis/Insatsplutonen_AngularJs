@@ -39,5 +39,10 @@ namespace Insatsplutonen.Data.Service
             this._repository.Update(article);
             this._repository.Save();
         }
+
+        public List<PostMedia> GetPostMedia()
+        {
+            return this._repository.Query<PostMedia>().ToList();
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Linq;
 using Insatsplutonen.Data.Interface;
 using Insatsplutonen.Data.Repository;
+using Insatsplutonen.Model.Blog;
 using Insatsplutonen.Model.Media;
 
 namespace Insatsplutonen.Data.Service
@@ -66,6 +67,27 @@ namespace Insatsplutonen.Data.Service
         public void UpdateMedia(Media media)
         {
             _repository.Update(media);
+        }
+
+        public void AddMedia(Media media)
+        {
+            _repository.Add(media);
+        }
+
+        public void AddCategory(MediaCategory category)
+        {
+            _repository.Add(category);
+        }
+
+        public void DeleteCategory(int id)
+        {
+            var category = this._repository.Query<MediaCategory>().SingleOrDefault(o=>o.Id == id);
+            _repository.Delete(category);
+        }
+
+        public void DeleteMedia(Media media)
+        {
+            _repository.Delete(media);
         }
 
         public void SaveChanges()

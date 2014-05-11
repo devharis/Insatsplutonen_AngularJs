@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Insatsplutonen.Model.Media
@@ -14,5 +15,7 @@ namespace Insatsplutonen.Model.Media
 
         [MaxLength(250, ErrorMessage = "Description can't exceeded 250 characters in length.")]
         public string Description { get; set; }
+
+        public DateTime Created { get; set; }
     }
 }

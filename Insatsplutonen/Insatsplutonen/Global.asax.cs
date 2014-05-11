@@ -23,7 +23,7 @@ namespace Insatsplutonen
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
-            ImageHandler.PhysicalApplicationPath = Server.MapPath("~/App_Data/images/");
+            ImageHandler.PhysicalApplicationPath = Server.MapPath("~/images/blog/");
         }
     }
 }

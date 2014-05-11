@@ -6,8 +6,8 @@
     <div class="tablenav top">
 
         <div class="alignleft actions bulkactions">
-            <input type="button" ng-click="onClickAddCategory()"  class="button" value="New category">          
-            <input type="button" name=""  class="button" value="Add media">
+            <input type="button" ng-click="onClickAddCategory()" class="button" value="New category">
+            <input type="button" ng-click="onClickUploadFiles()" name="" class="button" value="Add media">
         </div>
 
         <div class="alignleft actions">
@@ -35,13 +35,16 @@
 
         <div class="tablenav-pages">
             <span class="displaying-num">{{ items.TotalItems }} items</span>
-            <span class="pagination-links"><a class="first-page" title="Go to the first page" ng-click="pageChange(page = firstSizePage)" ng-disabled="page <= 1">«</a>
+            <span class="pagination-links">
+                <a class="first-page" title="Go to the first page" ng-click="pageChange(page = firstSizePage)" ng-disabled="page <= 1">«</a>
                 <a class="prev-page" title="Go to the previous page" ng-click="pageChange(page = page-1)" ng-disabled="page <= 1">‹</a>
                 <span class="paging-input">
                     <input class="current-page" title="Current page" type="text" name="paged" ng-change="pageChange()" ng-model="page" size="1">
-                    of <span class="total-pages">{{ items.TotalPages }}</span></span>
+                    of <span class="total-pages">{{ items.TotalPages }}</span>
+                </span>
                 <a class="next-page" title="Go to the next page" ng-click="pageChange(page = page+1)" ng-disabled="page >= lastSizePage || items.Data.length == null">›</a>
-                <a class="last-page" title="Go to the last page" ng-click="pageChange(page = lastSizePage)" ng-disabled="page >= lastSizePage || items.Data.length == null">»</a></span>
+                <a class="last-page" title="Go to the last page" ng-click="pageChange(page = lastSizePage)" ng-disabled="page >= lastSizePage || items.Data.length == null">»</a>
+            </span>
         </div>
 
         <br class="clear">
@@ -52,9 +55,12 @@
         <thead>
             <tr>
                 <th scope="col" id="cb" class="manage-column column-cb check-column" style="">
-                    <label class="screen-reader-text" for="cb-select-all-1">Select All</label><input id="cb-select-all-1" type="checkbox"></th>
+                    <label class="screen-reader-text" for="cb-select-all-1">Select All</label>
+                    <input id="cb-select-all-1" type="checkbox" ng-model="selectAllMedia" ng-click="onClickSelectAll(selectAllMedia)">
+                </th>
                 <th scope="col" id="icon" class="manage-column column-icon" style=""></th>
                 <th scope="col" id="title" class="manage-column column-title sortable desc" style=""><a ng-click="sortByFie()"><span>File</span><span class="sorting-indicator"></span></a></th>
+                <th scope="col" id="description" class="manage-column column-author sortable desc" style=""><a ng-click="sortByDescription()"><span>Description</span><span class="sorting-indicator"></span></a></th>
                 <th scope="col" id="author" class="manage-column column-author sortable desc" style=""><a ng-click="sortByAuthor()"><span>Author</span><span class="sorting-indicator"></span></a></th>
                 <th scope="col" id="parent" class="manage-column column-parent sortable desc" style=""><a ng-click="sortByCategory()"><span>Category</span><span class="sorting-indicator"></span></a></th>
                 <th></th>
@@ -65,7 +71,9 @@
         <tfoot>
             <tr>
                 <th scope="col" id="Th1" class="manage-column column-cb check-column" style="">
-                    <label class="screen-reader-text" for="cb-select-all-1">Select All</label><input id="Checkbox1" type="checkbox"></th>
+                    <label class="screen-reader-text" for="cb-select-all-1">Select All</label>
+                    <input id="Checkbox1" type="checkbox" ng-model="selectAllMedia" ng-click="onClickSelectAll(selectAllMedia)">
+                </th>
                 <th scope="col" id="Th2" class="manage-column column-icon" style=""></th>
                 <th scope="col" id="Th3" class="manage-column column-title sortable desc" style=""><a ng-click="sortByFie()"><span>File</span><span class="sorting-indicator"></span></a></th>
                 <th scope="col" id="Th4" class="manage-column column-author sortable desc" style=""><a ng-click="sortByAuthor()"><span>Author</span><span class="sorting-indicator"></span></a></th>
@@ -78,29 +86,31 @@
         <tbody id="the-list">
             <tr ng-repeat="media in items.Data" class="alternate author-self status-inherit">
                 <th scope="row" class="check-column">
-                    <label class="screen-reader-text" for="cb-select-6">Select mini</label>
-                    <input type="checkbox" name="selected" ng-click="addToSelectMedia(media.Id)" id="cb-select-6" value="6">
+                    <input type="checkbox" name="selected" ng-model="media.isSelected" ng-click="addToSelectMedia(media.Id)" id="cb-select-6" value="6">
                 </th>
-                <td class="column-icon media-icon"><a href="#" title="Edit {{media.File}}">
-                    <img width="60" height="60" src="../../images/blog/thumbs/{{media.File}}" class="attachment-80x60" alt="{{media.File}}">
-                </a>
+                <td class="column-icon media-icon">
+                    <a href="" title="View {{media.File}}" ng-click="onClickView(media)">
+                        <img width="60" height="60" src="../../images/blog/thumbs/{{media.File}}" class="attachment-80x60" alt="{{media.File}}">
+                    </a>
                 </td>
                 <td class="title column-title">
                     <div>
                         {{media.Title}}
                     </div>
                     <strong>
-                        <a href="#" title="Edit {{media.File}}">{{media.File}}</a>
+                        <a href="" ng-click="onClickEdit(media.Id)" title="Edit {{media.File}}">{{media.File}}</a>
                     </strong>
                     <p>
-                        {{media.mediaType}}		
+                        {{media.mediaType}}
                     </p>
-                    <div class="row-actions"><span class="edit"><a href="#">Edit</a> | </span><span class="delete"><a class="submitdelete" onclick="return showNotice.warn();" href="#">Delete Permanently</a> | </span><span class="view"><a href="" ng-click="onClickView(media)" title="View {{media.File}}" rel="permalink">View</a></span></div>
+                    <div class="row-actions"><span ng-click="onClickEdit(media.Id)" class="edit"><a href="">Edit</a> | </span><span class="delete"><a class="submitdelete" ng-click="onClickDeleteMedia(media.Id)" href="">Delete Permanently</a> | </span><span class="view"><a href="" ng-click="onClickView(media)" title="View {{media.File}}" rel="permalink">View</a></span></div>
                 </td>
+                <td class="description column-author">{{media.Description}}</td>
                 <td class="author column-author"><a href="">{{media.Author}}</a></td>
-                <td class="parent column-parent">({{media.MediaCategory.Title}})<br>
+                <td class="parent column-parent">
+                    ({{media.MediaCategory.Title}})<br>
                     <a ng-show="media.MediaCategory.Id == 1" href="" ng-click="onClickAttach(media.Id)">Attach</a>
-                      <a ng-show="media.MediaCategory.Id != 1" href="" ng-click="onClickAttach(media.Id)">Change</a>
+                    <a ng-show="media.MediaCategory.Id != 1" href="" ng-click="onClickAttach(media.Id)">Change</a>
                 </td>
                 <td></td>
                 <td class="date column-date">{{ media.Created }}</td>
@@ -121,13 +131,16 @@
         </div>
         <div class="tablenav-pages">
             <span class="displaying-num">{{ items.TotalItems }} items</span>
-            <span class="pagination-links"><a class="first-page" title="Go to the first page" ng-click="pageChange(page = firstSizePage)" ng-disabled="page <= 1">«</a>
+            <span class="pagination-links">
+                <a class="first-page" title="Go to the first page" ng-click="pageChange(page = firstSizePage)" ng-disabled="page <= 1">«</a>
                 <a class="prev-page" title="Go to the previous page" ng-click="pageChange(page = page-1)" ng-disabled="page <= 1">‹</a>
                 <span class="paging-input">
                     <input class="current-page" title="Current page" type="text" name="paged" ng-change="pageChange()" ng-model="page" size="1">
-                    of <span class="total-pages">{{ items.TotalPages }}</span></span>
+                    of <span class="total-pages">{{ items.TotalPages }}</span>
+                </span>
                 <a class="next-page" title="Go to the next page" ng-click="pageChange(page = page+1)" ng-disabled="page >= lastSizePage || items.Data.length == null">›</a>
-                <a class="last-page" title="Go to the last page" ng-click="pageChange(page = lastSizePage)" ng-disabled="page >= lastSizePage || items.Data.length == null">»</a></span>
+                <a class="last-page" title="Go to the last page" ng-click="pageChange(page = lastSizePage)" ng-disabled="page >= lastSizePage || items.Data.length == null">»</a>
+            </span>
         </div>
     </div>
 

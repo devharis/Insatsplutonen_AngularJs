@@ -117,5 +117,16 @@ namespace Insatsplutonen.Model.Helpers
 
             return fileName;
         }
+
+        public void DeleteImage(string fileName)
+        {
+            var path1 = String.Format("{0}/thumbs/{1}", PhysicalApplicationPath, fileName);
+            var path2 = String.Format("{0}/{1}", PhysicalApplicationPath, fileName);
+
+            if (Directory.Exists(Path.GetDirectoryName(path1)))
+                File.Delete(path1);
+            if (Directory.Exists(Path.GetDirectoryName(path2)))
+                File.Delete(path2);
+        }
     }
 }

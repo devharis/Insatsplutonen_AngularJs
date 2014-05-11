@@ -1,10 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using Insatsplutonen.Data.Interface;
 using Insatsplutonen.Data.Service;
+using Insatsplutonen.Model.Helpers;
 using Insatsplutonen.Model.Media;
 using Insatsplutonen.ViewModel;
+using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
 
 namespace Insatsplutonen.Controllers
@@ -12,6 +17,7 @@ namespace Insatsplutonen.Controllers
     public class MediaController : Controller
     {
         private readonly IMediaService _service;
+        private readonly IBlogService _blogService = new BlogService();
 
         public MediaController()
             : this(new MediaService())
@@ -26,7 +32,29 @@ namespace Insatsplutonen.Controllers
 
         public ActionResult Library()
         {
+            //var hej = _blogService.GetPostMedia();
+
+            //foreach (var item in hej)
+            //{
+            //    _service.AddMediaa(new Media
+            //    {
+            //        Title = item.Title,
+            //        Author = "Haris Kljajic",
+            //        Created = DateTime.Now,
+            //        Description = item.Description,
+            //        File = item.File,
+            //        MediaCategoryId = 1
+            //    });
+            //    _service.SaveChanges();
+            //}
+
             return View("Library");
+        }
+
+        [HttpGet]
+        public JsonResult GetMedia(int id)
+        {
+            return Json(_service.GetMedia().SingleOrDefault(o => o.Id == id), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetPaginatedMedia(int take, int page, string search, bool ascending, string sortby)
@@ -49,6 +77,7 @@ namespace Insatsplutonen.Controllers
             return Json(categoryList, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPut]
         public void UpdateMediaCategory(string mediaList, int categoryId)
         {
             var media = JsonConvert.DeserializeObject<List<Media>>(mediaList);
@@ -59,6 +88,97 @@ namespace Insatsplutonen.Controllers
             }
             _service.SaveChanges();
         }
+
+        [HttpPost]
+        public void AddCategory(string category)
+        {
+            var media = JsonConvert.DeserializeObject<MediaCategory>(category);
+            media.Created = DateTime.Now;
+            _service.AddCategory(media);
+            _service.SaveChanges();
+        }
+
+        [HttpDelete]
+        public void DeleteCategory(int id)
+        {
+            _service.DeleteCategory(id);
+            _service.SaveChanges();
+        }
+
+        [HttpPost]
+        public JsonResult SaveImage(HttpPostedFileBase file)
+        {
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    var imageHandler = new ImageHandler();
+                    var image = imageHandler.SaveImage(file, file.FileName.ToLower());
+
+                    _service.AddMedia(new Media
+                    {
+                        File = image,
+                        Author = "Haris Kljajic",
+                        Created = DateTime.Now,
+                        Description = "",
+                        Title = "",
+                        MediaCategoryId = 1
+                    });
+
+                    _service.SaveChanges();
+
+                    return Json(_service.GetMedia().Find(o => o.File == image), JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+
+            }
+            return Json("Error occured", JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPut]
+        public void UpdateMediaList(string mediaList)
+        {
+            var media = JsonConvert.DeserializeObject<List<Media>>(mediaList);
+            foreach (var updatedMedia in media)
+            {
+                _service.UpdateMedia(updatedMedia);
+            }
+            _service.SaveChanges();
+        }
+
+        [HttpDelete]
+        public void DeleteMedia(int id)
+        {
+            var imageHandler = new ImageHandler();
+            var media = _service.GetMedia().SingleOrDefault(o => o.Id == id);
+            if (media != null)
+            {
+                try
+                {
+                    imageHandler.DeleteImage(media.File);
+                    _service.DeleteMedia(media);
+
+                    _service.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
+
+        [HttpPut]
+        public void UpdateMedia(string media)
+        {
+            var updatedMedia = JsonConvert.DeserializeObject<Media>(media);
+             _service.UpdateMedia(updatedMedia);
+
+            _service.SaveChanges();
+        }
+        
 
     }
 }

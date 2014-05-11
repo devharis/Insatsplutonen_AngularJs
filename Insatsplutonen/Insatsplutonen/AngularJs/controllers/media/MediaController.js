@@ -8,6 +8,7 @@
                 $scope.searchtext = $routeParams.search || "";
                 $scope.ascending = $routeParams.ascending || false;
                 $scope.sortby = $routeParams.sortby || "default";
+                $scope.selectAllMedia = false;
                 $scope.selectedMedia = [];
                 getMedia(true);
             }
@@ -21,7 +22,7 @@
                             // Converts Date
                             var date = new Date(parseInt(item.Created.substr(6)));
                             item.Created = date.toDateString("YYYY-MM-DD");
-
+                            item.isSelected = false;
                             // Sets mediatype
                             var stringArr = item.File.split('.');
                             item.mediaType = stringArr[stringArr.length - 1].toUpperCase();
@@ -42,6 +43,22 @@
             function updateLocation() {
                 $location.search({ take: $scope.take, page: $scope.page, search: $scope.searchtext, ascending: $scope.ascending, sortby: $scope.sortby });
             }
+
+            $scope.onClickSelectAll = function (selectAll) {
+                if (!selectAll) {
+                    $scope.selectedMedia = [];
+                    angular.forEach($scope.items.Data, function (item) {
+                        $scope.selectedMedia.push({ "Id": item.Id });
+                        item.isSelected = true;
+                    });
+                }
+                else {
+                    $scope.selectedMedia = [];
+                    angular.forEach($scope.items.Data, function (item) {
+                        item.isSelected = false;
+                    });
+                }
+            };
 
             $scope.takeChange = function () {
                 $scope.page = 1;
@@ -96,8 +113,9 @@
                     }
                 });
                 modalInstance.result.then(function () {
-                    getMedia(false);
+                    getMedia(true);
                     $scope.selectedMedia = [];
+                    $scope.selectAllMedia = false;
                 }, function () {
                 });
             };
@@ -105,9 +123,9 @@
             $scope.onClickView = function (media) {
                 var modalInstance = $modal.open({
                     templateUrl: '../../AngularJs/partials/media/view.htm',
-                    controller: 'editMediaController',
+                    controller: 'ViewMediaController',
                     resolve: {
-                        selectedMedia: function () {
+                        media: function () {
                             return media;
                         }
                     }
@@ -135,6 +153,33 @@
                 });
             };
 
+            $scope.onClickUploadFiles = function () {
+                var modalInstance = $modal.open({
+                    templateUrl: '../../AngularJs/partials/common/uploadFiles.htm',
+                    controller: 'uploadFilesController'
+                });
+                modalInstance.result.then(function () {
+                    //Success
+                    $scope.page = 1;
+                    getMedia(true);
+                }, function () {
+                    //Success
+                    $scope.page = 1;
+                    getMedia(true);
+                });
+            };
+
+            $scope.onClickDeleteMedia = function (mediaId) {
+                mediaService.DeleteMedia(mediaId)
+                    .then(function (response) {
+                        //Success
+                        getMedia(true);
+                    },
+                    function (errorMessage) {
+                        $scope.error = errorMessage;
+                    });  
+            };
+
             $scope.addToSelectMedia = function (mediaId) {
                 var isContained = true;
                 angular.forEach($scope.selectedMedia, function (item, index) {
@@ -146,12 +191,11 @@
                 if (isContained) {
                     $scope.selectedMedia.push({ "Id": mediaId });
                 }
-                console.log($scope.selectedMedia);
             }
 
-            $scope.postClick = function (id) {
+            $scope.onClickEdit = function (id) {
                 id = (parseInt(id));
-                $location.url('/' + id);
+                $location.url('/edit/' + id);
             };
 
         }]);
