@@ -164,6 +164,22 @@
 
         return deferred.promise;
     };
+
+    this.GetMonthsFilter = function () {
+        var deferred = $q.defer();
+        $http({
+            method: 'GET',
+            url: '/Media/GetMonths',
+            headers: { 'Content-Type': 'application/json' }
+        }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function () {
+            deferred.reject("An error occured while fetching data");
+        });
+
+        return deferred.promise;
+    };
+    
     
     
 }]);

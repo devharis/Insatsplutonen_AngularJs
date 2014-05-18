@@ -207,6 +207,7 @@
     <Content Include="AngularJs\controllers\post\PostController.js" />
     <Content Include="AngularJs\controllers\post\PostsController.js" />
     <Content Include="AngularJs\controllers\post\PostEditController.js" />
+    <Content Include="AngularJs\filters\customFilters.js" />
     <Content Include="AngularJs\partials\404.htm" />
     <Content Include="AngularJs\partials\media\edit.htm" />
     <Content Include="AngularJs\partials\media\attach.htm" />
@@ -222,6 +223,7 @@
     <Content Include="AngularJs\service\post\%24fileUploader.js" />
     <Content Include="AngularJs\service\post\postService.js" />
     <Content Include="AngularJs\source\media\library.css" />
+    <Content Include="AngularJs\source\momentjs\moment.js" />
     <Content Include="AngularJs\source\ui-bootstrap\ui-bootstrap-custom-0.10.0.min.js" />
     <Content Include="AngularJs\source\ui-bootstrap\ui-bootstrap-custom-tpls-0.10.0.min.js" />
     <Content Include="AngularJs\source\uploadFiles.css" />

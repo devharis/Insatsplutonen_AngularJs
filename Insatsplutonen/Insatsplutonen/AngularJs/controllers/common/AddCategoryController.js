@@ -22,6 +22,12 @@
                 mediaService.GetCategories()
                     .then(function (response) {
                         $scope.categories = response;
+                        angular.forEach($scope.categories, function (item) {
+                            // Converts Date
+                            var date = new Date(parseInt(item.Created.substr(6)));
+                            item.Created = date.toDateString("YYYY-MM-DD");
+                        });
+
                     },
                     function (errorMessage) {
                         $scope.error = errorMessage;

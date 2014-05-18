@@ -1,6 +1,6 @@
 ﻿var mediaContrl = angular.module('app.controller', ['textAngular', 'angularFileUpload', 'ui.bootstrap'])
-    .controller('MediaController', ['$scope', '$routeParams', '$location', '$modal', 'mediaService',
-        function ($scope, $routeParams, $location, $modal, mediaService) {
+    .controller('MediaController', ['$scope', '$routeParams', '$location', '$modal', '$filter', 'mediaService',
+        function ($scope, $routeParams, $location, $modal, $filter, mediaService) {
             init();
             function init() {
                 $scope.take = $routeParams.take || 10;
@@ -10,7 +10,9 @@
                 $scope.sortby = $routeParams.sortby || "default";
                 $scope.selectAllMedia = false;
                 $scope.selectedMedia = [];
+                $scope.date = "All dates";
                 getMedia(true);
+                getMonthsFilter();
             }
 
             function getMedia(reloadPage) {
@@ -34,6 +36,22 @@
 
                         if (reloadPage)
                             $scope.page = $scope.pagingarray[$scope.page - 1];
+                    },
+                    function (errorMessage) {
+                        $scope.error = errorMessage;
+                    });
+            };
+
+            function getMonthsFilter() {
+                mediaService.GetMonthsFilter()
+                    .then(function (response) {
+                        $scope.monthFilterList = [];
+                        angular.forEach(response, function (item) {
+                            // Converts Date
+                            item = $filter('dateToISOShort')(item);
+                            $scope.monthFilterList.push(item);
+                        });
+                        $scope.monthFilterList.unshift("All dates");
                     },
                     function (errorMessage) {
                         $scope.error = errorMessage;

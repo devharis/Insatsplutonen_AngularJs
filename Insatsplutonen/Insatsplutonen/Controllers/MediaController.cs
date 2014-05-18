@@ -11,6 +11,7 @@ using Insatsplutonen.Model.Media;
 using Insatsplutonen.ViewModel;
 using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
+using WebGrease.Css.Extensions;
 
 namespace Insatsplutonen.Controllers
 {
@@ -75,6 +76,26 @@ namespace Insatsplutonen.Controllers
         {
             var categoryList = _service.GetCategories();
             return Json(categoryList, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetMonths()
+        {
+            var monthList = _service.GetMedia().Select(o => o.Created).ToList();
+
+            var newMonthList = new List<DateTime>();
+            foreach (var item in monthList)
+            {
+                if (newMonthList.Count == 0)
+                    newMonthList.Add(item.Value);
+                else
+                {
+                    foreach (var newItem in newMonthList)
+                        if (item.Value.Month != newItem.Month)
+                            newMonthList.Add(item.Value);
+                }
+            }
+
+            return Json(newMonthList, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPut]
