@@ -1,0 +1,53 @@
+﻿
+
+    <table class="table table-bordered datatable" id="table-4">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Author</th>
+                <th>Media</th>
+                <th>Date</th>
+                <th>Redigera</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items.Data" class="odd gradeA">
+                <td style="cursor:pointer;">
+                    <a ng-href="" ng-click="postClick(item.Id)">{{item.Title}}</a>
+                </td>
+                <td ng-bind-html="isTrusted(item.Content)" style="width: 50%;"></td>
+                <td>
+                    {{item.Author}}
+                </td>
+                <td style="text-align: center">
+                    <img width="60" height="60" ng-show="item.Media != null" src="../../images/blog/thumbs/{{item.Media}}" class="attachment-80x60" alt="{{item.Media}}">
+                </td>
+                <td>
+                    {{item.Created}}
+                </td>
+                <td>
+                    <a href="anvandare-redigera.html" class="btn btn-default btn-sm btn-icon icon-left">
+                        <i class="entypo-pencil"></i>
+                        Redigera
+                    </a>
+
+                    <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                        <i class="entypo-cancel"></i>
+                        Radera
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Author</th>
+                <th>Media</th>
+                <th>Date</th>
+                <th>Redigera</th>
+            </tr>
+        </tfoot>
+    </table>
+   

@@ -1,0 +1,74 @@
+﻿<h3>Hantera poster</h3>
+<br />
+<div id="table-4_wrapper" class="dataTables_wrapper form-inline" role="grid">
+    <div class="row">
+        <div class="col-xs-5 col-left">
+            <div id="table-4_length" class="dataTables_length">
+                <label>
+                    <select name="ddltake" size="1" name="table-4_length" aria-controls="table-4" ng-model="take" ng-change="takeChange()">
+                        <option>5</option>
+                        <option>10</option>
+                        <option>20</option>
+                        <option>50</option>
+                    </select> per sida
+                </label>
+            </div>
+        </div>
+        <div class="col-xs-5" style="background: #fff;border-top: 1px solid #ebebeb;padding-top: 13px;">
+
+            <div class="col-xs-3 pull-right" style="float: right; display: block; white-space: nowrap; margin-right: 20px">
+                <label>Search: <input type="text" class="form-control col-xs-12" aria-controls="table-4" ng-model="searchtext" ng-change="searchChange()" /></label>
+            </div>
+
+            <div class="col-xs-3 pull-right">
+                <label style="float: right; display: block; white-space: nowrap; margin-right: 40px">
+                    Sort by:
+                    <select name="sort_by" ng-model="sortby" ng-change="sortbyChange()" class="form-control">
+                        <option selected="selected" value="default">Default</option>
+                        <option value="title">Titel</option>
+                        <option value="date">Datum</option>
+                    </select>
+                </label>
+            </div>
+
+
+            <div class="col-xs-2 pull-right" style="float: right; display: block; white-space: nowrap;">
+                <label>
+                    Ascending:
+                    <input type="checkbox" ng-model="ascending" ng-change="ascendingChange()" />
+                </label>
+            </div>
+
+        </div>
+        <div class="col-xs-2 col-right">
+
+            <div class="dataTables_filter" id="table-4_filter">
+                <div class="row pull-right" style="float: right; display: block; white-space: nowrap; margin: -16px 0;">
+                    <ul class="pagination pagination-sm">
+                        <li class="prev" ng-click="pageChange(page = page-1)" ng-disabled="page <= 1"><a href="" ng-disabled="page <= 1"><i class="entypo-left-open"></i></a></li>
+                        <li class="active"><a href="">{{ page }} / {{ items.TotalPages }}</a></li>
+                        <li class="next" ng-click="pageChange(page = page+1)"><a href=""><i class="entypo-right-open"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div ng-include="'../../../AngularJs/partials/manage/postList.htm'"></div>
+
+    <div class="row">
+        <div class="col-xs-6 col-left">
+            <div class="dataTables_info" id="table-4_info">Showing {{ take }} of {{ items.TotalItems }} entries</div>
+        </div>
+        <div class="col-xs-6 col-right">
+            <div class="dataTables_paginate paging_bootstrap">
+                <ul class="pagination pagination-sm">
+                    <li class="prev" ng-click="pageChange(page = page-1)" ng-disabled="page <= 1"><a href=""><i class="entypo-left-open"></i></a></li>
+                    <li class="active"><a href="">{{ page }} / {{ items.TotalPages }}</a></li>
+                    <li class="next" ng-click="pageChange(page = page+1)"><a href=""><i class="entypo-right-open"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

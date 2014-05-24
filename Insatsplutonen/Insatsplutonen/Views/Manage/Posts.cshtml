@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Insatsplutonen | Manage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<ol class="breadcrumb bc-3">
+    <li>
+        <a href="http://localhost:5428/manage/dashboard/"><i class="entypo-home"></i>Start</a>
+    </li>
+    <li>
+        <a href="">Publicering</a>
+    </li>
+    <li class="active">
+        <a href="">Nyheter</a>
+    </li>
+    <li class="active">
+        <strong>Hantera</strong>
+    </li>
+</ol>
+
+<div id="body" ng-app="app">
+    <div ng-view="">
+        
+    </div>
+</div>
+
+@section scripts{
+    
+
+        <script src="~/AngularJs/source/textAngular/textAngular-sanitize.js"></script>
+        <script src="~/AngularJs/source/textAngular/textAngularSetup.js"></script>
+        <script src="~/AngularJs/source/textAngular/textAngular.js"></script>
+
+        <script src="~/AngularJs/appManagePost.js"></script>
+        <script src="~/AngularJs/controllers/manage/PostsEditController.js"></script>
+        <script src="~/AngularJs/controllers/manage/PostEditController.js"></script>
+
+        <script src="~/AngularJs/service/manage/postService.js"></script>
+    }
