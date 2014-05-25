@@ -1,13 +1,17 @@
-﻿var articleContrl = angular.module('app.controller', ['textAngular', 'angularFileUpload'])
+﻿var articleContrl = angular.module('app.controller', ['textAngular', 'angularFileUpload', 'ui.bootstrap'])
     .controller('PostsEditController', [
         '$scope', '$routeParams', '$location', '$sce', 'postService',
         function ($scope, $routeParams, $location, $sce, postService) {
+
+            $scope.opened = { value: false };
+            $scope.openedPublish = { value: false };
 
             $scope.take = $routeParams.take || 10;
             $scope.page = $routeParams.page || 1;
             $scope.searchtext = $routeParams.search || "";
             $scope.ascending = $routeParams.ascending || false;
             $scope.sortby = $routeParams.sortby || "default";
+
 
             getPosts(true);
 
@@ -42,6 +46,17 @@
                 html += "...";
                 return $sce.trustAsHtml(html);
             }
+
+            $scope.open = function ($event) {
+                $event.preventDefault();
+                $event.stopPropagation();
+                $scope.opened.value = true;
+            };
+            $scope.openPublish = function ($event) {
+                $event.preventDefault();
+                $event.stopPropagation();
+                $scope.openedPublish.value = true;
+            };
 
             $scope.takeChange = function () {
                 $scope.page = 1;

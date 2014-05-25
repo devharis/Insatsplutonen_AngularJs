@@ -22,6 +22,7 @@
 
             return deferred.promise;
         },
+
         this.GetPost = function (id) {
             var deferred = $q.defer();
             $http({
@@ -57,4 +58,38 @@
 
             return deferred.promise;
         };
+
+        this.GetCategories = function () {
+            var deferred = $q.defer();
+            $http({
+                method: 'GET',
+                url: '/Media/GetCategories',
+                headers: { 'Content-Type': 'application/json' }
+            }).success(function (data) {
+                deferred.resolve(data);
+            }).error(function () {
+                deferred.reject("An error occured while fetching data");
+            });
+
+            return deferred.promise;
+        };
+
+        this.GetMediaByCategory = function (category) {
+            var deferred = $q.defer();
+            $http({
+                method: 'GET',
+                url: '/Media/GetMediaByCategory',
+                params: {
+                    id: category
+                },
+                headers: { 'Content-Type': 'application/json' }
+            }).success(function (data) {
+                deferred.resolve(data);
+            }).error(function () {
+                deferred.reject("An error occured while fetching data");
+            });
+
+            return deferred.promise;
+        };
+
     }]);

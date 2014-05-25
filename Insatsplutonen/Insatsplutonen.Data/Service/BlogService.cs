@@ -37,6 +37,8 @@ namespace Insatsplutonen.Data.Service
         public void UpdatePost(Post article)
         {
             this._repository.Update(article);
+            foreach(var item in article.MediaList)
+                this._repository.Update(item);
             this._repository.Save();
         }
 

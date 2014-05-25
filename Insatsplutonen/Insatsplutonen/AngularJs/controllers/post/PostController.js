@@ -1,6 +1,6 @@
 ﻿articleContrl.controller('PostController', [
-        '$scope', '$routeParams', '$location', 'postService',
-        function ($scope, $routeParams, $location, postService) {
+        '$scope', '$routeParams', '$location', '$filter', 'postService',
+        function ($scope, $routeParams, $location, $filter, postService) {
             getPost();
 
             function getPost() {

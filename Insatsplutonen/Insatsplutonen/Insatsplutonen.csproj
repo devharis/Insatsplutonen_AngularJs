@@ -201,6 +201,7 @@
     <Content Include="AngularJs\appLibrary.js" />
     <Content Include="AngularJs\controllers\common\UploadFilesController.js" />
     <Content Include="AngularJs\controllers\common\AddCategoryController.js" />
+    <Content Include="AngularJs\controllers\manage\AddMediaController.js" />
     <Content Include="AngularJs\controllers\manage\PostEditController.js" />
     <Content Include="AngularJs\controllers\manage\PostsEditController.js" />
     <Content Include="AngularJs\controllers\media\AttachController.js" />
@@ -213,6 +214,7 @@
     <Content Include="AngularJs\filters\customFilters.js" />
     <Content Include="AngularJs\partials\404.htm" />
     <Content Include="AngularJs\appManagePost.js" />
+    <Content Include="AngularJs\partials\manage\addMedia.htm" />
     <Content Include="AngularJs\partials\manage\editPost.htm" />
     <Content Include="AngularJs\partials\manage\post.htm" />
     <Content Include="AngularJs\partials\manage\postList.htm" />

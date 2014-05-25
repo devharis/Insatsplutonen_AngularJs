@@ -1,0 +1,34 @@
+﻿<div class="modal-header">
+
+    <h3>Add new categories</h3>
+
+    <div class="col-md-4">
+        <p class="search-box">
+            <input type="search" name="search" class="form-control" ng-model="searchtext" placeholder="Search category">
+        </p>
+
+    </div>
+
+    <div class="col-md-5">
+        <p class="search-box">
+            <select name="category" class="form-control" ng-model="category" ng-change="onChangeCategory(category)" ng-options="category.Id as category.Title for category in categoryList"></select>
+        </p>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div ng-repeat="media in mediaList" class="col-xs-2">
+                <img width="100" height="100" src="../../../images/blog/thumbs/{{media.File}}" style="padding-right: 15px; margin-bottom: 10px" />
+                <div style="position: relative; margin-top: -42px; margin-left: 0;">
+                    <input type="checkbox" name="selected" ng-model="media.isSelected" ng-click="addToSelectMedia(media.Id)" id="cb-select-6" value="6" style="zoom: 2;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="cancel()">Avbryt</button>
+    <button class="btn btn-primary" ng-click="ok(selectedMedia)">OK</button>
+</div>

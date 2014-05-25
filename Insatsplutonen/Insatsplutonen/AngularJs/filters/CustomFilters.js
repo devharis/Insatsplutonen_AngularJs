@@ -11,3 +11,10 @@ customFilters.filter('dateToISOShort', function () {
         return moment(dateString).format('MMM YYYY');
     };
 });
+
+
+customFilters.filter('DateToShortISOWithMonthName', function () {
+    return function (dateString) {
+        return moment(dateString).format('DD-MMMM-YYYY');
+    };
+});

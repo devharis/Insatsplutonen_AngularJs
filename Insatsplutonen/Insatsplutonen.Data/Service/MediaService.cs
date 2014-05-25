@@ -81,7 +81,7 @@ namespace Insatsplutonen.Data.Service
 
         public void DeleteCategory(int id)
         {
-            var category = this._repository.Query<MediaCategory>().SingleOrDefault(o=>o.Id == id);
+            var category = this._repository.Query<MediaCategory>().SingleOrDefault(o => o.Id == id);
             _repository.Delete(category);
         }
 
@@ -89,6 +89,17 @@ namespace Insatsplutonen.Data.Service
         {
             _repository.Delete(media);
         }
+
+        public List<Media> GetMediaByCategory(int id)
+        {
+            if (id == -1)
+                return this._repository.Query<Media>().OrderByDescending(o => o.Created).Take(5).ToList();
+
+            if (id == 0)
+                return this._repository.Query<Media>().ToList();
+            return this._repository.Query<Media>().Where(o => o.MediaCategoryId == id).ToList();
+        }
+
 
         public void SaveChanges()
         {

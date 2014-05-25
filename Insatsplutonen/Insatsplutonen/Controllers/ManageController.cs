@@ -6,7 +6,9 @@ using System.Web;
 using System.Web.Mvc;
 using Insatsplutonen.Data.Interface;
 using Insatsplutonen.Data.Service;
+using Insatsplutonen.Model.Blog;
 using Insatsplutonen.ViewModel;
+using Newtonsoft.Json;
 
 namespace Insatsplutonen.Controllers
 {
@@ -67,6 +69,29 @@ namespace Insatsplutonen.Controllers
         {
             var result = _service.GetPost(id);
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public JsonResult UpdatePost(string postJson)
+        {
+            var userMessage = "";
+            var post = JsonConvert.DeserializeObject<Post>(postJson);
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _service.UpdatePost(post);
+                    userMessage = "Nyheten är uppdaterad.";
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Fel inträffade: " + ex.Message);
+            }
+
+            return Json(userMessage, JsonRequestBehavior.AllowGet);
         }
 
     }

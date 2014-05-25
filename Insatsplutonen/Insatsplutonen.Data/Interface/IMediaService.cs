@@ -15,5 +15,6 @@ namespace Insatsplutonen.Data.Interface
         void AddMedia(Media media);
         void DeleteCategory(int id);
         void DeleteMedia(Media media);
+        List<Media> GetMediaByCategory(int id);
     }
 }

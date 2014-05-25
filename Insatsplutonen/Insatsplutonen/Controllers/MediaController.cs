@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,9 +8,7 @@ using Insatsplutonen.Data.Service;
 using Insatsplutonen.Model.Helpers;
 using Insatsplutonen.Model.Media;
 using Insatsplutonen.ViewModel;
-using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
-using WebGrease.Css.Extensions;
 
 namespace Insatsplutonen.Controllers
 {
@@ -200,6 +197,13 @@ namespace Insatsplutonen.Controllers
             _service.SaveChanges();
         }
         
+        [HttpGet]
+        public JsonResult GetMediaByCategory(int id)
+        {
+            var mediaList = _service.GetMediaByCategory(id);
+
+            return Json(mediaList, JsonRequestBehavior.AllowGet);
+        }
 
     }
 }

@@ -1,48 +1,21 @@
 ﻿<style>
     .ta-editor {
-    min-height: 300px;
-    height: auto;
-    overflow: auto;
-    font-family: inherit;
-    font-size: 100%;
-    margin: 20px 0;
-}
+        min-height: 300px;
+        height: auto;
+        overflow: auto;
+        font-family: inherit;
+        font-size: 100%;
+        margin: 20px 0;
+    }
 </style>
-<div class="col-md-12 col-md-10">
-    <input type="text" ng-model="item.Title" value="{{item.Title}}" class="form-control" />
-    <div>{{item.Media}}</div>
-    <div text-angular ng-model="item.Content" style="height: 100%"></div>
-    <input type="text" ng-model="item.Author" value="{{item.Author}}" class="form-control" />
-    <input type="text" ng-model="item.Created" value="{{item.Created}}" class="form-control" />
-</div>
-<div class="col-md-2">
-    <table class="table">
-        <tbody>
-            <tr ng-repeat="img in item.MediaList">
-                <td>
-                    <strong>{{img.Title}}</strong>
-                    <!-- Image preview -->
-                    <img width="100%" src="../../images/blog/{{img.File}}" alt="{{img.Description}}"/>
-
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<button type="button" ng-click="onClickUpdatePost(item)">Spara ändringar</button>
-
-<h3>Lägg till nyheter</h3>
+<h3>Editera nyheter</h3>
 <br />
-
-
 <div class="panel panel-primary" data-collapsed="0">
 
     <div class="panel-heading">
         <div class="panel-title">
-            Lägg till nyhet
+            Editera nyhet
         </div>
-
     </div>
 
     <div class="panel-body">
@@ -52,48 +25,68 @@
                 <label for="field-1" class="col-sm-3 control-label">Rubrik</label>
 
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" id="field-1" placeholder="Nyhetens rubrik">
+                    <input type="text" class="form-control" id="field-1" ng-model="item.Title" placeholder="Nyhetens rubrik">
                 </div>
+            </div>
 
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label">Visningsfoto</label>
+
+                <div class="col-sm-5">
+
+                    <img src="http://placehold.it/1080x500" ng-hide="item.Media != null" alt="...">
+                    <img src="../../images/blog/thumbs/{{item.Media}}" width="423" height="200" ng-hide="item.Media == null" alt="{{item.Media}}">
+                    <br />
+                    <br />
+                    <div>
+                        <span class="btn btn-info btn-file">
+                            <span class="fileinput-new" ng-hide="item.Media != null">Välj bild</span>
+                            <span class="fileinput-exists" ng-hide="item.Media == null">Ändra</span>
+                        </span>
+                        <a href="#" class="btn btn-orange fileinput-exists" ng-hide="item.Media == null" data-dismiss="fileinput">Ta bort</a>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="field-ta" class="col-sm-3 control-label">Text</label>
 
                 <div class="col-md-8">
-                    <textarea class="form-control wysihtml5" data-stylesheet-url="assets/css/wysihtml5-color.css" name="sample_wysiwyg" id="sample_wysiwyg" placeholder="Skriv en nyhet..."></textarea>
+                    <div text-angular class="form-control" ng-model="item.Content" style="height: 100%"></div>
                 </div>
 
             </div>
             <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label">Extern länk</label>
+                <label for="field-1" class="col-sm-3 control-label">Skribent</label>
 
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" id="field-1" placeholder="Extern länk till valfri sida">
+                    <input type="text" class="form-control" ng-model="item.Author" id="field-1" placeholder="Skribent">
                 </div>
 
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Publicerad</label>
+               
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="checkbox" ng-model="item.Published" />
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-3 control-label">Publiceringsdatum</label>
 
-                <div class="col-sm-3">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="input-group">
 
-                    <div class="date-and-time">
-                        <input type="text" class="form-control datepicker" data-format="D, dd MM yyyy">
-                        <input type="text" class="form-control timepicker" data-template="dropdown" data-show-seconds="false" data-default-time="11:25 AM" data-show-meridian="false" data-minute-step="5" data-second-step="5" />
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label">Slutdatum</label>
-
-                <div class="col-sm-3">
-
-                    <div class="date-and-time">
-                        <input type="text" class="form-control datepicker" data-format="D, dd MM yyyy">
-                        <input type="text" class="form-control timepicker" data-template="dropdown" data-show-seconds="false" data-default-time="11:25 AM" data-show-meridian="false" data-minute-step="5" data-second-step="5" />
+                            <input type="text" class="form-control" name="expected" ng-model="item.Created" placeholder="dd-MMMM-yyyy" is-open="opened.value" show-weeks="false" datepicker-popup="dd-MMMM-yyyy" close-text="Close" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -101,35 +94,38 @@
 
 
             <div class="form-group">
-                <label class="col-sm-3 control-label">Ladda upp bild</label>
+                <label class="col-sm-3 control-label">Välj bildkollage</label>
 
-                <div class="col-sm-5">
+                <div class="col-sm-12">
 
                     <div class="fileinput fileinput-new" data-provides="fileinput">
-                        <div class="fileinput-new thumbnail" style="width: 432px; height: 200px;" data-trigger="fileinput">
-                            <img src="http://placehold.it/1080x500" alt="...">
-                        </div>
-                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 432px; max-height: 200px"></div>
-                        <div>
-                            <span class="btn btn-info btn-file">
 
-                                <span class="fileinput-new">Välj bild</span>
-                                <span class="fileinput-exists">Ändra</span>
-                                <input type="file" name="..." accept="image/*">
-                            </span>
-                            <a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Ta bort</a>
+                        <div ng-repeat="img in item.MediaList" class="fileinput-new thumbnail" style="width: 420px; height: 200px;" data-trigger="fileinput">
+
+                            <!-- Image preview -->
+                            <img width="100%" src="../../images/blog/{{img.File}}" alt="{{img.Description}}" />
+
+                            <div class="col-xs-8" style="position: relative; margin-top: -32px;margin-left: -14px;">
+                                <input type="text" ng-model="img.Description" class="form-control" placeholder="Bildbeskrivning...">
+                            </div>
+
+                            <div class="col-xs-2" style="position: relative; margin-top: -30px; margin-left: 337px;">
+
+                                <a href="" class="btn btn-orange btn-sm" data-dismiss="fileinput">Ta bort</a>
+                            </div>
+
+
                         </div>
                     </div>
-
+                    <div class="col-xs-12">
+                        <span class="btn btn-info btn-file" ng-click="addImagesFromLibrary()">
+                            <span class="fileinput-new">Lägg till bilder</span>
+                        </span>
+                    </div>
                 </div>
             </div>
-
+            <br />
+            <button type="button" class="btn btn-info pull-right" ng-click="onClickUpdatePost(item)">Spara ändringar</button>
         </form>
-
-
-
-
-
     </div>
-
 </div>
