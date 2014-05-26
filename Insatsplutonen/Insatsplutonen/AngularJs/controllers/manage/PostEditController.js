@@ -14,6 +14,16 @@
                     });
             };
 
+            function addMediaList(mediaList) {
+                postService.AddMediaToPost(mediaList)
+                    .then(function (response) {
+                        console.log(response);
+                    },
+                    function (errorMessage) {
+                        $scope.error = errorMessage;
+                    });
+            };
+
             $scope.onClickUpdatePost = function (item) {
 
                 if (item.Created == "" || item.Created == null)
@@ -35,7 +45,8 @@
                     templateUrl: '../../AngularJs/partials/manage/addMedia.htm',
                     controller: 'addMediaController'
                 });
-                modalInstance.result.then(function () {
+                modalInstance.result.then(function (mediaList) {
+                    addMediaList(mediaList);
                 }, function () {
                 });
             };

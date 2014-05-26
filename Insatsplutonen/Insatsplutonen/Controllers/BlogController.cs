@@ -28,6 +28,11 @@ namespace Insatsplutonen.Controllers
             this._service = service;
         }
 
+        public ActionResult Stats()
+        {
+            return View("Stats");
+        }
+
         public ActionResult Posts()
         {
             return View("Posts");

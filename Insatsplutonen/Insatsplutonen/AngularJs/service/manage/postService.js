@@ -92,4 +92,23 @@
             return deferred.promise;
         };
 
+        this.AddMediaToPost = function (mediaList) {
+            var deferred = $q.defer();
+            $http({
+                method: "POST",
+                url: '/Manage/AddMediaToPost',
+                params: {
+                    mediaListJson: JSON.stringify(mediaList)
+                },
+                dataType: "json"
+            }).success(function (data) {
+                deferred.resolve(data);
+            }).error(function () {
+                deferred.reject("An error occured while fetching data");
+            });
+
+            return deferred.promise;
+        };
+        
+
     }]);
