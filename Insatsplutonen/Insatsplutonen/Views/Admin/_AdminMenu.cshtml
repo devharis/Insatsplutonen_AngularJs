@@ -1,13 +1,10 @@
 ﻿<div class="sidebar-menu">
-
-
     <header class="logo-env">
-
         <!-- logo -->
         <div class="logo">
-            <a href="http://localhost:5428/manage/posts">
+            <a href="">
                 <img src="~/Content/admin/assets/images/smaland_vapen.png" alt="" style="margin-left: 25px" />
-                <br/>
+                <br />
                 <b>Insatsplutonen.se</b>
             </a>
         </div>
@@ -20,8 +17,6 @@
                 <i class="entypo-menu"></i>
             </a>
         </div>
-
-
 
         <!-- open/close menu icon (do not remove if you want to enable menu on mobile devices) -->
         <div class="sidebar-mobile-menu visible-xs">
@@ -46,19 +41,25 @@
             </form>
         </li>
         <li class="">
-            <a href="">
+            <a href="@Url.Action("Dashboard", "Manage")">
+                <i class="entypo-home"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="@Url.Action("Users", "Account")">
                 <i class="entypo-user"></i>
                 <span>Användare</span>
             </a>
             <ul>
                 <li class="">
-                    <a href="anvandare-lagg-till.html">
+                    <a href="@Url.Action("AddUser", "Account")">
                         <i class="entypo-user-add active"></i>
                         <span>Lägg till ny</span>
                     </a>
                 </li>
                 <li class="">
-                    <a href="anvandare-hantera.html">
+                    <a href="@Url.Action("Users", "Account")">
                         <i class="entypo-list"></i>
                         <span>Hantera</span>
                     </a>
@@ -72,52 +73,30 @@
             </a>
             <ul>
                 <li class="">
-                    <a href="medlemmar-hantera.html">
+                    <a href="" disabled="disabled">
+                        <i class="entypo-user-add active"></i>
+                        <span>Lägg till ny</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="" disabled="disabled">
                         <i class="entypo-list"></i>
                         <span>Hantera</span>
                     </a>
                 </li>
-                <li class="">
-                    <a href="medlemmar-kategorier.html">
-                        <i class="entypo-list"></i>
-                        <span>Kategorier</span>
-                    </a>
-                    <ul>
-                        <li class="">
-                            <a href="medlemmar-kategorier-lagg-till.html">
-                                <i class="entypo-user-add"></i>
-                                <span>Lägg till ny</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="medlemmar-kategorier-hantera.html">
-                                <i class="entypo-user-add"></i>
-                                <span>Hantera</span>
-                            </a>
-                        </li>
-                    </ul>
-
-                </li>
             </ul>
         </li>
-
         <li>
-            <a href="skapa-ny-app.html">
-                <i class="entypo-doc"></i>
+            <a href="@Url.Action("Library", "Media")">
+                <i class="entypo-picture"></i>
                 <span>Media</span>
             </a>
 
 
             <ul>
                 <li class="">
-                    <a href="applikationer-lagg-till.html">
-                        <i class="entypo-user-add"></i>
-                        <span>Lägg till ny</span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="applikationer-hantera.html">
-                        <i class="entypo-user-add"></i>
+                    <a href="@Url.Action("Library", "Media")">
+                        <i class="entypo-list"></i>
                         <span>Hantera</span>
                     </a>
                 </li>
@@ -131,185 +110,47 @@
             </a>
             <ul>
                 <li class="">
-                    <a href="publicering-produktkategorier.html">
-                        <i class="entypo-doc"></i>
-                        <span>Produktkategorier</span>
-                    </a>
-                    <ul>
-                        <li class="">
-                            <a href="publicering-produktkategorier-lagg-till.html">
-                                <i class="entypo-user-add"></i>
-                                <span>Lägg till ny</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="publicering-produktkategorier-hantera.html">
-                                <i class="entypo-user-add"></i>
-                                <span>Hantera</span>
-                            </a>
-                        </li>
-                    </ul>
-
                 <li class="">
                     <a href="">
+                        <i class="entypo-newspaper"></i>
                         <span>Nyheter</span>
                     </a>
                     <ul>
                         <li class="">
-                            <a href="publicering-nyheter-lagg-till.html">
+                            <a href="@Url.Action("Posts", "Manage")#/new">
                                 <i class="entypo-user-add"></i>
                                 <span>Lägg till</span>
                             </a>
                         </li>
                         <li class="">
-                            <a href="publicering-nyheter-hantera.html">
+                            <a href="@Url.Action("Posts", "Manage")">
                                 <i class="entypo-list"></i>
                                 <span>Hantera</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="publicering-nyheter-installningar.html">
-                                <i class="entypo-list"></i>
-                                <span>Inställningar</span>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="">
                     <a href="">
-                        <span>Evenemang</span>
+                        <i class="entypo-calendar"></i>
+                        <span>Schema</span>
                     </a>
                     <ul>
                         <li class="">
-                            <a href="publicering-evenemang-lagg-till.html">
-                                <i class="entypo-user-add"></i>
+                            <a href="">
+                                <i class="entypo-calendar"></i>
                                 <span>Lägg till</span>
                             </a>
                         </li>
                         <li class="">
-                            <a href="publicering-evenemang-hantera.html">
-                                <i class="entypo-list"></i>
+                            <a href="">
+                                <i class="entypo-calendar"></i>
                                 <span>Hantera</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="publicering-evenemang-installningar.html">
-                                <i class="entypo-list"></i>
-                                <span>Inställningar</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="">
-                    <a href="">
-                        <span>Erbjudande</span>
-                    </a>
-                    <ul>
-                        <li class="">
-                            <a href="publicering-erbjudande-lagg-till.html">
-                                <i class="entypo-user-add"></i>
-                                <span>Lägg till</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="publicering-erbjudande-hantera.html">
-                                <i class="entypo-list"></i>
-                                <span>Hantera</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="publicering-erbjudande-installningar.html">
-                                <i class="entypo-list"></i>
-                                <span>Inställningar</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="">
-                        <span>Kupong</span>
-                    </a>
-                    <ul>
-                        <li class="">
-                            <a href="publicering-kupong-lagg-till.html">
-                                <i class="entypo-user-add"></i>
-                                <span>Lägg till</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="publicering-kupong-hantera.html">
-                                <i class="entypo-list"></i>
-                                <span>Hantera</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="publicering-kupong-installningar.html">
-                                <i class="entypo-list"></i>
-                                <span>Inställningar</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="">
-                        <span>Lunch</span>
-                    </a>
-                    <ul>
-                        <li class="">
-                            <a href="publicering-lunch-lagg-till.html">
-                                <i class="entypo-user-add"></i>
-                                <span>Lägg till</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="publicering-lunch-hantera.html">
-                                <i class="entypo-list"></i>
-                                <span>Hantera</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="publicering-lunch-installningar.html">
-                                <i class="entypo-list"></i>
-                                <span>Inställningar</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="">
-                        <span>Annonser</span>
-                    </a>
-                    <ul>
-                        <li class="">
-                            <a href="publicering-annonser-lagg-till.html">
-                                <i class="entypo-user-add"></i>
-                                <span>Lägg till</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="publicering-annonser-hantera.html">
-                                <i class="entypo-list"></i>
-                                <span>Hantera</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="publicering-annonser-installningar.html">
-                                <i class="entypo-list"></i>
-                                <span>Inställningar</span>
                             </a>
                         </li>
                     </ul>
                 </li>
             </ul>
-        <li class="">
-            <a href="statistik.html">
-                <i class="entypo-chart-bar"></i>
-                <span>Statistik</span>
-            </a>
-        </li>
         </li>
     </ul>
-
-
 </div>

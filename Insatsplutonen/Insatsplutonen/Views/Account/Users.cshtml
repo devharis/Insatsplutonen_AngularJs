@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Insatsplutonen | Users";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<ol class="breadcrumb bc-3">
+    <li>
+        <a href="http://localhost:5428/manage/dashboard/"><i class="entypo-home"></i>Start</a>
+    </li>
+    <li>
+        <a href="">Användare</a>
+    </li>
+    <li class="active">
+        <strong>Hantera</strong>
+    </li>
+</ol>
+
+<div id="body" ng-app="app">
+    <div ng-view="">
+
+    </div>
+</div>
+
+@section scripts{
+
+    @* Modal *@
+    <script src="~/AngularJs/source/ui-bootstrap/ui-bootstrap-custom-0.10.0.min.js"></script>
+    <script src="~/AngularJs/source/ui-bootstrap/ui-bootstrap-custom-tpls-0.10.0.min.js"></script>
+
+    <script src="~/AngularJs/appUser.js"></script>
+    <script src="~/AngularJs/controllers/user/UsersController.js"></script>
+    <script src="~/AngularJs/controllers/user/UserEditController.js"></script>
+    <script src="~/AngularJs/controllers/user/UserAddController.js"></script>
+
+    <script src="~/AngularJs/service/user/userService.js"></script>
+
+    <script src="~/AngularJs/filters/customFilters.js"></script>
+}

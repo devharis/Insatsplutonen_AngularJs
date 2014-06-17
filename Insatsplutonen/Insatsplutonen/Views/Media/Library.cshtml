@@ -1,15 +1,27 @@
 ﻿@{
-    ViewBag.Title = "Library";
+    ViewBag.Title = "Insatsplutonen | Media";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<ol class="breadcrumb bc-3">
+    <li>
+        <a href="http://localhost:5428/manage/dashboard/"><i class="entypo-home"></i>Start</a>
+    </li>
+    <li>
+        <a href="">Media</a>
+    </li>
+    <li class="active">
+        <strong>Hantera</strong>
+    </li>
+</ol>
 
-<h2>Library</h2>
+<div id="body" ng-app="app">
+    <div ng-view="">
 
-<div ng-view="">
-    
+    </div>
 </div>
 
 @section scripts{
-    
+
     @* Modal *@
     <script src="~/AngularJs/source/ui-bootstrap/ui-bootstrap-custom-0.10.0.min.js"></script>
     <script src="~/AngularJs/source/ui-bootstrap/ui-bootstrap-custom-tpls-0.10.0.min.js"></script>
@@ -28,7 +40,7 @@
     <script src="~/AngularJs/controllers/common/UploadFilesController.js"></script>
 
     <script src="~/AngularJs/service/media/mediaService.js"></script>
-    
+
     <script src="~/AngularJs/filters/customFilters.js"></script>
 
     <script src="~/AngularJs/source/momentjs/moment.js"></script>

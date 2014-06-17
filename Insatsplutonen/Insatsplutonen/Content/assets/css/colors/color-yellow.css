@@ -1,0 +1,54 @@
+a {color: #FEEB43;}
+blockquote.color {background: #FEEB43; color: #444;}
+.dropcap.color {background-color: #FEEB43; color: #444;}
+.parallax-background.color .item-mask {background: #FEEB43;}
+.section.alternate.color {background: #FEEB43; color: #444;}
+.menu li a:hover, .menu li.sfHover a, .menu li:hover ul li a:hover, .menu li li:hover ul li a:hover, .menu li ul li.sfHover a {color: #FEEB43;}
+#three-lines-menu a:hover {background: #FEEB43;}
+#mobile-menu ul li a.active {background: #FEEB43;}
+#mobile-menu ul li a:hover {color: #FEEB43;}
+#footer a:hover {color: #FEEB43;}
+.bra_tweets .tweet_text a, #footer .bra_tweets .tweet_text a {color: #FEEB43;}
+.bra_tweets a:hover , #footer .bra_tweets a:hover, .bra_tweets a.twitter_time:hover, #footer .bra_tweets a.twitter_time:hover {color: #FEEB43;}
+.photostream a .item-mask:hover {background-color: #FEEB43;}
+.team h2 {color: #FEEB43;}	
+.team .social-personal li a:hover {color:#FEEB43;}
+.skills-graph li span {background-color: #FEEB43;}
+.grey:hover { background-color:#FEEB43; color: #444; }
+.highlight1 {background-color: #FEEB43; color: #444;}
+.item-info-overlay h3.title, .item-info-overlay h3.title a {color: #FEEB43;}
+.item-info-overlay .outline:hover {box-shadow: 0 0 0 1px #FEEB43 inset;	background-color: #FEEB43;}
+.filterable li.current a {color:#FEEB43;}
+ul.item-nav li:hover {background: #FEEB43;}
+.contact-success {background-color: #FEEB43;}
+.tagcloud a:hover {background-color: #FEEB43;}
+
+
+.widget a:hover {color: #FEEB43;}
+.timeline .post-info a:hover {color: #FEEB43;}
+.timeline .post-info li.comments a {color: #FEEB43;}
+.post-title h2.title, .post-title h2.title a {color: #FEEB43;}
+.comment .author a:hover, .comment .children .author a:hover {color: #FEEB43;}
+.comment .reply:hover {background-color:#FEEB43;}
+.comment .children .comment-meta .reply:hover {background-color: #FEEB43;}
+.archive.fullwidth li:hover .title a {color: #FEEB43;}
+.archive-nav .tagcloud a:hover {background-color: #FEEB43;}
+#archive-nav a.active {color: #FEEB43;}
+
+
+.flex-direction-nav a:hover {background-color:#FEEB43;}
+
+
+.fwslider nav span:hover {background-color: #FEEB43;}
+.cbp-fwdots span:hover {border: 2px solid #FEEB43;background-color: #FEEB43;}
+.cbp-fwdots span.cbp-fwcurrent {border: 2px solid #FEEB43;}
+
+
+.bx-wrapper .bx-pager.bx-default-pager a:hover {border: 2px solid #FEEB43;background-color: #FEEB43;}
+.bx-wrapper .bx-pager.bx-default-pager a.active {border: 2px solid #FEEB43;}
+.section.alternate.dark .bx-wrapper .bx-pager.bx-default-pager a:hover {border: 2px solid #FEEB43;background-color: #FEEB43;}
+.bx-wrapper .bx-prev:hover, .bx-wrapper .bx-next:hover {background-color:#FEEB43;}
+
+
+div.jp-play-bar {background-color: #FEEB43;}
+div.jp-volume-bar-value {background-color: #FEEB43;}

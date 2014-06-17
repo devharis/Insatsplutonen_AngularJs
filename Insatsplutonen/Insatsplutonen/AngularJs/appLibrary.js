@@ -2,7 +2,7 @@
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: '../../AngularJs/partials/media/library.htm',
+                templateUrl: '../../AngularJs/partials/media/librarySearch.htm',
                 controller: 'MediaController',
                 reloadOnSearch: false
             })

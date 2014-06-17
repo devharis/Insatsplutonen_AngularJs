@@ -1,47 +1,114 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Insatsplutonen.se</title>
-    <link href="#" rel="shortcut icon" type="image/x-icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
 
-    <link rel="stylesheet" href="~/Content/admin/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
-    <link rel="stylesheet" href="~/Content/admin/assets/css/font-icons/entypo/css/entypo.css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
-    <link rel="stylesheet" href="~/Content/admin/assets/css/neon.css">
-    <link rel="stylesheet" href="~/Content/admin/assets/css/custom.css">
-    @Styles.Render("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/blog.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/responsive.css" media="screen" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700italic,700,800,800italic,300italic,300' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="~/Content/assets/css/prettyPhoto.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/Content/assets/css/flexslider.css" type="text/css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/bxslider.css">
 </head>
-<body>
-    
-    <div id="body" ng-app="app">
-        @RenderSection("featured", required: false)
-        <div class="container">
-             @RenderBody()
-        </div>
-    </div>
-    <footer>
-        <div class="panel-footer">
-            <div class="panel-body">
-                <p>#</p>
-            </div>
-        </div>
-    </footer>
+<body id="top">
 
+    <div id="body" ng-app="app">
+        <div id="wrapper">
+            <!-- START HEADER -->
+            <div id="header-wrapper">
+
+                <div class="header clear">
+
+                    <div id="logo">
+                        <a href="/"><img style="margin-top: -15px; height: 45px;"src="~/Content/assets/start/insatspluton12.png" alt="" /></a>
+                    </div><!--END LOGO-->
+
+                    <div id="primary-menu">
+
+                        <ul class="menu">
+                            <li>
+                                <a href="/" title="Start">Start</a>
+                            </li>
+                            <li>
+                                <a href="/Blog/Posts" title="Nyheter">Nyheter</a>
+                            </li>
+                            <li>
+                                <a href="#" title="About">Om oss</a>
+                            </li>
+                            <li>
+                                <a href="#" title="Contact">Kontakta oss</a>
+                            </li>
+                        </ul><!--END UL-->
+
+                    </div><!--END PRIMARY MENU-->
+
+                </div><!--END HEADER-->
+
+            </div><!--END HEADER-WRAPPER-->
+            <!-- END HEADER -->
+            @RenderBody()
+        </div>
+        <a href="#" id="back-top">Top</a> 
+    </div>
+
+    <!-- START FOOTER -->
+    <div id="footer">
+        @Html.Partial("~/Views/Shared/_Footer.cshtml")
+    </div><!--END FOOTER-->
+    <!-- END FOOTER -->
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 
-    <script src="~/Content/admin/assets/js/gsap/main-gsap.js"></script>
-    <script src="~/Content/admin/assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
-    <script src="~/Content/admin/assets/js/bootstrap.min.js"></script>
-    <script src="~/Content/admin/assets/js/joinable.js"></script>
-    <script src="~/Content/admin/assets/js/resizeable.js"></script>
-    <script src="~/Content/admin/assets/js/neon-api.js"></script>
-    <script src="~/Content/admin/assets/js/jquery.validate.min.js"></script>
-    <script src="~/Content/admin/assets/js/neon-login.js"></script>
-    <script src="~/Content/admin/assets/js/neon-custom.js"></script>
-    <script src="~/Content/admin/assets/js/neon-demo.js"></script>
+    <script type="text/javascript" src="~/Content/assets/javascript/jquery-1.8.3.js"></script>
+
+    <script type="text/javascript" src="~/Content/assets/javascript/custom.js"></script>
+    <script type="text/javascript" src="~/Content/assets/javascript/header.js"></script>
+    <script type="text/javascript" src="~/Content/assets/javascript/bra_twitter_plugin.js"></script>
+
+    <!-- PrettyPhoto -->
+    <script type="text/javascript" src="~/Content/assets/javascript/prettyPhoto.js"></script>
+
+    <!-- Photostream Javascript -->
+    <script type="text/javascript" src="~/Content/assets/javascript/bra_photostream_plugin.js"></script>
+
+    <!-- Masonry Javascript File -->
+    <script type="text/javascript" src="~/Content/assets/javascript/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/javascript/toucheffects.js"></script>
+
+    <!-- Flexslider JavaScript Files -->
+    <script type="text/javascript" src="~/Content/assets/javascript/jquery.flexslider.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#index-slider').flexslider({
+                animation: "fade",
+                slideDirection: "",
+                slideshowSpeed: 3500,
+                animationDuration: 500,
+                pauseOnHover: true,
+                smoothHeight: true
+            });
+        });
+    </script>
+
+    <!-- bxSlider Javascript file -->
+    <script src="~/Content/assets/javascript/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#testimonials').bxSlider({
+                controls: false,
+                /*    video: true,*/
+                auto: false,
+                pause: 2000,
+                adaptiveHeight: true,
+                mode: 'fade'
+            });
+        });
+    </script>
 </body>
 </html>
+

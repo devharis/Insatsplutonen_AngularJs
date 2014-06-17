@@ -18,7 +18,7 @@ namespace Insatsplutonen
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Blog", action = "Posts", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Start", id = UrlParameter.Optional }
             );
         }
     }

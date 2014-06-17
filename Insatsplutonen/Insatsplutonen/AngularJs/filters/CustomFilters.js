@@ -12,9 +12,23 @@ customFilters.filter('dateToISOShort', function () {
     };
 });
 
-
 customFilters.filter('DateToShortISOWithMonthName', function () {
     return function (dateString) {
         return moment(dateString).format('DD-MMMM-YYYY');
+    };
+});
+customFilters.filter('DateToDay', function () {
+    return function (dateString) {
+        return moment(dateString).format('DD');
+    };
+});
+customFilters.filter('DateToMonth', function () {
+    return function (dateString) {
+        return moment(dateString).format('MMM');
+    };
+});
+customFilters.filter('DateToYear', function () {
+    return function (dateString) {
+        return moment(dateString).format('YYYY');
     };
 });

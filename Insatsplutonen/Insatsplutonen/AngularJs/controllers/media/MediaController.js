@@ -188,14 +188,17 @@
             };
 
             $scope.onClickDeleteMedia = function (mediaId) {
-                mediaService.DeleteMedia(mediaId)
-                    .then(function (response) {
-                        //Success
-                        getMedia(true);
-                    },
-                    function (errorMessage) {
-                        $scope.error = errorMessage;
-                    });  
+                var retVal = confirm("Vill du ta bort vald media?");
+                if (retVal) {
+                    mediaService.DeleteMedia(mediaId)
+                        .then(function(response) {
+                                //Success
+                                getMedia(true);
+                            },
+                            function(errorMessage) {
+                                $scope.error = errorMessage;
+                            });
+                }
             };
 
             $scope.addToSelectMedia = function (mediaId) {

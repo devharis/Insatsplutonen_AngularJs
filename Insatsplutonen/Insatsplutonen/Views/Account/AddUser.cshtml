@@ -1,0 +1,116 @@
+﻿@model Insatsplutonen.ViewModel.UserViewModel
+
+@{
+    ViewBag.Title = "Användare | Lägg till";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<ol class="breadcrumb bc-3">
+    <li>
+        <a href="http://localhost:5428/manage/dashboard/"><i class="entypo-home"></i>Start</a>
+    </li>
+    <li>
+        <a href="">Användare</a>
+    </li>
+    <li class="active">
+        <strong>Lägg till ny</strong>
+    </li>
+</ol>
+
+<h3>Lägg till ny användare</h3>
+<br />
+<div class="well well-sm">
+    <h4>Var god fyll i följande uppgifter.</h4>
+</div>
+
+@using (Html.BeginForm("AddUser", "Account", FormMethod.Post, new { @id = "rootwizard-2", @class = "form-wizard validate" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab2-1">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="firstname">Förnamn</label>
+                        @Html.TextBoxFor(m => m.UserProfile.Firstname, new { @class = "form-control", name = "firstname", id = "firstname", placeholder = "Förnamn", autocomplete = "off" })
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="lastname">Efternamn</label>
+                        @Html.TextBoxFor(m => m.UserProfile.Lastname, new { @class = "form-control", name = "lastname", id = "lastname", placeholder = "Efternamn", autocomplete = "off" })
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="company">Befattning</label>
+                        @Html.TextBoxFor(m => m.UserProfile.Befattning, new { @class = "form-control", name = "company", id = "company", placeholder = "Befattning", autocomplete = "off" })
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="control-label" for="birthdate">Telefon</label>
+                    <div class="input-group">
+
+                        <span class="input-group-addon"><i class="entypo-phone"></i></span>
+                        @Html.TextBoxFor(m => m.UserProfile.Phone, new { @class = "form-control", name = "phone", id = "phone", placeholder = "Telefonnummer", autocomplete = "off" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Välj användarnamn</label>
+                        @Html.ValidationMessageFor(model => model.RegisterModel.UserName)
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="entypo-user"></i>
+                            </div>
+                            @Html.TextBoxFor(m => m.RegisterModel.UserName, new { @class = "form-control", name = "username", id = "username", placeholder = "Ange ett användarnamn", autocomplete = "off" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Välj lösenord</label>
+                        @Html.LabelFor(model => model.RegisterModel.Password)
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="entypo-key"></i>
+                            </div>
+
+                            @Html.PasswordFor(m => m.RegisterModel.Password, new { @class = "form-control", name = "password", id = "password", placeholder = "Ange ett starkt lösenord", autocomplete = "off" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Repetera lösenord</label>
+                        @Html.ValidationMessageFor(model => model.RegisterModel.ConfirmPassword)
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="entypo-cw"></i>
+                            </div>
+                            @Html.PasswordFor(model => model.RegisterModel.ConfirmPassword, new { @class = "form-control", name = "password", id = "password", placeholder = "Ange ett starkt lösenord", autocomplete = "off" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary pull-right">Skapa användare</button>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,130 @@
+﻿<style>
+    .ta-editor {
+        min-height: 300px;
+        height: auto;
+        overflow: auto;
+        font-family: inherit;
+        font-size: 100%;
+        margin: 20px 0;
+    }
+</style>
+<h3>Editera nyheter</h3>
+<br />
+<div class="panel panel-primary" data-collapsed="0">
+
+    <div class="panel-heading">
+        <div class="panel-title">
+            Editera nyhet
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <form role="form" class="form-horizontal form-groups-bordered">
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label">Rubrik</label>
+
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="field-1" ng-model="item.Title" placeholder="Nyhetens rubrik">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label">Visningsfoto</label>
+
+                <div class="col-sm-5">
+                    <img src="http://placehold.it/1080x500" width="423" height="200" ng-hide="item.Media != null" alt="...">
+                    <img src="../../images/blog/thumbs/{{item.Media}}" width="423" height="200" ng-hide="item.Media == null" alt="{{item.Media}}">
+                    <br />
+                    <br />
+                    <div>
+                        <span class="btn btn-info btn-file">
+                            <span class="fileinput-new" ng-click="addMediaFromLibrary(item)" ng-hide="item.Media != null">Välj bild</span>
+                            <span class="fileinput-exists" ng-click="addMediaFromLibrary(item)" ng-hide="item.Media == null">Ändra</span>
+                        </span>
+                        <span class="btn btn-orange" ng-hide="item.Media == null" ng-click="removeMediaForPost(item)">Ta bort</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="field-ta" class="col-sm-3 control-label">Text</label>
+
+                <div class="col-md-8">
+                    <div text-angular class="form-control" ng-model="item.Content" style="height: 100%"></div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label">Skribent</label>
+
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" ng-model="item.Author" id="field-1" placeholder="Skribent">
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Publicerad</label>
+               
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="checkbox" ng-model="item.Published" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Publiceringsdatum</label>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="input-group">
+
+                            <input type="text" class="form-control" name="expected" ng-model="item.Created" placeholder="dd-MMMM-yyyy" is-open="opened.value" show-weeks="false" datepicker-popup="dd-MMMM-yyyy" close-text="Close" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Välj bildkollage</label>
+
+                <div class="col-sm-12">
+
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+
+                        <div ng-repeat="img in item.MediaList" class="fileinput-new thumbnail" style="width: 420px; height: 200px;" data-trigger="fileinput">
+
+                            <!-- Image preview -->
+                            <img width="100%" src="../../images/blog/{{img.File}}" alt="{{img.Description}}" />
+
+                            <div class="col-xs-8" style="position: relative; margin-top: -32px;margin-left: -14px;">
+                                <input type="text" ng-model="img.Description" class="form-control" placeholder="Bildbeskrivning...">
+                            </div>
+
+                            <div class="col-xs-2" style="position: relative; margin-top: -30px; margin-left: 337px;">
+
+                                <a href="" class="btn btn-orange btn-sm" ng-click="removeMediaListForPost(img.Id, item)">Ta bort</a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <span class="btn btn-info btn-file" ng-click="addMediaListFromLibrary(item)">
+                            <span class="fileinput-new">Lägg till bilder</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <button type="button" class="btn btn-info pull-right" ng-click="onClickCreatePost(item)">Skapa nyhet</button>
+        </form>
+    </div>
+</div>

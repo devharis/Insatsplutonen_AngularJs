@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace Insatsplutonen.Model.Blog
 {
@@ -40,5 +41,20 @@ namespace Insatsplutonen.Model.Blog
 
         public List<PostMedia> MediaList { get; set; }
 
+        public string ShowMedia()
+        {
+            if (!string.IsNullOrEmpty(Media))
+                return "/images/blog/thumbs/" + Media;
+            return "http://placehold.it/350x265";
+        }
+
+        public string ShowContent()
+        {
+            Content = Regex.Replace(Content, @"<[^>]*>", String.Empty);
+
+            if (Content.Length < 150)
+                return Content + "...";
+            return Content.Substring(0, 200)+ "...";
+        }
     }
 }

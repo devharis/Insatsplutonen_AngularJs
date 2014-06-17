@@ -1,0 +1,43 @@
+﻿<table class="table table-bordered datatable" id="table-4">
+    <thead>
+        <tr>
+            <th>Användare</th>
+            <th>Namn</th>
+            <th>Befattning</th>
+            <th>Telefon</th>
+            <th>Roll</th>
+            <th>Redigera</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in items.Data" class="odd gradeA">
+            <td style="width: 20%;">
+                {{item.UserName}}
+            </td>
+            <td style="width: 20%;">
+                {{item.Firstname}} {{item.Lastname}}
+            </td>
+            <td style="width: 20%;">
+                {{item.Befattning}}
+            </td>
+            <td style="width: 20%;">
+                {{item.Phone}}
+            </td>
+            <td style="width: 20%;">
+                {{item.Role}}
+            </td>
+            <td style="text-align: center;">
+                <a href="" ng-click="userClick(item.Id)" disabled="disabled" class="btn btn-default btn-sm btn-icon icon-left">
+                    <i class="entypo-pencil"></i>
+                    Redigera
+                </a>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+
+        </tr>
+    </tfoot>
+</table>
+

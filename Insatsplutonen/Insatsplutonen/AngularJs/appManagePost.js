@@ -6,6 +6,11 @@
                 controller: 'PostsEditController',
                 reloadOnSearch: false
             })
+            .when('/new', {
+                templateUrl: '../../AngularJs/partials/manage/addPost.htm',
+                controller: 'PostAddController',
+                reloadOnSearch: true
+            })
             .when('/:id', {
                 templateUrl: '../../AngularJs/partials/manage/editPost.htm',
                 controller: 'PostEditController',

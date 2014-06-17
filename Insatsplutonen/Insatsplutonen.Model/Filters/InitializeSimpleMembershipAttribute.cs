@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Web.Mvc;
+using Insatsplutonen.Model.Account;
 using WebMatrix.WebData;
 
 namespace Insatsplutonen.Model.Filters

@@ -1,34 +1,42 @@
-﻿<table class="row">
-    <tr>
-        <th>
-            <b>Title</b>
-        </th>
-        <th>
-            <b>Content</b>
-        </th>
-        <th>
-            <b>Author</b>
-        </th>
-        <th>
-            <b>Media</b>
-        </th>
-        <th>
-            <b>Date</b>
-        </th>
-        <th></th>
-    </tr>
+﻿<div class="post" ng-repeat="item in items.Data">
 
-    <tr ng-repeat="item in items.Data">
-        <td style="cursor:pointer;">
-             <a ng-href="" ng-click="postClick(item.Id)">{{item.Title}}</a>
-        </td>
-        <td ng-bind-html="isTrusted(item.Content)"></td>
-        <td>{{item.Author}}
-        </td>
-        <td>{{item.Picture}}
-        </td>
-        <td>{{item.Date}}
-        </td>
-    </tr>
+    <div class="post-holder">
 
-</table>
+        <div class="post-media">
+            <a ng-show="item.Media == null" href="#"><img src="http://placehold.it/510x380" alt="" /></a>
+            <a ng-show="item.Media != null" href="#"><img src="../images/blog/thumbs/{{item.Media}}" style="max-height: 350px;"alt="" /></a>
+            
+
+        </div><!--END POST-MEDIA-->
+
+        <div class="post-content">
+
+            <div class="post-date">
+                <ul>
+                    <li class="date"><span class="month">{{item.month}}</span> <span class="day">{{item.day}}</span> <span class="year">{{item.year}}</span></li>
+                    <li class="comments"><a href="#"><span>4</span> comments</a></li>
+                </ul>
+            </div><!--END POST-DATE-->
+
+            <div class="post-title">
+                <h2 class="title"><a href="" ng-click="postClick(item.Id)">{{item.Title}}</a></h2>
+            </div><!--END POST-TITLE-->
+
+            <div class="post-meta">
+                <ul>
+                    <li><span>Postad av <a href="#">{{item.Author}}</a></span></li>
+                </ul>
+            </div><!--END POST-META-->
+
+            <div class="post-entry">
+
+                <p ng-bind-html="isTrusted(item.Content)"></p>
+                <p><a href="" ng-click="postClick(item.Id)" class="button medium grey">Continue reading</a></p>
+
+            </div><!--END POST-ENTRY-->
+
+        </div><!--END POST-CONTENT -->
+
+    </div><!--END POST-HOLDER -->
+
+</div><!--END POST-->

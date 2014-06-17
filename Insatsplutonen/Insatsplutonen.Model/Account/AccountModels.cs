@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 
-namespace Insatsplutonen.Model
+namespace Insatsplutonen.Model.Account
 {
     public class UsersContext : DbContext
     {
@@ -18,9 +18,18 @@ namespace Insatsplutonen.Model
     public class UserProfile
     {
         [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
+
         public string UserName { get; set; }
+
+        public string Firstname { get; set; }
+
+        public string Lastname { get; set; }
+
+        public string Befattning { get; set; }
+
+        public string Phone { get; set; }
     }
 
     public class RegisterExternalLoginModel

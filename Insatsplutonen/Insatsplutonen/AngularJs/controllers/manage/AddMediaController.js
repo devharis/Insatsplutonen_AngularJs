@@ -40,17 +40,9 @@
                     });
             };
 
-            $scope.addToSelectMedia = function (mediaId) {
-                var isContained = true;
-                angular.forEach($scope.selectedMedia, function (item, index) {
-                    if (item.Id == mediaId) {
-                        $scope.selectedMedia.splice(index, 1);
-                        isContained = false;
-                    }
-                });
-                if (isContained) {
-                    $scope.selectedMedia.push({ "Id": mediaId });
-                }
+            $scope.addToSelectMedia = function (media) {
+                $scope.selectedMedia = [];
+                $scope.selectedMedia.push({ "Id": media.Id, "File": media.File });
             }
 
             $scope.onChangeCategory = function (id) {
@@ -60,11 +52,10 @@
             };
 
             $scope.ok = function (mediaList) {
-                console.log(mediaList);
-                $modalInstance.close();
+                $modalInstance.close(mediaList);
             };
 
-            $scope.cancel = function (selectedCategory) {
+            $scope.cancel = function () {
                 $modalInstance.dismiss('cancel');
             };
         }]);

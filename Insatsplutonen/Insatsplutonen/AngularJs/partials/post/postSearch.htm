@@ -1,22 +1,10 @@
-﻿<div class="col-md-12">
-    <div class="row">
-
-        <div class="col-md-1">
-            <label>Resultat:</label>
-            {{ items.TotalItems }}
+﻿<div id="content-wrapper">
+    <div class="page-header text-align-center">
+        <div class="one-fifth">
+            <input type="text" id="searchTxt" class="form-control" ng-model="searchtext" placeholder="Ange sökord" ng-change="searchChange()" />
         </div>
 
-        <div class="col-md-1">
-            <label>Sidor:</label><br />
-            {{ items.TotalPages }}
-        </div>
-
-        <div class="col-md-1">
-            <label>Fallande:</label>
-            <input type="checkbox" id="descChbx" ng-model="ascending" ng-change="ascendingChange()" />
-        </div>
-
-        <div class="col-md-2">
+        <div class="one-fifth">
             <label>Sortera:</label>
             <select name="sort_by" ng-model="sortby" ng-change="sortbyChange()" class="form-control">
                 <option selected="selected" value="default">Default</option>
@@ -25,45 +13,47 @@
             </select>
         </div>
 
-        <div class="col-md-2 form-group">
+        <div class="one-fifth">
             <label>Aktuell sida:</label>
-            <select class="form-control" id="ddlPage" name="ddlPage" ng-change="pageChange()" ng-model="page" ng-options="page for page in items.Pagingarray">
-            </select>
+            <select class="form-control" id="ddlPage" name="ddlPage" ng-change="pageChange()" ng-model="page" ng-options="page for page in items.Pagingarray"></select>
         </div>
 
-        <div class="col-md-2 form-group">
+        <div class="one-fifth">
             <label>Per sida</label>
             <select name="ddltake" id="ddltake" class="form-control" ng-model="take" ng-change="takeChange()">
+                <option>5</option>
                 <option>10</option>
                 <option>20</option>
                 <option>50</option>
                 <option>100</option>
             </select>
         </div>
-
-        <div class="col-md-3">
-            <label>Sökning</label>
-            <input type="text" id="searchTxt" class="form-control" ng-model="searchtext" placeholder="Ange sökord" ng-change="searchChange()" />
+    </div><!--END PAGE-HEADER-->
+    <div class="one wp-pagenavi">
+        <div class="one btn-group text-align-center">
+            <span class="pages">Page {{ page }} of {{ items.TotalPages }}</span>
+            <a href="" ng-click="pageChange(page = firstSizePage)" ng-disabled="page <= 1" class="button small white rounded">first</a>
+            <a href="" ng-click="pageChange(page = page-1)" ng-disabled="page <= 1" class="button white small">&larr;</a>
+            <a href="" ng-click="pageChange(page = page+1)" ng-disabled="page >= lastSizePage || items.Data.length == null" class="button white small">&rarr;</a>
+            <a href="" ng-click="pageChange(page = lastSizePage)" ng-disabled="page >= lastSizePage || items.Data.length == null" class="button small white rounded">last</a>
         </div>
     </div>
+    <div class="blog1 two-half content">
 
-    <div class="row">
-        <div class="btn-group">
-            <button type="button" id="btnFirst" ng-click="pageChange(page = firstSizePage)" ng-disabled="page <= 1" class="btn btn-default glyphicon glyphicon-backward"></button>
-            <button type="button" id="btnPrev" ng-click="pageChange(page = page-1)" ng-disabled="page <= 1" class="btn btn-default glyphicon glyphicon-chevron-left"></button>
-            <button type="button" id="btnNext" ng-click="pageChange(page = page+1)" ng-disabled="page >= lastSizePage || items.Data.length == null" class="btn btn-default glyphicon glyphicon-chevron-right"></button>
-            <button type="button" id="btnLast" ng-click="pageChange(page = lastSizePage)" ng-disabled="page >= lastSizePage || items.Data.length == null" class="btn btn-default glyphicon glyphicon-forward"></button>
+        <div ng-include="'../../../AngularJs/partials/post/postList.htm'"></div>
+        
+
+        <div class="one wp-pagenavi">
+        <div class="one btn-group text-align-center">
+            <span class="pages">Page {{ page }} of {{ items.TotalPages }}</span>
+            <a href="" ng-click="pageChange(page = firstSizePage)" ng-disabled="page <= 1" class="button small white rounded">first</a>
+            <a href="" ng-click="pageChange(page = page-1)" ng-disabled="page <= 1" class="button white small">&larr;</a>
+            <a href="" ng-click="pageChange(page = page+1)" ng-disabled="page >= lastSizePage || items.Data.length == null" class="button white small">&rarr;</a>
+            <a href="" ng-click="pageChange(page = lastSizePage)" ng-disabled="page >= lastSizePage || items.Data.length == null" class="button small white rounded">last</a>
         </div>
-    </div>
+    </div><!--END WP-PAGENAVI-->
 
-    <div ng-include="'../../../AngularJs/partials/post/postList.htm'"></div>
+    </div><!--END CONTENT-->
 
-    <div class="row">
-        <div class="btn-group">
-            <button type="button" id="Button1" ng-click="pageChange(page = firstSizePage)" ng-disabled="page <= 1" class="btn btn-default glyphicon glyphicon-backward"></button>
-            <button type="button" id="Button2" ng-click="pageChange(page = page-1)" ng-disabled="page <= 1" class="btn btn-default glyphicon glyphicon-chevron-left"></button>
-            <button type="button" id="Button3" ng-click="pageChange(page = page+1)" ng-disabled="page >= lastSizePage || items.Data.length == null" class="btn btn-default glyphicon glyphicon-chevron-right"></button>
-            <button type="button" id="Button4" ng-click="pageChange(page = lastSizePage)" ng-disabled="page >= lastSizePage || items.Data.length == null" class="btn btn-default glyphicon glyphicon-forward"></button>
-        </div>
-    </div>
-</div>
+</div><!--END CONTENT-WRAPPER-->
+<!-- END BLOG -->

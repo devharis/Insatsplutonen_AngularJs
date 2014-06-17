@@ -11,7 +11,7 @@
 
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <img src="~/Content/admin/assets/images/mini1.png" alt="" class="img-circle" width="44" height="44" />
-                    Haris Kljajic
+                    <span>@User.Identity.Name</span>
                 </a>
 
                 <ul class="dropdown-menu">
@@ -49,9 +49,11 @@
            
             <li class="sep"></li>
             <li>
-                <a href="http://localhost:5428/account/relogin/">
-                    Logga ut <i class="entypo-logout right"></i>
-                </a>
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <a href="javascript:document.getElementById('logoutForm').submit()" class="entypo-logout right">Log off</a>
+                }
             </li>
         </ul>
 
@@ -59,3 +61,6 @@
 
 </div>
 <hr />
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

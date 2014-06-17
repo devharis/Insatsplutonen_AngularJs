@@ -1,0 +1,260 @@
+/*--------------------------------------------------
+			SOCIAL-BOOKMARKS
+---------------------------------------------------*/
+@font-face {
+  font-family: 'fontello';
+  src: url('../font/fontello.eot?3546776');
+  src: url('../font/fontello.eot?3546776#iefix') format('embedded-opentype'),
+       url('../font/fontello.woff?3546776') format('woff'),
+       url('../font/fontello.ttf?3546776') format('truetype'),
+       url('../font/fontello.svg?3546776#social') format('svg');
+  font-weight: normal;
+  font-style: normal;
+} 
+[class^="social-"]:before, [class*=" social-"]:before {
+    font-family: "fontello";
+    font-size:16px;  
+	line-height: 35px;
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    font-variant: normal;
+    text-transform: none;
+	float: left;
+	text-align: center;
+	width: 35px;
+	color: #999;
+	-moz-transition:all 0.14s ease 0s; 
+	-webkit-transition:all 0.14s ease 0s;   
+	-o-transition:all 0.14s ease 0s; 
+	border: 1px solid #ccc; 
+}
+[class^="social-"]:hover:before, [class*=" social-"]:hover:before {
+	color: #fff;
+	border: none; 
+}
+.social-bookmarks {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+.section-title .social-bookmarks {
+	float: right;
+}
+.social-bookmarks li, .widget .social-bookmarks li {
+	display: inline-block;
+    height: 100%;
+    padding: 0;
+	margin: 0 5px 5px 0;
+	-moz-transition:all 0.14s ease 0s; 
+	-webkit-transition:all 0.14s ease 0s;   
+	-o-transition:all 0.14s ease 0s; 
+} 
+.social-bookmarks li a {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	z-index: 2;
+	display: inline-block;
+}	
+.rounded [class^="social-"]:before, .rounded [class*=" social-"]:before {
+	border-radius: 20px 20px 20px 20px;
+}
+.rectangle [class^="social-"]:before, .rectangle [class*=" social-"]:before {
+	border-radius: 3px 3px 3px 3px;
+}
+.social-bookmarks.transparent [class^="social-"]:before {
+	border: none; 
+}
+.color [class^="social-"]:before, .color [class*=" social-"]:before { 
+	border: 1px solid #f5f5f5; 
+	background-color: #f5f5f5;
+}
+
+.social-acrobat:before { content: '\e832'; }
+.social-acrobat:hover:before {background-color: #ff0000; border: 1px solid #ff0000; }
+.social-aim:before { content: '\e803'; }
+.social-aim:hover:before {background-color: #e95a00; border: 1px solid #e95a00; }
+.social-amazon:before { content: '\e833'; }
+.social-amazon:hover:before {background-color: #f79b34; border: 1px solid #f79b34; }
+.social-appstore:before { content: '\e814'; }
+.social-appstore:hover:before {background-color: #76797c; border: 1px solid #76797c; }
+.social-blogger:before { content: '\e813'; }
+.social-blogger:hover:before {background-color: #fb913f; border: 1px solid #fb913f; }
+.social-box:before { content: '\e801'; } 
+.social-box:hover:before {background-color: #74b1e1; border: 1px solid #74b1e1; }
+.social-cloudapp:before { content: '\e831'; }
+.social-cloudapp:hover:before {background-color: #2c2c2c; border: 1px solid #2c2c2c; } 
+.social-delicious:before { content: '\e804'; }
+.social-delicious:hover:before {background-color: #3274d1; border: 1px solid #3274d1; } 
+.social-deviantart:before { content: '\f316'; }
+.social-deviantart:hover:before {background-color: #d0de21; border: 1px solid #d0de21; } 
+.social-diigo:before { content: '\e802'; }
+.social-diigo:hover:before {background-color: #2e8fdd; border: 1px solid #2e8fdd; } 
+.social-digg:before { content: '\e817'; } 
+.social-digg:hover:before {background-color: #2882c6; border: 1px solid #2882c6; }
+.social-dribbble:before { content: '\e812'; }
+.social-dribbble:hover:before {background-color: #ef5b92; border: 1px solid #ef5b92; } 
+.social-dropbox:before { content: '\e830'; }
+.social-dropbox:hover:before {background-color: #1e89da; border: 1px solid #1e89da; } 
+.social-drupal:before { content: '\e82c'; } 
+.social-drupal:hover:before {background-color: #0073ba; border: 1px solid #0073ba; }
+.social-email:before { content: '\e82d'; }
+.social-email:hover:before {background-color: #f96e5b; border: 1px solid #f96e5b; } 
+.social-evernote:before { content: '\e811'; } 
+.social-evernote:hover:before {background-color: #77ba2f; border: 1px solid #77ba2f; }
+.social-facebook:before { content: '\e829'; } 
+.social-facebook:hover:before {background-color: #3b5998; border: 1px solid #3b5998; }
+.social-flickr:before { content: '\e80f'; } 
+.social-flickr:hover:before {background-color: #f1628b; border: 1px solid #f1628b; }
+.social-foursquare:before { content: '\e80d'; } 
+.social-foursquare:hover:before {background-color: #3fa1d2; border: 1px solid #3fa1d2; }
+.social-forrst:before { content: '\e818'; } 
+.social-forrst:hover:before {background-color: #5b9a68; border: 1px solid #5b9a68; }
+.social-friendfeed:before { content: '\e800'; } 
+.social-friendfeed:hover:before {background-color: #4983cd; border: 1px solid #4983cd; }
+.social-github:before { content: '\e828'; } 
+.social-github:hover:before {background-color: #7292a2; border: 1px solid #7292a2; }
+.social-github-circled:before { content: '\e827'; }
+.social-github-circled:hover:before {background-color: #7292a2; border: 1px solid #7292a2; } 
+.social-gmail:before { content: '\e80a'; }
+.social-gmail:hover:before {background-color: #d90909; border: 1px solid #d90909; } 
+.social-gplus:before { content: '\e807'; }
+.social-gplus:hover:before {background-color: #dd4b39; border: 1px solid #dd4b39; } 
+.social-google:before { content: '\e810'; }
+.social-google:hover:before {background-color: #3089c3; border: 1px solid #3089c3; } 
+.social-gowalla:before { content: '\e815'; } 
+.social-gowalla:hover:before {background-color: #ff920d; border: 1px solid #ff920d; }
+.social-grooveshark:before { content: '\e819'; } 
+.social-grooveshark:hover:before {background-color: #f88e00; border: 1px solid #f88e00; }
+.social-html5:before { content: '\e80e'; } 
+.social-html5:hover:before {background-color: #f3642c; border: 1px solid #f3642c; }
+.social-instagram:before { content: '\f31f'; } 
+.social-instagram:hover:before {background-color: #fb913f; border: 1px solid #fb913f; }
+.social-lanyrd:before { content: '\e809'; }
+.social-lanyrd:hover:before {background-color: #074a68; border: 1px solid #074a68; } 
+.social-lastfm:before { content: '\e825'; }
+.social-lastfm:hover:before {background-color: #d21309; border: 1px solid #d21309; }
+.social-linkedin:before { content: '\e81a'; }
+.social-linkedin:hover:before {background-color: #71b2d0; border: 1px solid #71b2d0; } 
+.social-meetup:before { content: '\e82f'; }
+.social-meetup:hover:before {background-color: #E51937; border: 1px solid #E51937; } 
+.social-myspace:before { content: '\e821'; }
+.social-myspace:hover:before {background-color: #003398; border: 1px solid #003398; } 
+.social-paypal:before { content: '\e805'; }
+.social-paypal:hover:before {background-color: #32689a; border: 1px solid #32689a; } 
+.social-picasa:before { content: '\f31c'; }
+.social-picasa:hover:before {background-color: #444; border: 1px solid #444; } 
+.social-pinterest:before { content: '\e80b'; } 
+.social-pinterest:hover:before {background-color: #cb2027; border: 1px solid #cb2027; }
+.social-plurk:before { content: '\e826'; }
+.social-plurk:hover:before {background-color: #f35b36; border: 1px solid #f35b36; } 
+.social-posterous:before { content: '\e82a'; }
+.social-posterous:hover:before {background-color: #f9d560; border: 1px solid #f9d560; } 
+.social-reddit:before { content: '\e816'; } 
+.social-reddit:hover:before {background-color: #bfd0e2; border: 1px solid #bfd0e2; }
+.social-rss:before { content: '\e81b'; } 
+.social-rss:hover:before {background-color: #fe9900; border: 1px solid #fe9900; }
+.social-skype:before { content: '\e81c'; }
+.social-skype:hover:before {background-color: #18b7f1; border: 1px solid #18b7f1; } 
+.social-smashmag:before { content: '\e806'; }
+.social-smashmag:hover:before {background-color: #ef4c36; border: 1px solid #ef4c36; } 
+.social-soundcloud:before { content: '\e824'; } 
+.social-soundcloud:hover:before {background-color: #FF3300; border: 1px solid #FF3300; }
+.social-spotify:before { content: '\e835'; }
+.social-spotify:hover:before {background-color: #ef4c36; border: 1px solid #ef4c36; } 
+.social-steam:before { content: '\e82e'; }
+.social-steam:hover:before {background-color: #333; border: 1px solid #333; } 
+.social-stumbleupon:before { content: '\e02a'; } 
+.social-stumbleupon:hover:before {background-color: #eb4924; border: 1px solid #eb4924; }
+.social-tumblr:before { content: '\e823'; } 
+.social-tumblr:hover:before {background-color: #3a5976; border: 1px solid #3a5976; }
+.social-twitter:before { content: '\e81d'; } 
+.social-twitter:hover:before {background-color: #48c4d2; border: 1px solid #48c4d2; }
+.social-vimeo:before { content: '\e81f'; }
+.social-vimeo:hover:before {background-color: #62a0ad; border: 1px solid #62a0ad; }
+.social-w3c:before { content: '\e80c'; } 
+.social-w3c:hover:before {background-color: #005a9c; border: 1px solid #005a9c; }
+.social-wikipedia:before { content: '\e808'; }
+.social-wikipedia:hover:before {background-color: #464646; border: 1px solid #464646; } 
+.social-wordpress:before { content: '\e82b'; } 
+.social-wordpress:hover:before {background-color: #22759b; border: 1px solid #22759b; }
+.social-xing:before { content: '\e834'; } 
+.social-xing:hover:before {background-color: #015a60; border: 1px solid #015a60; }
+.social-yahoo:before { content: '\e820'; } 
+.social-yahoo:hover:before {background-color: #ab64bc; border: 1px solid #ab64bc; }
+.social-yelp:before { content: '\e822'; }
+.social-yelp:hover:before {background-color: #c41200; border: 1px solid #c41200; }
+.social-youtube:before { content: '\e81e'; }
+.social-youtube:hover:before {background-color: #f45750; border: 1px solid #f45750; }
+
+
+
+
+
+.social-bookmarks.full-color [class^="social-"]:before {
+	border: none; 
+	color: #fff;
+}
+.social-bookmarks.full-color [class^="social-"]:hover:before {
+	background-color: #444;
+	color: #fff;
+}
+.full-color .social-acrobat:before {background-color: #ff0000;}
+.full-color .social-aim:before {background-color: #e95a00; }
+.full-color .social-amazon:before {background-color: #f79b34;}
+.full-color .social-appstore:before {background-color: #76797c; }
+.full-color .social-blogger:before {background-color: #fb913f;}
+.full-color .social-box:before {background-color: #74b1e1;}
+.full-color .social-cloudapp:before {background-color: #2c2c2c; } 
+.full-color .social-delicious:before {background-color: #3274d1;} 
+.full-color .social-deviantart:before {background-color: #d0de21;  } 
+.full-color .social-diigo:before {background-color: #2e8fdd;  } 
+.full-color .social-digg:before {background-color: #2882c6; }
+.full-color .social-dribbble:before {background-color: #ef5b92; } 
+.full-color .social-dropbox:before {background-color: #1e89da;  } 
+.full-color .social-drupal:before {background-color: #0073ba;}
+.full-color .social-email:before {background-color: #f96e5b; } 
+.full-color .social-evernote:before {background-color: #77ba2f;  }
+.full-color .social-facebook:before {background-color: #3b5998; }
+.full-color .social-flickr:before {background-color: #f1628b; }
+.full-color .social-foursquare:before {background-color: #3fa1d2; }
+.full-color .social-forrst:before {background-color: #5b9a68;  }
+.full-color .social-friendfeed:before {background-color: #4983cd; }
+.full-color .social-github:before {background-color: #7292a2; }
+.full-color .social-github-circled:before {background-color: #7292a2;} 
+.full-color .social-gmail:before {background-color: #d90909;  } 
+.full-color .social-gplus:before {background-color: #dd4b39;  } 
+.full-color .social-google:before {background-color: #3089c3;  } 
+.full-color .social-gowalla:before {background-color: #ff920d; }
+.full-color .social-grooveshark:before {background-color: #f88e00; }
+.full-color .social-html5:before {background-color: #f3642c;  }
+.full-color .social-instagram:before {background-color: #fb913f;  }
+.full-color .social-lanyrd:before {background-color: #074a68;} 
+.full-color .social-lastfm:before {background-color: #d21309;  }
+.full-color .social-linkedin:before {background-color: #71b2d0;  } 
+.full-color .social-meetup:before {background-color: #E51937;  } 
+.full-color .social-myspace:before {background-color: #003398;} 
+.full-color .social-paypal:before {background-color: #32689a;  } 
+.full-color .social-picasa:before {background-color: #444;  } 
+.full-color .social-pinterest:before {background-color: #cb2027; }
+.full-color .social-plurk:before {background-color: #f35b36;  } 
+.full-color .social-posterous:before {background-color: #f9d560;  } 
+.full-color .social-reddit:before {background-color: #bfd0e2;  }
+.full-color .social-rss:before {background-color: #fe9900; }
+.full-color .social-skype:before {background-color: #18b7f1;} 
+.full-color .social-smashmag:before {background-color: #ef4c36; } 
+.full-color .social-soundcloud:before {background-color: #FF3300; }
+.full-color .social-spotify:before {background-color: #ef4c36; } 
+.full-color .social-steam:before {background-color: #333; } 
+.full-color .social-stumbleupon:before {background-color: #eb4924;  }
+.full-color .social-tumblr:before {background-color: #3a5976;  }
+.full-color .social-twitter:before {background-color: #48c4d2; }
+.full-color .social-vimeo:before {background-color: #62a0ad; }
+.full-color .social-w3c:before {background-color: #005a9c; }
+.full-color .social-wikipedia:before {background-color: #464646; } 
+.full-color .social-wordpress:before {background-color: #22759b;  }
+.full-color .social-xing:before {background-color: #015a60;  }
+.full-color .social-yahoo:before {background-color: #ab64bc;  }
+.full-color .social-yelp:before {background-color: #c41200; }
+.full-color .social-youtube:before {background-color: #f45750;  }

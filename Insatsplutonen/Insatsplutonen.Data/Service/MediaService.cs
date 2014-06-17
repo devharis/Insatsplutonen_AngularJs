@@ -9,15 +9,15 @@ namespace Insatsplutonen.Data.Service
 {
     public class MediaService : IMediaService
     {
-        private IBlogRepository _repository;
+        private IRepository _repository;
 
         public MediaService()
-            : this(new BlogRepository())
+            : this(new InsatsRepository())
         {
             // Empty!
         }
 
-        public MediaService(IBlogRepository repository)
+        public MediaService(IRepository repository)
         {
             this._repository = repository;
         }

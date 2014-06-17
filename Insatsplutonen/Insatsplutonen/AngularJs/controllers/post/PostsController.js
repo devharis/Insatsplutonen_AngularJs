@@ -1,9 +1,9 @@
 ﻿var articleContrl = angular.module('app.controller', ['textAngular', 'angularFileUpload'])
     .controller('PostsController', [
-        '$scope', '$routeParams', '$location', '$sce', 'postService',
-        function ($scope, $routeParams, $location, $sce, postService) {
+        '$scope', '$routeParams', '$location', '$sce', '$filter', 'postService',
+        function ($scope, $routeParams, $location, $sce, $filter, postService) {
 
-            $scope.take = $routeParams.take || 10;
+            $scope.take = $routeParams.take || 5;
             $scope.page = $routeParams.page || 1;
             $scope.searchtext = $routeParams.search || "";
             $scope.ascending = $routeParams.ascending || false;
@@ -17,8 +17,13 @@
                     .then(function (response) {                
                         $scope.items = response;
                         angular.forEach(response.Data, function (item) {
+                            item.Content = item.Content.substr(0, 300) + "...";
+                            var regex = /(<([^>]+)>)/ig;
+                            item.Content = item.Content.replace(regex, "");
                             var date = new Date(parseInt(item.Created.substr(6)));
-                            item.Created = date.toDateString("YYYY-MM-DD");
+                            item.day = $filter('DateToDay')(date);
+                            item.month = $filter('DateToMonth')(date);
+                            item.year = $filter('DateToYear')(date);
                         });
 
                         $scope.pagingarray = response.Pagingarray;

@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Transactions;
 using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
+using Insatsplutonen.Data.Interface;
+using Insatsplutonen.Data.Service;
 using Insatsplutonen.Model;
+using Insatsplutonen.Model.Account;
 using Insatsplutonen.Model.Filters;
+using Insatsplutonen.ViewModel;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 
@@ -16,6 +21,19 @@ namespace Insatsplutonen.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+        private readonly IUserService _service;
+
+        public AccountController()
+            : this(new UserService())
+        {
+
+        }
+
+        public AccountController(IUserService service)
+        {
+            this._service = service;
+        }
+
         //
         // GET: /Account/Login
 
@@ -25,6 +43,72 @@ namespace Insatsplutonen.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
+
+        [HttpGet]
+        public ActionResult Users()
+        {
+            return View("Users");
+        }
+
+        [HttpGet]
+        public JsonResult GetPaginatedUsers(int take, int page, string search)
+        {
+            page = page - 1;
+
+            var result = new PaginationResult();
+            var userList = this._service.GetUsers().Where(
+                    c => c.UserName.ToLower().Contains(search.ToLower()
+                )).ToList();
+
+            result.TotalItems = userList.Count;
+            result.Data = userList.Skip(page * take).Take(take).ToList();
+            result.TotalPages = (result.TotalItems % take == 0) ? result.TotalItems / take : result.TotalItems / take + 1;
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult AddUser()
+        {
+            return View("AddUser");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddUser(UserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Attempt to register the user
+                try
+                {
+                    WebSecurity.CreateUserAndAccount(model.RegisterModel.UserName, model.RegisterModel.Password,
+                        new
+                        {
+                            Firstname = model.UserProfile.Firstname,
+                            Lastname = model.UserProfile.Lastname,
+                            Befattning = model.UserProfile.Befattning,
+                            Phone = model.UserProfile.Phone
+                        });
+                    return View("AddUser");
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        [HttpGet]
+        public JsonResult GetUser(int id)
+        {
+            var result = this._service.GetUser(id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
 
         //
         // POST: /Account/Login
@@ -36,13 +120,14 @@ namespace Insatsplutonen.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                return RedirectToLocal(returnUrl);
+                return RedirectToAction("Dashboard", "Manage");
             }
 
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
             return View(model);
         }
+
 
         //
         // POST: /Account/LogOff
@@ -53,7 +138,7 @@ namespace Insatsplutonen.Controllers
         {
             WebSecurity.Logout();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         //
@@ -80,7 +165,7 @@ namespace Insatsplutonen.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Posts", "Manage");
                 }
                 catch (MembershipCreateUserException e)
                 {

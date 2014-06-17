@@ -1,5 +1,7 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using Insatsplutonen.Model.Account;
 using Insatsplutonen.Model.Blog;
 using Insatsplutonen.Model.Media;
 
@@ -23,6 +25,8 @@ namespace Insatsplutonen.Data
             modelBuilder.Entity<PostMedia>().ToTable("PostMedia");
             modelBuilder.Entity<Media>().ToTable("Media");
             modelBuilder.Entity<MediaCategory>().ToTable("MediaCategory");
+
+            modelBuilder.Entity<UserProfile>().ToTable("UserProfile");
 
             modelBuilder.Entity<Media>().HasRequired(t => t.MediaCategory);
             modelBuilder.Entity<Post>().HasMany(t => t.MediaList);

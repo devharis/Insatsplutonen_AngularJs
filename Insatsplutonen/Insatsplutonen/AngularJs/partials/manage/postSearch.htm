@@ -2,7 +2,7 @@
 <br />
 <div id="table-4_wrapper" class="dataTables_wrapper form-inline" role="grid">
     <div class="row">
-        <div class="col-xs-5 col-left">
+        <div class="col-xs-8 col-left">
             <div id="table-4_length" class="dataTables_length">
                 <label>
                     <select name="ddltake" size="1" name="table-4_length" aria-controls="table-4" ng-model="take" ng-change="takeChange()">
@@ -12,35 +12,25 @@
                         <option>50</option>
                     </select> per sida
                 </label>
-            </div>
-        </div>
-        <div class="col-xs-5" style="background: #fff;border-top: 1px solid #ebebeb;padding-top: 13px;">
+                <label>
+                    <input type="text" class="form-control" aria-controls="table-4" ng-model="searchtext" placeholder="Sök..." ng-change="searchChange()" />
+                </label>
 
-            <div class="col-xs-3 pull-right" style="float: right; display: block; white-space: nowrap; margin-right: 20px">
-                <label>Search: <input type="text" class="form-control col-xs-12" aria-controls="table-4" ng-model="searchtext" ng-change="searchChange()" /></label>
-            </div>
+                <label>
 
-            <div class="col-xs-3 pull-right">
-                <label style="float: right; display: block; white-space: nowrap; margin-right: 40px">
-                    Sort by:
                     <select name="sort_by" ng-model="sortby" ng-change="sortbyChange()" class="form-control">
                         <option selected="selected" value="default">Default</option>
                         <option value="title">Titel</option>
                         <option value="date">Datum</option>
                     </select>
                 </label>
-            </div>
 
-
-            <div class="col-xs-2 pull-right" style="float: right; display: block; white-space: nowrap;">
                 <label>
-                    Ascending:
                     <input type="checkbox" ng-model="ascending" ng-change="ascendingChange()" />
                 </label>
             </div>
-
         </div>
-        <div class="col-xs-2 col-right">
+        <div class="col-xs-4 col-right">
 
             <div class="dataTables_filter" id="table-4_filter">
                 <div class="row pull-right" style="float: right; display: block; white-space: nowrap; margin: -16px 0;">
@@ -52,6 +42,8 @@
                 </div>
             </div>
         </div>
+
+
 
     </div>
 

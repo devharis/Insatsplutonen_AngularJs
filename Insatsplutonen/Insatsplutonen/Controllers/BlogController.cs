@@ -28,11 +28,6 @@ namespace Insatsplutonen.Controllers
             this._service = service;
         }
 
-        public ActionResult Stats()
-        {
-            return View("Stats");
-        }
-
         public ActionResult Posts()
         {
             return View("Posts");
@@ -90,29 +85,6 @@ namespace Insatsplutonen.Controllers
             var result = !image.IsNullOrWhiteSpace();
 
             return Json(result, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpPost]
-        [ValidateInput(false)]
-        public JsonResult UpdatePost(string postJson)
-        {
-            var userMessage = "";
-            var post = JsonConvert.DeserializeObject<Post>(postJson);
-
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    _service.UpdatePost(post);
-                    userMessage = "Nyheten är uppdaterad.";
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Fel inträffade: " + ex.Message);
-            }
-
-            return Json(userMessage, JsonRequestBehavior.AllowGet);
         }
     }
 }

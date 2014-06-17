@@ -1,4 +1,4 @@
-﻿@model Insatsplutonen.Model.LoginModel
+﻿@model Insatsplutonen.Model.Account.LoginModel
 
 @{
     ViewBag.Title = "Insatsplutonen | Login";
@@ -67,7 +67,7 @@
                         <i class="entypo-login"></i>
                     </button>
                 </div>
-
+                <button type="submit">Go!</button>
 
 
             }
@@ -81,3 +81,6 @@
     </div>
 
 </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

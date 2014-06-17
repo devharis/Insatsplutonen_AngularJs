@@ -14,7 +14,7 @@
         <tbody>
             <tr ng-repeat="item in items.Data" class="odd gradeA">
                 <td style="cursor:pointer;">
-                    <a ng-href="" ng-click="postClick(item.Id)">{{item.Title}}</a>
+                    <a ng-href="" href="blog/posts#/{{item.Id}}">{{item.Title}}</a>
                 </td>
                 <td ng-bind-html="isTrusted(item.Content)" style="width: 50%;"></td>
                 <td>
@@ -26,13 +26,13 @@
                 <td>
                     {{item.Created}}
                 </td>
-                <td>
-                    <a href="anvandare-redigera.html" class="btn btn-default btn-sm btn-icon icon-left">
+                <td style="text-align: center;">
+                    <a href="" ng-click="postClick(item.Id)" class="btn btn-default btn-sm btn-icon icon-left">
                         <i class="entypo-pencil"></i>
                         Redigera
                     </a>
 
-                    <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                    <a href="" ng-click="deletePostClick(item.Id)" class="btn btn-danger btn-sm btn-icon icon-left">
                         <i class="entypo-cancel"></i>
                         Radera
                     </a>

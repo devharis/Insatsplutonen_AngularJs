@@ -12,17 +12,15 @@
             $scope.ascending = $routeParams.ascending || false;
             $scope.sortby = $routeParams.sortby || "default";
 
-
             getPosts(true);
 
             function getPosts(reloadPage) {
-
                 postService.GetPaginatedPosts($scope.take, $scope.page, $scope.searchtext, $scope.ascending, $scope.sortby)
                     .then(function (response) {
                         $scope.items = response;
                         angular.forEach(response.Data, function (item) {
                             var date = new Date(parseInt(item.Created.substr(6)));
-                            item.Created = date.toDateString("YYYY-MM-DD");
+                            item.Created = date.toDateString("DateToShortISOWithMonthName");
                         });
 
                         $scope.pagingarray = response.Pagingarray;
@@ -43,6 +41,7 @@
 
             $scope.isTrusted = function (html) {
                 html = html.substr(0, 300);
+                html = html.replace(/<\/?[^>]+(>|$)/g, "");
                 html += "...";
                 return $sce.trustAsHtml(html);
             }
@@ -52,38 +51,57 @@
                 $event.stopPropagation();
                 $scope.opened.value = true;
             };
+
             $scope.openPublish = function ($event) {
                 $event.preventDefault();
                 $event.stopPropagation();
                 $scope.openedPublish.value = true;
             };
 
+            $scope.deletePostClick = function (postId) {
+                var retVal = confirm("Vill du ta bort nyheten?");
+                if (retVal) {
+                    postService.DeletePost(postId)
+                       .then(function (response) {
+                            getPosts();
+                        },
+                       function (errorMessage) {
+                           $scope.error = errorMessage;
+                       });
+                }
+            }
+
             $scope.takeChange = function () {
                 $scope.page = 1;
                 updateLocation();
                 getPosts(true);
             };
+
             $scope.pageChange = function () {
                 updateLocation();
                 getPosts(false);
             };
+
             $scope.searchChange = function () {
                 $scope.page = 1;
                 updateLocation();
                 getPosts(true);
             };
+
             $scope.ascendingChange = function () {
                 $scope.page = 1;
                 $scope.sortby = "default";
                 updateLocation();
                 getPosts(true);
             }
+
             $scope.sortbyChange = function () {
                 $scope.page = 1;
                 $scope.ascending = false;
                 updateLocation();
                 getPosts(true);
             }
+
             $scope.postClick = function (id) {
                 id = (parseInt(id));
                 $location.url('/' + id);

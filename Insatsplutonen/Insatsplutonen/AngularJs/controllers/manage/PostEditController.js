@@ -15,13 +15,49 @@
             };
 
             function addMediaList(mediaList) {
-                postService.AddMediaToPost(mediaList)
+                postService.AddMediaListForPost(mediaList, $routeParams.id)
                     .then(function (response) {
-                        console.log(response);
+                        getPost();
                     },
                     function (errorMessage) {
                         $scope.error = errorMessage;
                     });
+            };
+
+            function addMedia(media) {
+                postService.AddMediaForPost(media, $routeParams.id)
+                    .then(function (response) {
+                        getPost();
+                    },
+                    function (errorMessage) {
+                        $scope.error = errorMessage;
+                    });
+            };
+
+            $scope.removeMediaForPost = function () {
+                var retVal = confirm("Vill du ta visningsbilden?");
+                if (retVal) {
+                    postService.RemoveMediaForPost($routeParams.id)
+                        .then(function(response) {
+                                getPost();
+                            },
+                            function(errorMessage) {
+                                $scope.error = errorMessage;
+                            });
+                }
+            };
+
+            $scope.removeMediaListForPost = function (mediaId) {
+                var retVal = confirm("Vill du ta bort vald media?");
+                if (retVal) {
+                    postService.RemoveMediaForPost(mediaId, $routeParams.id)
+                        .then(function(response) {
+                                getPost();
+                            },
+                            function(errorMessage) {
+                                $scope.error = errorMessage;
+                            });
+                }
             };
 
             $scope.onClickUpdatePost = function (item) {
@@ -31,7 +67,7 @@
                 else
                     item.Created = $filter('DateToShortISOWithMonthName')(item.Created);
 
-                postService.updatePost(item)
+                postService.UpdatePost(item)
                     .then(function (response) {
                         console.log(response);
                     },
@@ -40,10 +76,21 @@
                     });
             };
 
-            $scope.addImagesFromLibrary = function() {
+            $scope.addMediaFromLibrary = function () {
                 var modalInstance = $modal.open({
                     templateUrl: '../../AngularJs/partials/manage/addMedia.htm',
                     controller: 'addMediaController'
+                });
+                modalInstance.result.then(function (media) {
+                    addMedia(media);
+                }, function () {
+                });
+            };
+
+            $scope.addMediaListFromLibrary = function () {
+                var modalInstance = $modal.open({
+                    templateUrl: '../../AngularJs/partials/manage/addMediaList.htm',
+                    controller: 'addMediaListController'
                 });
                 modalInstance.result.then(function (mediaList) {
                     addMediaList(mediaList);
