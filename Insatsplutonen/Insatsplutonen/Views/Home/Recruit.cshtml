@@ -1,0 +1,199 @@
+﻿@model Insatsplutonen.Model.Contact.Recruit
+
+@{
+    ViewBag.Title = "Insatsplutonen | Ansökan";
+    ViewBag.CurrentPage = "Kontakt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- START ELEMENTS -->
+
+<div id="content-wrapper">
+
+    <div class="page-header text-align-center">
+
+        <h1 class="title uppercase">Elements</h1>
+        <h2 class="subtitle">you can use for just about anything you can think of</h2>
+
+    </div><!--END PAGE-HEADER-->
+
+    <div class="content">
+
+        <div class="section">
+
+            <div class="one-half">
+                <h3 class="title">Här nedan följer information om att gå med i Insatsplutonen:</h3>
+
+                <div class="toggle-wrap">
+                    <span class="trigger">
+                        <a href="#">
+                            <span style="padding: 0 7px;
+text-align: center;
+border-radius: 25px 25px 25px 25px;
+background-color: #444;
+color: #fff;">1</span> Krav
+                        </a>
+                    </span>
+                    <div class="toggle-container">
+                        <h4><span class="highlight3">Krav</span></h4>
+                        <p><span class="highlight2">Steg 1</span></p>
+                        <p>Kriterier för att få söka:</p>
+                        <ul class="icons-ul">
+                            <li><i class="icon-li icon-ok"></i> Genomförd värnplikt alternativt GMU.</li>
+                            <li><i class="icon-li icon-ok"></i> Vara disponibel för oss, det vill säga att du har tid att delta i övningsverksamheten samt skarpa uppgifter som vi tilldelas.</li>
+                            <li><i class="icon-li icon-ok"></i> Du bör bo i någon av kommunerna Oskarshamn, Mönsterås eller Högsby.</li>
+                        </ul>
+                        <p>Vad händer sedan:</p>
+                        <ul class="icons-ul">
+                            <li><i class="icon-li icon-ok"></i> Vi pratar med dig för att se om du passar i gänget och till uppgifterna</li>
+                            <li><i class="icon-li icon-ok"></i> Du skriver en ansökan som vi skickar in till myndigheten</li>
+                        </ul>
+                    </div><!--END TOGGLE-CONTAINER-->
+                </div><!--END TOGGLE-WRAP-->
+
+                <div class="toggle-wrap">
+                    <span class="trigger">
+                        <a href="#">
+                            <span style="padding: 0 7px;
+text-align: center;
+border-radius: 25px 25px 25px 25px;
+background-color: #444;
+color: #fff;">2</span> Säkerhet
+                        </a>
+                    </span>
+                    <div class="toggle-container">
+                        <h4><span class="highlight3">Säkerhet</span></h4>
+                        <p><span class="highlight2">Steg 2</span></p>
+                        <ul class="icons-ul">
+                            <li><i class="icon-li icon-ok"></i> Säkerhetsprövning. Bygger på personlig kännedom baserad på intyg, betyg och referenser samt den genomförda intervjun. Därefter genomförs en registerkontroll (kontroll mot olika polisregister) för inplacering i en säkerhetsklass. Om det förekommer uppgifter i dessa register så avgör Registernämnden om Försvarsmakten skall få ta del av dessa.</li>
+                            <li><i class="icon-li icon-ok"></i> Kommunen tillfrågas om det är lämpligt att anta den sökande.</li>
+                            <li><i class="icon-li icon-ok"></i> Efter det att antagning har skett så inplaceras vederbörande i en säkerhetsklass vilket innebär att FM får veta (s k spontanutfall) om hemvärnssoldaten gör sig skyldig till något som kan ifrågasätta medlemskapet i hemvärnet. Blir du godkänd så skall du gå introduktionsutbildning för att kunna bli placerad hos oss.</li>
+                        </ul>
+                    </div><!--END TOGGLE-CONTAINER-->
+                </div><!--END TOGGLE-WRAP-->
+
+                <div class="toggle-wrap">
+                    <span class="trigger">
+                        <a href="#">
+                            <span style="padding: 0 7px;
+text-align: center;
+border-radius: 25px 25px 25px 25px;
+background-color: #444;
+color: #fff;">3</span> Introkurs
+                        </a>
+                    </span>
+                    <div class="toggle-container">
+                        <h4><span class="highlight3">Introkurs</span></h4>
+                        <p><span class="highlight2">Steg 3</span></p>
+                        <p>
+                            Introduktionsutbildning syftar till att göra dig uppmärksam på hemvärnets organisation och uppgifter. Du får utbildning på ditt vapen och får skjuta in det också, detta testas och du måste bli godkänd. Du får lättare utbildning i 'första hjälpen' samt gör täthetsprov med din skyddsmask.
+                            Nu är du färdig och kan börja öva med oss, mycket nöje!
+                        </p>
+                    </div><!--END TOGGLE-CONTAINER-->
+                </div><!--END TOGGLE-WRAP-->
+
+                <div class="toggle-wrap">
+                    <span class="trigger">
+                        <a href="#">
+                            <span style="padding: 0 7px;
+text-align: center;
+border-radius: 25px 25px 25px 25px;
+background-color: #444;
+color: #fff;">4</span> Skyddsvaktsutb
+                        </a>
+                    </span>
+                    <div class="toggle-container">
+                        <h4><span class="highlight3">Skyddsvaktsutbildning</span></h4>
+                        <p><span class="highlight2">Steg 4</span></p>
+                        <p>Nästa steg är skyddsvaktsutbildning, denna skall du genomföra även om du nyligen gjort det under din värnplikt eller under din GMU, med tanke på att du har ett annat vapen nu.</p>
+                    </div><!--END TOGGLE-CONTAINER-->
+                </div><!--END TOGGLE-WRAP-->
+
+            </div><!--END ONE-HALF-->
+            <div class="one last">
+                @Html.ValidationSummary(true)
+                @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @id = "contact_form", @class = "form" }))
+                {
+                    <div class="one-half last">
+                        <p class="form-name">
+                            <label for="name">Namn <em>(*)</em></label>
+                            @Html.ValidationMessageFor(model => model.Name, string.Empty, new { @id = "error" })
+                            <div class="field">@Html.TextBoxFor(model => model.Name, new { @class = "requiredField" })</div>
+                        </p>
+
+                        <p class="form-name">
+                            <label for="email">Email <em>(*)</em></label>
+                            @Html.ValidationMessageFor(model => model.Email, string.Empty, new { @id = "error" })
+                            <div class="field">@Html.TextBoxFor(model => model.Email, new { @class = "requiredField" })</div>
+                        </p>
+
+                        <p class="form-name">
+                            <label for="url">Persnr <em>(*)</em></label>
+                            @Html.ValidationMessageFor(model => model.SocialNumb, string.Empty, new { @id = "error" })
+                            <div class="field">@Html.TextBoxFor(model => model.SocialNumb, new { @class = "requiredField" })</div>
+                        </p>
+                        
+                        <p class="form-name">
+                            <label for="url">Telefon <em>(*)</em></label>
+                            @Html.ValidationMessageFor(model => model.Phone, string.Empty, new { @id = "error" })
+                            <div class="field">@Html.TextBoxFor(model => model.Phone, new { @class = "requiredField" })</div>
+                        </p>
+                    </div>
+                    <div class="one-half last">
+ 
+
+                        <p class="form-name">
+                            <label for="url">Ort <em>(*)</em></label>
+                            @Html.ValidationMessageFor(model => model.Place, string.Empty, new { @id = "error" })
+                            <div class="field">@Html.TextBoxFor(model => model.Place, new { @class = "requiredField" })</div>
+                        </p>
+
+                        <p class="form-name">
+                            <label for="url">Befattning <em>(*)</em></label>
+                            @Html.ValidationMessageFor(model => model.Post, string.Empty, new { @id = "error" })
+                            <div class="field">@Html.TextBoxFor(model => model.Post, new { @class = "requiredField" })</div>
+                        </p>
+
+                        <p class="form-name">
+                            <label for="url">Regemente <em>(*)</em></label>
+                            @Html.ValidationMessageFor(model => model.Regiment, string.Empty, new { @id = "error" })
+                            <div class="field">@Html.TextBoxFor(model => model.Regiment, new { @class = "requiredField" })</div>
+                        </p>
+                    </div>
+                    <div class="two-third">
+
+                        <p class="form-name">
+                            <label for="message">Meddelande <em>(*)</em></label>
+                            @Html.ValidationMessageFor(model => model.Other, string.Empty, new { @id = "error" })
+                            <div class="textarea">@Html.TextAreaFor(model => model.Other, new { @rows = "1", @cols = "1", @class = "requiredField" })</div>
+                        </p>
+
+                        <p class="form-submit">
+                            <input name="submit" id="submitted" value="Skicka" class="submit button medium grey" type="submit" />
+                        </p>
+                    </div>
+                }
+
+            </div><!--END TWO-THIRD LAST-->
+
+        </div><!--END SECTION-->
+
+    </div><!--END CONTENT-->
+
+</div><!--END CONTENT-WRAPPER-->
+<!-- END ELEMENTS -->
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            // Call fitVid before FlexSlider initializes, so the proper initial height can be retrieved.
+            $("#portfolio-slider")
+              .flexslider({
+                  animation: "fade",
+                  slideshowSpeed: 3500,
+                  animationDuration: 500,
+                  controlNav: false,
+                  smoothHeight: true
+              });
+        });
+    </script>
+}

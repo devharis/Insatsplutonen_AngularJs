@@ -1,5 +1,4 @@
-﻿var articleService = angular.module('app.service', [])
-    .service('postService', ['$http', '$q', function ($http, $q) {
+﻿appBlog.service('postService', ['$http', '$q', function ($http, $q) {
 
         this.GetPaginatedPosts = function (take, page, search, ascending, sortby) {
             var deferred = $q.defer();

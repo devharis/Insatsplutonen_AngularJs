@@ -3,10 +3,23 @@
     ViewBag.CurrentPage = "Nyheter";
 }
 
-<div ng-view="">
+<div ng-app="app">
+    <div ng-view="">
+    </div>
 </div>
 
 @section scripts{
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="~/Scripts/angular-file-upload.js"></script>
+
+    <script src="~/AngularJs/source/ui-bootstrap/ui-bootstrap-custom-0.10.0.min.js"></script>
+    <script src="~/AngularJs/source/ui-bootstrap/ui-bootstrap-custom-tpls-0.10.0.min.js"></script>
+
+
+    <script src="~/AngularJs/source/flexAngular/angular-flexslider.js"></script>
+
     <script src="~/AngularJs/source/textAngular/textAngular-sanitize.js"></script>
     <script src="~/AngularJs/source/textAngular/textAngularSetup.js"></script>
     <script src="~/AngularJs/source/textAngular/textAngular.js"></script>
@@ -14,10 +27,9 @@
     <script src="~/AngularJs/app.js"></script>
     <script src="~/AngularJs/controllers/post/PostsController.js"></script>
     <script src="~/AngularJs/controllers/post/PostController.js"></script>
-    <script src="~/AngularJs/controllers/post/PostEditController.js"></script>
-   
+
     <script src="~/AngularJs/service/post/postService.js"></script>
-    
+
     <script src="~/AngularJs/filters/customFilters.js"></script>
     <script src="~/AngularJs/source/momentjs/moment.js"></script>
 

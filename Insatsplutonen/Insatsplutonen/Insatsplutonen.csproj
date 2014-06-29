@@ -249,9 +249,11 @@
     <Content Include="AngularJs\service\media\mediaService.js" />
     <Content Include="AngularJs\service\post\%24fileUploader.js" />
     <Content Include="AngularJs\service\post\postService.js" />
+    <Content Include="AngularJs\source\flexAngular\angular-flexslider.js" />
     <Content Include="AngularJs\source\momentjs\moment.js" />
     <Content Include="AngularJs\source\ui-bootstrap\ui-bootstrap-custom-0.10.0.min.js" />
     <Content Include="AngularJs\source\ui-bootstrap\ui-bootstrap-custom-tpls-0.10.0.min.js" />
+    <Content Include="AngularJs\source\ui-bootstrap\ui-bootstrap-tpls-0.11.0.min.js" />
     <Content Include="AngularJs\source\uploadFiles.css" />
     <Content Include="Content\admin\assets\css\custom.css" />
     <Content Include="Content\admin\assets\css\font-icons\entypo\css\animation.css" />
@@ -3025,6 +3027,7 @@
     <Content Include="Content\assets\font\fontawesome-webfont.woff" />
     <Content Include="Content\assets\font\FontAwesome.otf" />
     <Content Include="Content\assets\images\prettyPhoto\light_square\.DS_Store" />
+    <None Include="Properties\PublishProfiles\ccgorilla.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\angular-file-upload.js" />
     <Content Include="Scripts\angular-route.js" />
@@ -3087,6 +3090,9 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Home\Start.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Recruit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AngularJs\directives\" />

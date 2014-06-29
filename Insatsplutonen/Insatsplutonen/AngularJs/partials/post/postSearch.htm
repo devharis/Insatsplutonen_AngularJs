@@ -1,10 +1,10 @@
 ﻿<div id="content-wrapper">
     <div class="page-header text-align-center">
-        <div class="one-fifth">
+        <div class="one-fifth last">
             <input type="text" id="searchTxt" class="form-control" ng-model="searchtext" placeholder="Ange sökord" ng-change="searchChange()" />
         </div>
 
-        <div class="one-fifth">
+        <div class="one-fifth last">
             <label>Sortera:</label>
             <select name="sort_by" ng-model="sortby" ng-change="sortbyChange()" class="form-control">
                 <option selected="selected" value="default">Default</option>
@@ -13,12 +13,12 @@
             </select>
         </div>
 
-        <div class="one-fifth">
+        <div class="one-fifth last">
             <label>Aktuell sida:</label>
             <select class="form-control" id="ddlPage" name="ddlPage" ng-change="pageChange()" ng-model="page" ng-options="page for page in items.Pagingarray"></select>
         </div>
 
-        <div class="one-fifth">
+        <div class="one-fifth last">
             <label>Per sida</label>
             <select name="ddltake" id="ddltake" class="form-control" ng-model="take" ng-change="takeChange()">
                 <option>5</option>

@@ -9,11 +9,7 @@ namespace Insatsplutonen
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Content/admin/assets/js/jquery-1.10.2.js",
-                        "~/Scripts/angular.js",
-                        "~/Scripts/angular-route.js",
-                        "~/Scripts/angular-sanitize.js",
-                        "~/Scripts/angular-file-upload.js"));
+                "~/Content/assets/javascript/jquery-1.8.3.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));

@@ -1,7 +1,6 @@
-﻿var articleContrl = angular.module('app.controller', ['textAngular', 'angularFileUpload'])
-    .controller('PostsController', [
-        '$scope', '$routeParams', '$location', '$sce', '$filter', 'postService',
-        function ($scope, $routeParams, $location, $sce, $filter, postService) {
+﻿appBlog.controller('PostsController', [
+        '$scope', '$routeParams', '$location', '$sce', '$filter', '$window', 'postService',
+        function ($scope, $routeParams, $location, $sce, $filter, $window, postService) {
 
             $scope.take = $routeParams.take || 5;
             $scope.page = $routeParams.page || 1;
@@ -53,6 +52,7 @@
             };
             $scope.pageChange = function () {
                 updateLocation();
+                $window.scrollTo(0, 0);
                 getPosts(false);
             };
             $scope.searchChange = function () {

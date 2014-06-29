@@ -1,12 +1,93 @@
-﻿
-<h3>{{ item.Title }} <a  style="cursor:pointer;" ng-href="" ng-click="editPostClick(item.Id)">Edit</a></h3>
-<img width="20%" src="../../images/blog/{{item.Media}}" alt="{{item.Media}}" />
-<div ng-bind-html="item.Content"></div>
-<p></p>
-<p>Skribent - {{ item.Author }}</p>
-<p>Datum - {{ item.Created }}</p>
+﻿<style>
+    .flexslider .slides li {
+    position:relative;
+}
 
+.flex-caption {
+position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+}
 
-<div ng-repeat="postmedia in item.MediaList">
-    <img src="../images/blog/{{postmedia.File}}" alt="{{postmedia.Description}}" />
-</div>
+</style>
+
+<div id="content-wrapper">
+
+    <div class="page-header text-align-center" style="border-bottom: none; padding: 0;">
+
+    </div><!--END PAGE-HEADER-->
+
+    <div class="blog-single content">
+        <div class="post">
+
+            <div class="post-media">
+                <flex-slider fslide="postmedia in item.MediaList track by $index" animation="slide" animationloop="true" slideshow="true">
+                    <li>
+                        <img ng-src="../images/blog/{{postmedia.File}}" style="height:600px">
+                        <p class='flex-caption' style="margin-top: 375px;">{{postmedia.Description}}</p>
+                    </li>
+                </flex-slider>
+
+                <a href="" ng-show="item.MediaList.length == 0"><img src="http://placehold.it/1130x445" alt="" /></a>
+                
+            </div>
+        
+          
+            <div class="post-content">
+
+                <div class="post-date">
+                    <ul>
+                        <li><span class="month">{{item.month}}</span> <span class="day">{{item.day}}</span> <span class="year">{{item.year}}</span></li>
+                        <li><span><a href="#">0 comments</a></span></li>
+                    </ul>
+                </div><!--END POST-DATE-->
+
+                <div class="post-title">
+                    <h2 class="title"><a href="#">{{ item.Title }}</a></h2>
+                </div><!--END POST-TITLE-->
+
+                <div class="post-meta">
+                    <ul>
+                        <li><span>Postad av <a href="#">{{ item.Author }}</a></span></li>
+                    </ul>
+                </div><!--END POST-META-->
+
+                <div ng-bind-html="item.Content"></div>
+
+            </div><!--END POST-CONTENT -->
+
+        </div><!--END POST-->
+
+        <div class="post">
+
+            <div class="post-content">
+
+                <h3 class="title">0 comments</h3>
+
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'insatsplutonen'; // required: replace example with your forum shortname
+                    var disqus_identifier = document.URL;
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function () {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+            </div><!--END POST-CONTENT -->
+
+        </div><!--END POST-->
+
+    </div><!--END CONTENT-->
+
+</div><!--END CONTENT-WRAPPER-->
+<!-- END BLOG -->

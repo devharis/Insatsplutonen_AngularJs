@@ -19,8 +19,8 @@
                     <a href="#"><img src="~/Content/assets/start/start2.png" alt="" /></a>
                     <div class="flex-caption transparent light-font">
                         <div>
-                            <h2><span class="uppercase">It is important to make a web <br>site visually attractive</span></h2>
-                            <p><span class="lowercase">That`s why we never lose sight of the fact <br>that every site must be easy to use and intuitive. Try it, it's 100% fat free</span></p>
+                            <h2><span class="uppercase">Grupps strid, Hamburger hill</span></h2>
+                            <p><span class="lowercase">Här kan man skriva något mer vettigt</span></p>
                             <p><a href="#" class="button medium green">Läs vår blog</a></p>
                         </div>
                     </div>
@@ -29,9 +29,9 @@
                     <a href="#"><img src="~/Content/assets/start/start1.png" alt="" /></a>
                     <div class="flex-caption transparent light-font center">
                         <div>
-                            <h2><span class="uppercase">Design is important <br>because chaos is so hard</span></h2>
-                            <p><span class="lowercase">That's why our team was created from the desire <br>to make a living while promoting and nurturing what we value in our daily lives.</span></p>
-                            <p><a href="#" class="button medium white">Om oss</a></p>
+                            <h2><span class="uppercase">Alpha Quebec - Malmö, 2013</span></h2>
+                            <p><span class="lowercase">Här kan man skriva något mer vettigt</span></p>
+                            <p><a href="#" class="button medium grey">Vilka är vi?</a></p>
                         </div>
                     </div>
                 </li>
@@ -40,8 +40,8 @@
                     <a href="#"><img src="http://placehold.it/1920x600" alt="" /></a>
                     <div class="flex-caption dark center">
                         <div>
-                            <h2><span class="uppercase">The funny thing is we <br>like to make things for web</span></h2>
-                            <p><span class="lowercase">In fact we are little bit too obsessed. <br>In fact we earn money whilst working on things we're totally in love with</span></p>
+                            <h2><span class="uppercase">Här kan man skriva något mer vettigt</span></h2>
+                            <p><span class="lowercase">Här kan man skriva något mer vettigt</span></p>
                             <p><a href="#" class="button medium grey">Intresserad?</a></p>
                         </div>
                     </div>
@@ -51,8 +51,8 @@
                     <a href="#"><img src="http://placehold.it/1920x600" alt="" /></a>
                     <div class="flex-caption light">
                         <div>
-                            <h2><span class="uppercase">Design is important <br>because chaos is so hard.</span></h2>
-                            <p><span class="lowercase">That's why our team was created from the desire  <br>to make a living while promoting and nurturing what we value in our daily lives.</span></p>
+                            <h2><span class="uppercase">Här kan man skriva något mer vettigt</span></h2>
+                            <p><span class="lowercase">Här kan man skriva något mer vettigt</span></p>
                             <p><a href="#" class="button medium grey">Vilka är vi?</a></p>
                         </div>
                     </div>
@@ -126,11 +126,10 @@
                 <h4>Vi letar alltid efter fler plutonsmedlemmar, hör av dig redan idag.</h4>
 
                 <div class="one-half button-group aligncenter">
-                    <a href="#" class="button grey"><span class="title">Ansök här</span><span class="subtitle">genom formuläret</span></a>
+                    <a href="/Home/Recruit" class="button grey"><span class="title">Ansök här</span><span class="subtitle">genom intresseanmälan</span></a>
                     <span class="or radius-200">eller</span>
-                    <a href="#" class="button green"><span class="title">Kontakta oss</span><span class="subtitle">här</span></a>
+                    <a href="/Home/Contact" class="button green"><span class="title">Kontakta oss</span><span class="subtitle">här genom forumläret</span></a>
                 </div><!--END ONE-HALF BUTTON-GROUP-->
-
             </div><!--END ONE-->
 
         </div><!--END SECTION-->
@@ -139,3 +138,18 @@
 
 </div><!--END CONTENT-WRAPPER-->
 <!-- END HOME -->
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#index-slider').flexslider({
+                animation: "fade",
+                slideDirection: "",
+                slideshowSpeed: 3500,
+                animationDuration: 500,
+                pauseOnHover: true,
+                smoothHeight: true
+            });
+        });
+    </script>
+}

@@ -1,0 +1,107 @@
+﻿@model Insatsplutonen.Model.Contact.Contact
+
+@{
+    ViewBag.Title = "Insatsplutonen | Kontakt";
+    ViewBag.CurrentPage = "Kontakt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- START CONTACT -->
+
+<div id="content-wrapper">
+
+    <div id="bra-map" class="google-map-3"></div>
+
+    <div class="page-header fullwidth text-align-center">
+
+        <div class="holder">
+
+            <h1 class="title uppercase">Kontakta oss gärna!</h1>
+            <h2 class="subtitle">För att skicka ett meddelande eller bara säga hej, fyll i formuläret nedan eller kontakta oss via informationen till vänster.</h2>
+
+        </div><!--END HOLDER-->
+
+    </div><!--END PAGE-HEADER-->
+
+    <div class="content">
+
+        <div class="section">
+
+            <div class="one-third">
+
+                <h2 class="title">Kontakt info</h2>
+                <p>
+                    <strong>Address</strong>: Oskarshamn, Kalmar län, Sverige<br>
+                    <strong>Email</strong>: <a href="#"> info@Insatsplutonen.se</a>
+
+                </p><br>
+
+                <h2 class="title">Support info</h2>
+                <p>
+                    <strong>Svar inom</strong>: 24h<br>
+                    <strong>Email</strong>: <a href="#"> devhariis@gmail.com</a>
+                </p><br>
+
+                <ul class="social-bookmarks rounded color">
+                    <li><a href="#" class="social-twitter"></a></li>
+                    <li><a href="#" class="social-facebook"></a></li>
+                </ul><!--END SOCIAL-BOOKMARKS-->
+
+            </div><!--END ONE-THIRD-->
+
+            <div class="one-third">
+
+            </div><!--END ONE-THIRD-->
+
+
+            <div class="two-third last">
+                @Html.ValidationSummary(true)
+                @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @id = "contact_form", @class = "form" }))
+                {
+                    <p class="form-name">
+                        <label for="name">Namn <em>(*)</em></label>
+                        @Html.ValidationMessageFor(model => model.Name, string.Empty, new { @id = "error" })
+                        <div class="field">@Html.TextBoxFor(model => model.Name, new { @class = "requiredField" })</div>
+                    </p>
+
+                    <p class="form-name">
+                        <label for="email">Email <em>(*)</em></label>
+                        @Html.ValidationMessageFor(model => model.Email, string.Empty, new { @id = "error" })
+                        <div class="field">@Html.TextBoxFor(model => model.Email, new { @class = "requiredField" })</div>
+                    </p>
+
+                    <p class="form-name">
+                        <label for="url">Rubrik <em>(*)</em></label>
+                        @Html.ValidationMessageFor(model => model.Subject, string.Empty, new { @id = "error" })
+                        <div class="field">@Html.TextBoxFor(model => model.Subject, new { @class = "requiredField" })</div>
+                    </p>
+                    
+                    <p class="form-name">
+                        <label for="message">Meddelande <em>(*)</em></label>
+                        @Html.ValidationMessageFor(model => model.Text, string.Empty, new { @id = "error" })
+                        <div class="textarea">@Html.TextAreaFor(model => model.Text, new { @rows = "1", @cols = "1", @class = "requiredField" })</div>
+                    </p>
+
+                    <p class="form-submit">
+                        <input name="submit" id="submitted" value="Skicka" class="submit button medium grey" type="submit" />
+                    </p>
+
+                }
+
+            </div><!--END TWO-THIRD LAST-->
+
+        </div><!--END SECTION-->
+
+    </div><!--END CONTENT-->
+
+</div><!--END CONTENT-WRAPPER-->
+<!-- END CONTACT -->
+@section scripts{
+    <!-- Google Map Javascript -->
+    <script type="text/javascript" src="~/Content/assets/javascript/bra_google_map_plugin.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+    <!-- Contact form Javascript -->
+    <script type="text/javascript" src="~/Content/assets/javascript/contact-form-validate.js"></script>
+}

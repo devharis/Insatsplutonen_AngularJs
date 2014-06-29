@@ -25,7 +25,7 @@
 					  var map;
 					  geocoder = new google.maps.Geocoder();
 					  //alert("usao2")
-					  var latlng = new google.maps.LatLng(40, 40); // starting default location
+					  var latlng = new google.maps.LatLng(7.2659685, 16.4319656); // starting default location
 					  var myOptions = {
 						zoom: o.zoom,
 						center: latlng,
@@ -66,7 +66,7 @@
 	   			ADDITIONAL CODE
 ---------------------------------------------------*/
 $(document).ready(function() {
-  $('#bra-map').bra_google_map({location: 'Amsterdam', zoom: 15});
+  $('#bra-map').bra_google_map({location: 'Oskarshamn', zoom: 15});
 });
 
 /*--------------------------------------------------
