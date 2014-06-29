@@ -25,7 +25,7 @@ position: absolute;
         <div class="post">
 
             <div class="post-media">
-                <flex-slider fslide="postmedia in item.MediaList track by $index" animation="slide" animationloop="true" slideshow="true">
+                <flex-slider fslide="postmedia in item.MediaList track by $index" animation="slide" animationloop="true" slideshow="true" smoothheight="true">
                     <li>
                         <img ng-src="../images/blog/{{postmedia.File}}" style="height:600px">
                         <p class='flex-caption' style="margin-top: 375px;">{{postmedia.Description}}</p>

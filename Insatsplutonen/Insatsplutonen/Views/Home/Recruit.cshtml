@@ -12,17 +12,16 @@
 
     <div class="page-header text-align-center">
 
-        <h1 class="title uppercase">Elements</h1>
-        <h2 class="subtitle">you can use for just about anything you can think of</h2>
+        <h1 class="title uppercase">Ansökan</h1>
+        <h2 class="subtitle">Här kan du ansöka om att gå med i 1:a Insatspluton</h2>
 
     </div><!--END PAGE-HEADER-->
 
     <div class="content">
 
         <div class="section">
-
+            <h3 class="title">Här nedan följer information om att gå med i Insatsplutonen:</h3>
             <div class="one-half">
-                <h3 class="title">Här nedan följer information om att gå med i Insatsplutonen:</h3>
 
                 <div class="toggle-wrap">
                     <span class="trigger">
@@ -110,9 +109,25 @@ color: #fff;">4</span> Skyddsvaktsutb
                 </div><!--END TOGGLE-WRAP-->
 
             </div><!--END ONE-HALF-->
+
+            <div class="one-half last">
+                <div class="portfolio-grid">
+                    <ul id="thumbs" class="">
+
+                        <li class="item web">
+                            <img src="../images/blog/110409_6.jpg" alt="" />
+
+                            <div class="item-info">
+                                <h3 class="title"><a href="portfolio-single.html">Rörlig strid / TOS</a></h3>
+                            </div><!--END ITEM-INFO-->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="divider-border"></div>
             <div class="one last">
                 @Html.ValidationSummary(true)
-                @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @id = "contact_form", @class = "form" }))
+                @using (Html.BeginForm("Recruit", "Home", FormMethod.Post, new { @id = "contact_form", @class = "form" }))
                 {
                     <div class="one-half last">
                         <p class="form-name">
@@ -132,7 +147,7 @@ color: #fff;">4</span> Skyddsvaktsutb
                             @Html.ValidationMessageFor(model => model.SocialNumb, string.Empty, new { @id = "error" })
                             <div class="field">@Html.TextBoxFor(model => model.SocialNumb, new { @class = "requiredField" })</div>
                         </p>
-                        
+
                         <p class="form-name">
                             <label for="url">Telefon <em>(*)</em></label>
                             @Html.ValidationMessageFor(model => model.Phone, string.Empty, new { @id = "error" })
@@ -140,7 +155,7 @@ color: #fff;">4</span> Skyddsvaktsutb
                         </p>
                     </div>
                     <div class="one-half last">
- 
+
 
                         <p class="form-name">
                             <label for="url">Ort <em>(*)</em></label>

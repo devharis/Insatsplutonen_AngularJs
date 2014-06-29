@@ -83,13 +83,13 @@
                         foreach (var post in Model)
                         {
                             <li class="item web">
-                                <img src="@post.ShowMedia()" alt="" style="max-height: 207px;" />
+                                <img src="@post.ShowMedia()" alt="" style="height: 205px;" />
                                 <div class="col4 item-info">
                                     <h3 class="title"><a href="/Blog/Posts/#/@post.Id">@post.Title</a></h3>
                                 </div><!--END ITEM-INFO-->
                                 <div class="item-info-overlay">
                                     <div>
-                                        <h4>@post.Created</h4>
+                                        <h4>@post.Created.ToShortDateString()</h4>
                                         <p>@Html.Raw(@post.ShowContent())</p>
                                         <a href="/Blog/Posts/#/@post.Id" class="button small rounded white">läs mer</a>
                                         <a href="@post.ShowMedia()" class="button small rounded orange" data-rel="prettyPhoto[web]">preview</a>
